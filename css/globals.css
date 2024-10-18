@@ -244,7 +244,7 @@ details summary[role='button']:not(.outline)::after {
  */
 [data-theme='light'],
 :root:not([data-theme='dark']) {
-    --global-background-color: #fff;
+    --global-background-color: #f1f0ec;
     --global-color: #373c44;
     --global-text-selection-color: rgba(149, 144, 130, 0.25);
     --global-muted-color: #646b79;
@@ -383,7 +383,7 @@ details summary[role='button']:not(.outline)::after {
 
 @media only screen and (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
-        --global-background-color: #13171f;
+        --global-background-color: #111110;
         --global-color: #c2c7d0;
         --global-text-selection-color: rgba(163, 158, 143, 0.1875);
         --global-muted-color: #7b8495;
@@ -533,7 +533,7 @@ details summary[role='button']:not(.outline)::after {
     }
 }
 [data-theme='dark'] {
-    --global-background-color: #13171f;
+    --global-background-color: #111110;
     --global-color: #c2c7d0;
     --global-text-selection-color: rgba(163, 158, 143, 0.1875);
     --global-muted-color: #7b8495;
