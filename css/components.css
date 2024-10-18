@@ -1,6 +1,5 @@
 nav ul {
     list-style-type: none;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;;
@@ -13,6 +12,15 @@ nav ul a {
     color: var(--global-primary-hover);
     display: block;
     width: 100%;
+}
+
+/* first li items in the list */
+
+nav .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--global-primary-hover);
 }
 
 nav ul li {
@@ -34,4 +42,15 @@ nav ul a.active li {
 
 nav img {
     margin-right: 0.8rem;
+}
+
+nav .sign-in {
+    width: 100%;
+    padding: 0.6rem;
+    color: var(--global-primary-hover);
+    border-radius: 4px;
+}
+
+nav .sign-in:hover {
+    background-color: var(--global-tab-hover-background);
 }

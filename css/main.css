@@ -11,6 +11,11 @@ nav {
     left: 0;
     overflow-x: hidden;
     width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+
 }
 
 @media screen and (max-width: 600px) {

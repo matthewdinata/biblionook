@@ -14,27 +14,9 @@
     require_once 'components/render_navbar.php';
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
-    ?>x
+    ?>
     <div class="main-content">
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
-        <h1>Home</h1><br />
+        <h1>Welcome to BiblioNook</h1>
     </div>
 </body>
 
