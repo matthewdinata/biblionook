@@ -1,87 +1,87 @@
 @charset "UTF-8";
 
 :root {
-    --globalcss-font-family-emoji: 'Apple Color Emoji', 'Segoe UI Emoji',
+    --global-font-family-emoji: 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --globalcss-font-family-sans-serif: system-ui, 'Segoe UI', Roboto, Oxygen,
+    --global-font-family-sans-serif: system-ui, 'Segoe UI', Roboto, Oxygen,
         Ubuntu, Cantarell, Helvetica, Arial, 'Helvetica Neue', sans-serif,
-        var(--globalcss-font-family-emoji);
-    --globalcss-font-family-monospace: ui-monospace, SFMono-Regular, 'SF Mono',
+        var(--global-font-family-emoji);
+    --global-font-family-monospace: ui-monospace, SFMono-Regular, 'SF Mono',
         Menlo, Consolas, 'Liberation Mono', monospace,
-        var(--globalcss-font-family-emoji);
-    --globalcss-font-family: var(--globalcss-font-family-sans-serif);
-    --globalcss-line-height: 1.5;
-    --globalcss-font-weight: 400;
-    --globalcss-font-size: 100%;
-    --globalcss-text-underline-offset: 0.1rem;
-    --globalcss-border-radius: 0.25rem;
-    --globalcss-border-width: 0.0625rem;
-    --globalcss-outline-width: 0.125rem;
-    --globalcss-transition: 0.2s ease-in-out;
-    --globalcss-spacing: 1rem;
-    --globalcss-typography-spacing-vertical: 1rem;
-    --globalcss-block-spacing-vertical: var(--globalcss-spacing);
-    --globalcss-block-spacing-horizontal: var(--globalcss-spacing);
-    --globalcss-grid-column-gap: var(--globalcss-spacing);
-    --globalcss-grid-row-gap: var(--globalcss-spacing);
-    --globalcss-form-element-spacing-vertical: 0.75rem;
-    --globalcss-form-element-spacing-horizontal: 1rem;
-    --globalcss-group-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --globalcss-group-box-shadow-focus-with-button: 0 0 0
-        var(--globalcss-outline-width) var(--globalcss-primary-focus);
-    --globalcss-group-box-shadow-focus-with-input: 0 0 0 0.0625rem
-        var(--globalcss-form-element-border-color);
-    --globalcss-modal-overlay-backdrop-filter: blur(0.375rem);
-    --globalcss-nav-element-spacing-vertical: 1rem;
-    --globalcss-nav-element-spacing-horizontal: 0.5rem;
-    --globalcss-nav-link-spacing-vertical: 0.5rem;
-    --globalcss-nav-link-spacing-horizontal: 0.5rem;
-    --globalcss-nav-breadcrumb-divider: '>';
-    --globalcss-icon-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    --globalcss-icon-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-    --globalcss-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --globalcss-icon-date: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
-    --globalcss-icon-time: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
-    --globalcss-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-    --globalcss-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-    --globalcss-icon-loading: url("data:image/svg+xml,%3Csvg fill='none' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' %3E%3Cstyle%3E g %7B animation: rotate 2s linear infinite; transform-origin: center center; %7D circle %7B stroke-dasharray: 75,100; stroke-dashoffset: -5; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; %7D @keyframes rotate %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg); %7D %7D @keyframes dash %7B 0%25 %7B stroke-dasharray: 1,100; stroke-dashoffset: 0; %7D 50%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -17.5; %7D 100%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -62; %7D %7D %3C/style%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='rgb(136, 145, 164)' stroke-width='4' /%3E%3C/g%3E%3C/svg%3E");
+        var(--global-font-family-emoji);
+    --global-font-family: var(--global-font-family-sans-serif);
+    --global-line-height: 1.5;
+    --global-font-weight: 400;
+    --global-font-size: 100%;
+    --global-text-underline-offset: 0.1rem;
+    --global-border-radius: 0.25rem;
+    --global-border-width: 0.0625rem;
+    --global-outline-width: 0.125rem;
+    --global-transition: 0.2s ease-in-out;
+    --global-spacing: 1rem;
+    --global-typography-spacing-vertical: 1rem;
+    --global-block-spacing-vertical: var(--global-spacing);
+    --global-block-spacing-horizontal: var(--global-spacing);
+    --global-grid-column-gap: var(--global-spacing);
+    --global-grid-row-gap: var(--global-spacing);
+    --global-form-element-spacing-vertical: 0.75rem;
+    --global-form-element-spacing-horizontal: 1rem;
+    --global-group-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --global-group-box-shadow-focus-with-button: 0 0 0
+        var(--global-outline-width) var(--global-primary-focus);
+    --global-group-box-shadow-focus-with-input: 0 0 0 0.0625rem
+        var(--global-form-element-border-color);
+    --global-modal-overlay-backdrop-filter: blur(0.375rem);
+    --global-nav-element-spacing-vertical: 1rem;
+    --global-nav-element-spacing-horizontal: 0.5rem;
+    --global-nav-link-spacing-vertical: 0.5rem;
+    --global-nav-link-spacing-horizontal: 0.5rem;
+    --global-nav-breadcrumb-divider: '>';
+    --global-icon-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    --global-icon-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+    --global-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --global-icon-date: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+    --global-icon-time: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
+    --global-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+    --global-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+    --global-icon-loading: url("data:image/svg+xml,%3Csvg fill='none' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' %3E%3Cstyle%3E g %7B animation: rotate 2s linear infinite; transform-origin: center center; %7D circle %7B stroke-dasharray: 75,100; stroke-dashoffset: -5; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; %7D @keyframes rotate %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg); %7D %7D @keyframes dash %7B 0%25 %7B stroke-dasharray: 1,100; stroke-dashoffset: 0; %7D 50%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -17.5; %7D 100%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -62; %7D %7D %3C/style%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='rgb(136, 145, 164)' stroke-width='4' /%3E%3C/g%3E%3C/svg%3E");
 }
 @media (min-width: 576px) {
     :root {
-        --globalcss-font-size: 106.25%;
+        --global-font-size: 106.25%;
     }
 }
 @media (min-width: 768px) {
     :root {
-        --globalcss-font-size: 112.5%;
+        --global-font-size: 112.5%;
     }
 }
 @media (min-width: 1024px) {
     :root {
-        --globalcss-font-size: 118.75%;
+        --global-font-size: 118.75%;
     }
 }
 @media (min-width: 1280px) {
     :root {
-        --globalcss-font-size: 125%;
+        --global-font-size: 125%;
     }
 }
 @media (min-width: 1536px) {
     :root {
-        --globalcss-font-size: 131.25%;
+        --global-font-size: 131.25%;
     }
 }
 
 a {
-    --globalcss-text-decoration: underline;
+    --global-text-decoration: underline;
 }
 a.secondary,
 a.contrast {
-    --globalcss-text-decoration: underline;
+    --global-text-decoration: underline;
 }
 
 small {
-    --globalcss-font-size: 0.875em;
+    --global-font-size: 0.875em;
 }
 
 h1,
@@ -90,62 +90,62 @@ h3,
 h4,
 h5,
 h6 {
-    --globalcss-font-weight: 700;
+    --global-font-weight: 700;
 }
 
 h1 {
-    --globalcss-font-size: 2rem;
-    --globalcss-line-height: 1.125;
-    --globalcss-typography-spacing-top: 3rem;
+    --global-font-size: 2rem;
+    --global-line-height: 1.125;
+    --global-typography-spacing-top: 3rem;
 }
 
 h2 {
-    --globalcss-font-size: 1.75rem;
-    --globalcss-line-height: 1.15;
-    --globalcss-typography-spacing-top: 2.625rem;
+    --global-font-size: 1.75rem;
+    --global-line-height: 1.15;
+    --global-typography-spacing-top: 2.625rem;
 }
 
 h3 {
-    --globalcss-font-size: 1.5rem;
-    --globalcss-line-height: 1.175;
-    --globalcss-typography-spacing-top: 2.25rem;
+    --global-font-size: 1.5rem;
+    --global-line-height: 1.175;
+    --global-typography-spacing-top: 2.25rem;
 }
 
 h4 {
-    --globalcss-font-size: 1.25rem;
-    --globalcss-line-height: 1.2;
-    --globalcss-typography-spacing-top: 1.874rem;
+    --global-font-size: 1.25rem;
+    --global-line-height: 1.2;
+    --global-typography-spacing-top: 1.874rem;
 }
 
 h5 {
-    --globalcss-font-size: 1.125rem;
-    --globalcss-line-height: 1.225;
-    --globalcss-typography-spacing-top: 1.6875rem;
+    --global-font-size: 1.125rem;
+    --global-line-height: 1.225;
+    --global-typography-spacing-top: 1.6875rem;
 }
 
 h6 {
-    --globalcss-font-size: 1rem;
-    --globalcss-line-height: 1.25;
-    --globalcss-typography-spacing-top: 1.5rem;
+    --global-font-size: 1rem;
+    --global-line-height: 1.25;
+    --global-typography-spacing-top: 1.5rem;
 }
 
 thead th,
 thead td,
 tfoot th,
 tfoot td {
-    --globalcss-font-weight: 600;
-    --globalcss-border-width: 0.1875rem;
+    --global-font-weight: 600;
+    --global-border-width: 0.1875rem;
 }
 
 pre,
 code,
 kbd,
 samp {
-    --globalcss-font-family: var(--globalcss-font-family-monospace);
+    --global-font-family: var(--global-font-family-monospace);
 }
 
 kbd {
-    --globalcss-font-weight: bolder;
+    --global-font-weight: bolder;
 }
 
 input:not(
@@ -157,32 +157,32 @@ input:not(
         [type='file']
     ),
 :where(select, textarea) {
-    --globalcss-outline-width: 0.0625rem;
+    --global-outline-width: 0.0625rem;
 }
 
 [type='search'] {
-    --globalcss-border-radius: 5rem;
+    --global-border-radius: 5rem;
 }
 
 [type='checkbox'],
 [type='radio'] {
-    --globalcss-border-width: 0.125rem;
+    --global-border-width: 0.125rem;
 }
 
 [type='checkbox'][role='switch'] {
-    --globalcss-border-width: 0.1875rem;
+    --global-border-width: 0.1875rem;
 }
 
 details.dropdown summary:not([role='button']) {
-    --globalcss-outline-width: 0.0625rem;
+    --global-outline-width: 0.0625rem;
 }
 
 nav details.dropdown summary:focus-visible {
-    --globalcss-outline-width: 0.125rem;
+    --global-outline-width: 0.125rem;
 }
 
 [role='search'] {
-    --globalcss-border-radius: 5rem;
+    --global-border-radius: 5rem;
 }
 
 [role='search']:has(
@@ -197,8 +197,8 @@ nav details.dropdown summary:focus-visible {
         [type='button'].secondary:focus,
         [role='button'].secondary:focus
     ) {
-    --globalcss-group-box-shadow-focus-with-button: 0 0 0
-        var(--globalcss-outline-width) var(--globalcss-secondary-focus);
+    --global-group-box-shadow-focus-with-button: 0 0 0
+        var(--global-outline-width) var(--global-secondary-focus);
 }
 [role='search']:has(
         button.contrast:focus,
@@ -212,8 +212,8 @@ nav details.dropdown summary:focus-visible {
         [type='button'].contrast:focus,
         [role='button'].contrast:focus
     ) {
-    --globalcss-group-box-shadow-focus-with-button: 0 0 0
-        var(--globalcss-outline-width) var(--globalcss-contrast-focus);
+    --global-group-box-shadow-focus-with-button: 0 0 0
+        var(--global-outline-width) var(--global-contrast-focus);
 }
 [role='search'] button,
 [role='search'] [type='submit'],
@@ -223,7 +223,7 @@ nav details.dropdown summary:focus-visible {
 [role='group'] [type='submit'],
 [role='group'] [type='button'],
 [role='group'] [role='button'] {
-    --globalcss-form-element-spacing-horizontal: 2rem;
+    --global-form-element-spacing-horizontal: 2rem;
 }
 
 details summary[role='button']:not(.outline)::after {
@@ -245,46 +245,46 @@ details summary[role='button']:not(.outline)::after {
  */
 [data-theme='light'],
 :root:not([data-theme='dark']) {
-    --globalcss-background-color: #fff;
-    --globalcss-color: #373c44;
-    --globalcss-text-selection-color: rgba(149, 144, 130, 0.25);
-    --globalcss-muted-color: #646b79;
-    --globalcss-muted-border-color: #e7eaf0;
-    --globalcss-primary: #6e6a60;
-    --globalcss-primary-background: #ccc6b4;
-    --globalcss-primary-border: var(--globalcss-primary-background);
-    --globalcss-primary-underline: rgba(110, 106, 96, 0.5);
-    --globalcss-primary-hover: #55524a;
-    --globalcss-primary-hover-background: #beb8a7;
-    --globalcss-primary-hover-border: var(--globalcss-primary-hover-background);
-    --globalcss-primary-hover-underline: var(--globalcss-primary-hover);
-    --globalcss-primary-focus: rgba(149, 144, 130, 0.5);
-    --globalcss-primary-inverse: #000;
-    --globalcss-secondary: #5d6b89;
-    --globalcss-secondary-background: #525f7a;
-    --globalcss-secondary-border: var(--globalcss-secondary-background);
-    --globalcss-secondary-underline: rgba(93, 107, 137, 0.5);
-    --globalcss-secondary-hover: #48536b;
-    --globalcss-secondary-hover-background: #48536b;
-    --globalcss-secondary-hover-border: var(
-        --globalcss-secondary-hover-background
+    --global-background-color: #fff;
+    --global-color: #373c44;
+    --global-text-selection-color: rgba(149, 144, 130, 0.25);
+    --global-muted-color: #646b79;
+    --global-muted-border-color: #e7eaf0;
+    --global-primary: #6e6a60;
+    --global-primary-background: #ccc6b4;
+    --global-primary-border: var(--global-primary-background);
+    --global-primary-underline: rgba(110, 106, 96, 0.5);
+    --global-primary-hover: #55524a;
+    --global-primary-hover-background: #beb8a7;
+    --global-primary-hover-border: var(--global-primary-hover-background);
+    --global-primary-hover-underline: var(--global-primary-hover);
+    --global-primary-focus: rgba(149, 144, 130, 0.5);
+    --global-primary-inverse: #000;
+    --global-secondary: #282622; 
+    --global-secondary-background: #474640;
+    --global-secondary-border: var(--global-secondary-background);
+    --global-secondary-underline: #1d1b19;
+    --global-secondary-hover: #615e56;
+    --global-secondary-hover-background: #32302c;
+    --global-secondary-hover-border: var(
+        --global-secondary-hover-background
     );
-    --globalcss-secondary-hover-underline: var(--globalcss-secondary-hover);
-    --globalcss-secondary-focus: rgba(93, 107, 137, 0.25);
-    --globalcss-secondary-inverse: #fff;
-    --globalcss-contrast: #181c25;
-    --globalcss-contrast-background: #181c25;
-    --globalcss-contrast-border: var(--globalcss-contrast-background);
-    --globalcss-contrast-underline: rgba(24, 28, 37, 0.5);
-    --globalcss-contrast-hover: #000;
-    --globalcss-contrast-hover-background: #000;
-    --globalcss-contrast-hover-border: var(
-        --globalcss-contrast-hover-background
+    --global-secondary-hover-underline: var(--global-secondary-hover);
+    --global-secondary-focus: #a39e90;
+    --global-secondary-inverse: #fff;
+    --global-contrast: #181c25;
+    --global-contrast-background: #181c25;
+    --global-contrast-border: var(--global-contrast-background);
+    --global-contrast-underline: rgba(24, 28, 37, 0.5);
+    --global-contrast-hover: #000;
+    --global-contrast-hover-background: #000;
+    --global-contrast-hover-border: var(
+        --global-contrast-hover-background
     );
-    --globalcss-contrast-hover-underline: var(--globalcss-secondary-hover);
-    --globalcss-contrast-focus: rgba(93, 107, 137, 0.25);
-    --globalcss-contrast-inverse: #fff;
-    --globalcss-box-shadow: 0.0145rem 0.029rem 0.174rem
+    --global-contrast-hover-underline: var(--global-secondary-hover);
+    --global-contrast-focus: rgba(93, 107, 137, 0.25);
+    --global-contrast-inverse: #fff;
+    --global-box-shadow: 0.0145rem 0.029rem 0.174rem
             rgba(129, 145, 181, 0.01698),
         0.0335rem 0.067rem 0.402rem rgba(129, 145, 181, 0.024),
         0.0625rem 0.125rem 0.75rem rgba(129, 145, 181, 0.03),
@@ -292,84 +292,84 @@ details summary[role='button']:not(.outline)::after {
         0.2085rem 0.417rem 2.502rem rgba(129, 145, 181, 0.04302),
         0.5rem 1rem 6rem rgba(129, 145, 181, 0.06),
         0 0 0 0.0625rem rgba(129, 145, 181, 0.015);
-    --globalcss-h1-color: #2d3138;
-    --globalcss-h2-color: #373c44;
-    --globalcss-h3-color: #424751;
-    --globalcss-h4-color: #4d535e;
-    --globalcss-h5-color: #5c6370;
-    --globalcss-h6-color: #646b79;
-    --globalcss-mark-background-color: #fde7c0;
-    --globalcss-mark-color: #0f1114;
-    --globalcss-ins-color: #1d6a54;
-    --globalcss-del-color: #883935;
-    --globalcss-blockquote-border-color: var(--globalcss-muted-border-color);
-    --globalcss-blockquote-footer-color: var(--globalcss-muted-color);
-    --globalcss-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --globalcss-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --globalcss-table-border-color: var(--globalcss-muted-border-color);
-    --globalcss-table-row-stripped-background-color: rgba(
+    --global-h1-color: #2d3138;
+    --global-h2-color: #373c44;
+    --global-h3-color: #424751;
+    --global-h4-color: #4d535e;
+    --global-h5-color: #5c6370;
+    --global-h6-color: #646b79;
+    --global-mark-background-color: #fde7c0;
+    --global-mark-color: #0f1114;
+    --global-ins-color: #1d6a54;
+    --global-del-color: #883935;
+    --global-blockquote-border-color: var(--global-muted-border-color);
+    --global-blockquote-footer-color: var(--global-muted-color);
+    --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --global-table-border-color: var(--global-muted-border-color);
+    --global-table-row-stripped-background-color: rgba(
         111,
         120,
         135,
         0.0375
     );
-    --globalcss-code-background-color: #f3f5f7;
-    --globalcss-code-color: #646b79;
-    --globalcss-code-kbd-background-color: var(--globalcss-color);
-    --globalcss-code-kbd-color: var(--globalcss-background-color);
-    --globalcss-form-element-background-color: #fbfcfc;
-    --globalcss-form-element-selected-background-color: #dfe3eb;
-    --globalcss-form-element-border-color: #cfd5e2;
-    --globalcss-form-element-color: #23262c;
-    --globalcss-form-element-placeholder-color: var(--globalcss-muted-color);
-    --globalcss-form-element-active-background-color: #fff;
-    --globalcss-form-element-active-border-color: var(
-        --globalcss-primary-border
+    --global-code-background-color: #f3f5f7;
+    --global-code-color: #646b79;
+    --global-code-kbd-background-color: var(--global-color);
+    --global-code-kbd-color: var(--global-background-color);
+    --global-form-element-background-color: #fbfcfc;
+    --global-form-element-selected-background-color: #dfe3eb;
+    --global-form-element-border-color: #cfd5e2;
+    --global-form-element-color: #23262c;
+    --global-form-element-placeholder-color: var(--global-muted-color);
+    --global-form-element-active-background-color: #fff;
+    --global-form-element-active-border-color: var(
+        --global-primary-border
     );
-    --globalcss-form-element-focus-color: var(--globalcss-primary-border);
-    --globalcss-form-element-disabled-opacity: 0.5;
-    --globalcss-form-element-invalid-border-color: #b86a6b;
-    --globalcss-form-element-invalid-active-border-color: #c84f48;
-    --globalcss-form-element-invalid-focus-color: var(
-        --globalcss-form-element-invalid-active-border-color
+    --global-form-element-focus-color: var(--global-primary-border);
+    --global-form-element-disabled-opacity: 0.5;
+    --global-form-element-invalid-border-color: #b86a6b;
+    --global-form-element-invalid-active-border-color: #c84f48;
+    --global-form-element-invalid-focus-color: var(
+        --global-form-element-invalid-active-border-color
     );
-    --globalcss-form-element-valid-border-color: #4c9b8a;
-    --globalcss-form-element-valid-active-border-color: #279977;
-    --globalcss-form-element-valid-focus-color: var(
-        --globalcss-form-element-valid-active-border-color
+    --global-form-element-valid-border-color: #4c9b8a;
+    --global-form-element-valid-active-border-color: #279977;
+    --global-form-element-valid-focus-color: var(
+        --global-form-element-valid-active-border-color
     );
-    --globalcss-switch-background-color: #bfc7d9;
-    --globalcss-switch-checked-background-color: var(
-        --globalcss-primary-background
+    --global-switch-background-color: #bfc7d9;
+    --global-switch-checked-background-color: var(
+        --global-primary-background
     );
-    --globalcss-switch-color: #fff;
-    --globalcss-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-    --globalcss-range-border-color: #dfe3eb;
-    --globalcss-range-active-border-color: #bfc7d9;
-    --globalcss-range-thumb-border-color: var(--globalcss-background-color);
-    --globalcss-range-thumb-color: var(--globalcss-secondary-background);
-    --globalcss-range-thumb-active-color: var(--globalcss-primary-background);
-    --globalcss-accordion-border-color: var(--globalcss-muted-border-color);
-    --globalcss-accordion-active-summary-color: var(--globalcss-primary-hover);
-    --globalcss-accordion-close-summary-color: var(--globalcss-color);
-    --globalcss-accordion-open-summary-color: var(--globalcss-muted-color);
-    --globalcss-card-background-color: var(--globalcss-background-color);
-    --globalcss-card-border-color: var(--globalcss-muted-border-color);
-    --globalcss-card-box-shadow: var(--globalcss-box-shadow);
-    --globalcss-card-sectioning-background-color: #fbfcfc;
-    --globalcss-dropdown-background-color: #fff;
-    --globalcss-dropdown-border-color: #eff1f4;
-    --globalcss-dropdown-box-shadow: var(--globalcss-box-shadow);
-    --globalcss-dropdown-color: var(--globalcss-color);
-    --globalcss-dropdown-hover-background-color: #eff1f4;
-    --globalcss-loading-spinner-opacity: 0.5;
-    --globalcss-modal-overlay-background-color: rgba(232, 234, 237, 0.75);
-    --globalcss-progress-background-color: #dfe3eb;
-    --globalcss-progress-color: var(--globalcss-primary-background);
-    --globalcss-tooltip-background-color: var(--globalcss-contrast-background);
-    --globalcss-tooltip-color: var(--globalcss-contrast-inverse);
-    --globalcss-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(76, 155, 138)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    --globalcss-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(200, 79, 72)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
+    --global-switch-color: #fff;
+    --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+    --global-range-border-color: #dfe3eb;
+    --global-range-active-border-color: #bfc7d9;
+    --global-range-thumb-border-color: var(--global-background-color);
+    --global-range-thumb-color: var(--global-secondary-background);
+    --global-range-thumb-active-color: var(--global-primary-background);
+    --global-accordion-border-color: var(--global-muted-border-color);
+    --global-accordion-active-summary-color: var(--global-primary-hover);
+    --global-accordion-close-summary-color: var(--global-color);
+    --global-accordion-open-summary-color: var(--global-muted-color);
+    --global-card-background-color: var(--global-background-color);
+    --global-card-border-color: var(--global-muted-border-color);
+    --global-card-box-shadow: var(--global-box-shadow);
+    --global-card-sectioning-background-color: #fbfcfc;
+    --global-dropdown-background-color: #fff;
+    --global-dropdown-border-color: #eff1f4;
+    --global-dropdown-box-shadow: var(--global-box-shadow);
+    --global-dropdown-color: var(--global-color);
+    --global-dropdown-hover-background-color: #eff1f4;
+    --global-loading-spinner-opacity: 0.5;
+    --global-modal-overlay-background-color: rgba(232, 234, 237, 0.75);
+    --global-progress-background-color: #dfe3eb;
+    --global-progress-color: var(--global-primary-background);
+    --global-tooltip-background-color: var(--global-contrast-background);
+    --global-tooltip-color: var(--global-contrast-inverse);
+    --global-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(76, 155, 138)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    --global-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(200, 79, 72)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
     color-scheme: light;
 }
 [data-theme='light']
@@ -390,53 +390,53 @@ details summary[role='button']:not(.outline)::after {
         [type='radio'],
         [type='file']
     ) {
-    --globalcss-form-element-focus-color: var(--globalcss-primary-focus);
+    --global-form-element-focus-color: var(--global-primary-focus);
 }
 
 @media only screen and (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
-        --globalcss-background-color: #13171f;
-        --globalcss-color: #c2c7d0;
-        --globalcss-text-selection-color: rgba(163, 158, 143, 0.1875);
-        --globalcss-muted-color: #7b8495;
-        --globalcss-muted-border-color: #202632;
-        --globalcss-primary: #a39e8f;
-        --globalcss-primary-background: #ccc6b4;
-        --globalcss-primary-border: var(--globalcss-primary-background);
-        --globalcss-primary-underline: rgba(163, 158, 143, 0.5);
-        --globalcss-primary-hover: #beb8a7;
-        --globalcss-primary-hover-background: #dad4c2;
-        --globalcss-primary-hover-border: var(
-            --globalcss-primary-hover-background
+        --global-background-color: #13171f;
+        --global-color: #c2c7d0;
+        --global-text-selection-color: rgba(163, 158, 143, 0.1875);
+        --global-muted-color: #7b8495;
+        --global-muted-border-color: #202632;
+        --global-primary: #a39e8f;
+        --global-primary-background: #ccc6b4;
+        --global-primary-border: var(--global-primary-background);
+        --global-primary-underline: rgba(163, 158, 143, 0.5);
+        --global-primary-hover: #beb8a7;
+        --global-primary-hover-background: #dad4c2;
+        --global-primary-hover-border: var(
+            --global-primary-hover-background
         );
-        --globalcss-primary-hover-underline: var(--globalcss-primary-hover);
-        --globalcss-primary-focus: rgba(163, 158, 143, 0.375);
-        --globalcss-primary-inverse: #000;
-        --globalcss-secondary: #969eaf;
-        --globalcss-secondary-background: #525f7a;
-        --globalcss-secondary-border: var(--globalcss-secondary-background);
-        --globalcss-secondary-underline: rgba(150, 158, 175, 0.5);
-        --globalcss-secondary-hover: #b3b9c5;
-        --globalcss-secondary-hover-background: #5d6b89;
-        --globalcss-secondary-hover-border: var(
-            --globalcss-secondary-hover-background
+        --global-primary-hover-underline: var(--global-primary-hover);
+        --global-primary-focus: rgba(163, 158, 143, 0.375);
+        --global-primary-inverse: #000;
+        --global-secondary: #282622; 
+        --global-secondary-background: #474640;
+        --global-secondary-border: var(--global-secondary-background);
+        --global-secondary-underline: #1d1b19;
+        --global-secondary-hover: #615e56;
+        --global-secondary-hover-background: #32302c;
+        --global-secondary-hover-border: var(
+            --global-secondary-hover-background
         );
-        --globalcss-secondary-hover-underline: var(--globalcss-secondary-hover);
-        --globalcss-secondary-focus: rgba(144, 158, 190, 0.25);
-        --globalcss-secondary-inverse: #fff;
-        --globalcss-contrast: #dfe3eb;
-        --globalcss-contrast-background: #eff1f4;
-        --globalcss-contrast-border: var(--globalcss-contrast-background);
-        --globalcss-contrast-underline: rgba(223, 227, 235, 0.5);
-        --globalcss-contrast-hover: #fff;
-        --globalcss-contrast-hover-background: #fff;
-        --globalcss-contrast-hover-border: var(
-            --globalcss-contrast-hover-background
+        --global-secondary-hover-underline: var(--global-secondary-hover);
+        --global-secondary-focus: #a39e90;
+        --global-secondary-inverse: #fff;
+        --global-contrast: #dfe3eb;
+        --global-contrast-background: #eff1f4;
+        --global-contrast-border: var(--global-contrast-background);
+        --global-contrast-underline: rgba(223, 227, 235, 0.5);
+        --global-contrast-hover: #fff;
+        --global-contrast-hover-background: #fff;
+        --global-contrast-hover-border: var(
+            --global-contrast-hover-background
         );
-        --globalcss-contrast-hover-underline: var(--globalcss-contrast-hover);
-        --globalcss-contrast-focus: rgba(207, 213, 226, 0.25);
-        --globalcss-contrast-inverse: #000;
-        --globalcss-box-shadow: 0.0145rem 0.029rem 0.174rem
+        --global-contrast-hover-underline: var(--global-contrast-hover);
+        --global-contrast-focus: rgba(207, 213, 226, 0.25);
+        --global-contrast-inverse: #000;
+        --global-box-shadow: 0.0145rem 0.029rem 0.174rem
                 rgba(7, 9, 12, 0.01698),
             0.0335rem 0.067rem 0.402rem rgba(7, 9, 12, 0.024),
             0.0625rem 0.125rem 0.75rem rgba(7, 9, 12, 0.03),
@@ -444,92 +444,92 @@ details summary[role='button']:not(.outline)::after {
             0.2085rem 0.417rem 2.502rem rgba(7, 9, 12, 0.04302),
             0.5rem 1rem 6rem rgba(7, 9, 12, 0.06),
             0 0 0 0.0625rem rgba(7, 9, 12, 0.015);
-        --globalcss-h1-color: #f0f1f3;
-        --globalcss-h2-color: #e0e3e7;
-        --globalcss-h3-color: #c2c7d0;
-        --globalcss-h4-color: #b3b9c5;
-        --globalcss-h5-color: #a4acba;
-        --globalcss-h6-color: #8891a4;
-        --globalcss-mark-background-color: #014063;
-        --globalcss-mark-color: #fff;
-        --globalcss-ins-color: #62af9a;
-        --globalcss-del-color: #ce7e7b;
-        --globalcss-blockquote-border-color: var(
-            --globalcss-muted-border-color
+        --global-h1-color: #f0f1f3;
+        --global-h2-color: #e0e3e7;
+        --global-h3-color: #c2c7d0;
+        --global-h4-color: #b3b9c5;
+        --global-h5-color: #a4acba;
+        --global-h6-color: #8891a4;
+        --global-mark-background-color: #014063;
+        --global-mark-color: #fff;
+        --global-ins-color: #62af9a;
+        --global-del-color: #ce7e7b;
+        --global-blockquote-border-color: var(
+            --global-muted-border-color
         );
-        --globalcss-blockquote-footer-color: var(--globalcss-muted-color);
-        --globalcss-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        --globalcss-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        --globalcss-table-border-color: var(--globalcss-muted-border-color);
-        --globalcss-table-row-stripped-background-color: rgba(
+        --global-blockquote-footer-color: var(--global-muted-color);
+        --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        --global-table-border-color: var(--global-muted-border-color);
+        --global-table-row-stripped-background-color: rgba(
             111,
             120,
             135,
             0.0375
         );
-        --globalcss-code-background-color: #1a1f28;
-        --globalcss-code-color: #8891a4;
-        --globalcss-code-kbd-background-color: var(--globalcss-color);
-        --globalcss-code-kbd-color: var(--globalcss-background-color);
-        --globalcss-form-element-background-color: #1c212c;
-        --globalcss-form-element-selected-background-color: #2a3140;
-        --globalcss-form-element-border-color: #2a3140;
-        --globalcss-form-element-color: #e0e3e7;
-        --globalcss-form-element-placeholder-color: #8891a4;
-        --globalcss-form-element-active-background-color: #1a1f28;
-        --globalcss-form-element-active-border-color: var(
-            --globalcss-primary-border
+        --global-code-background-color: #1a1f28;
+        --global-code-color: #8891a4;
+        --global-code-kbd-background-color: var(--global-color);
+        --global-code-kbd-color: var(--global-background-color);
+        --global-form-element-background-color: #1c212c;
+        --global-form-element-selected-background-color: #2a3140;
+        --global-form-element-border-color: #2a3140;
+        --global-form-element-color: #e0e3e7;
+        --global-form-element-placeholder-color: #8891a4;
+        --global-form-element-active-background-color: #1a1f28;
+        --global-form-element-active-border-color: var(
+            --global-primary-border
         );
-        --globalcss-form-element-focus-color: var(--globalcss-primary-border);
-        --globalcss-form-element-disabled-opacity: 0.5;
-        --globalcss-form-element-invalid-border-color: #964a50;
-        --globalcss-form-element-invalid-active-border-color: #b7403b;
-        --globalcss-form-element-invalid-focus-color: var(
-            --globalcss-form-element-invalid-active-border-color
+        --global-form-element-focus-color: var(--global-primary-border);
+        --global-form-element-disabled-opacity: 0.5;
+        --global-form-element-invalid-border-color: #964a50;
+        --global-form-element-invalid-active-border-color: #b7403b;
+        --global-form-element-invalid-focus-color: var(
+            --global-form-element-invalid-active-border-color
         );
-        --globalcss-form-element-valid-border-color: #2a7b6f;
-        --globalcss-form-element-valid-active-border-color: #16896a;
-        --globalcss-form-element-valid-focus-color: var(
-            --globalcss-form-element-valid-active-border-color
+        --global-form-element-valid-border-color: #2a7b6f;
+        --global-form-element-valid-active-border-color: #16896a;
+        --global-form-element-valid-focus-color: var(
+            --global-form-element-valid-active-border-color
         );
-        --globalcss-switch-background-color: #333c4e;
-        --globalcss-switch-checked-background-color: var(
-            --globalcss-primary-background
+        --global-switch-background-color: #333c4e;
+        --global-switch-checked-background-color: var(
+            --global-primary-background
         );
-        --globalcss-switch-color: #fff;
-        --globalcss-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-        --globalcss-range-border-color: #202632;
-        --globalcss-range-active-border-color: #2a3140;
-        --globalcss-range-thumb-border-color: var(--globalcss-background-color);
-        --globalcss-range-thumb-color: var(--globalcss-secondary-background);
-        --globalcss-range-thumb-active-color: var(
-            --globalcss-primary-background
+        --global-switch-color: #fff;
+        --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+        --global-range-border-color: #202632;
+        --global-range-active-border-color: #2a3140;
+        --global-range-thumb-border-color: var(--global-background-color);
+        --global-range-thumb-color: var(--global-secondary-background);
+        --global-range-thumb-active-color: var(
+            --global-primary-background
         );
-        --globalcss-accordion-border-color: var(--globalcss-muted-border-color);
-        --globalcss-accordion-active-summary-color: var(
-            --globalcss-primary-hover
+        --global-accordion-border-color: var(--global-muted-border-color);
+        --global-accordion-active-summary-color: var(
+            --global-primary-hover
         );
-        --globalcss-accordion-close-summary-color: var(--globalcss-color);
-        --globalcss-accordion-open-summary-color: var(--globalcss-muted-color);
-        --globalcss-card-background-color: #181c25;
-        --globalcss-card-border-color: var(--globalcss-card-background-color);
-        --globalcss-card-box-shadow: var(--globalcss-box-shadow);
-        --globalcss-card-sectioning-background-color: #1a1f28;
-        --globalcss-dropdown-background-color: #181c25;
-        --globalcss-dropdown-border-color: #202632;
-        --globalcss-dropdown-box-shadow: var(--globalcss-box-shadow);
-        --globalcss-dropdown-color: var(--globalcss-color);
-        --globalcss-dropdown-hover-background-color: #202632;
-        --globalcss-loading-spinner-opacity: 0.5;
-        --globalcss-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
-        --globalcss-progress-background-color: #202632;
-        --globalcss-progress-color: var(--globalcss-primary-background);
-        --globalcss-tooltip-background-color: var(
-            --globalcss-contrast-background
+        --global-accordion-close-summary-color: var(--global-color);
+        --global-accordion-open-summary-color: var(--global-muted-color);
+        --global-card-background-color: #181c25;
+        --global-card-border-color: var(--global-card-background-color);
+        --global-card-box-shadow: var(--global-box-shadow);
+        --global-card-sectioning-background-color: #1a1f28;
+        --global-dropdown-background-color: #181c25;
+        --global-dropdown-border-color: #202632;
+        --global-dropdown-box-shadow: var(--global-box-shadow);
+        --global-dropdown-color: var(--global-color);
+        --global-dropdown-hover-background-color: #202632;
+        --global-loading-spinner-opacity: 0.5;
+        --global-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
+        --global-progress-background-color: #202632;
+        --global-progress-color: var(--global-primary-background);
+        --global-tooltip-background-color: var(
+            --global-contrast-background
         );
-        --globalcss-tooltip-color: var(--globalcss-contrast-inverse);
-        --globalcss-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(42, 123, 111)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-        --globalcss-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(150, 74, 80)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
+        --global-tooltip-color: var(--global-contrast-inverse);
+        --global-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(42, 123, 111)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+        --global-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(150, 74, 80)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
         color-scheme: dark;
     }
     :root:not([data-theme])
@@ -541,7 +541,7 @@ details summary[role='button']:not(.outline)::after {
             [type='radio'],
             [type='file']
         ) {
-        --globalcss-form-element-focus-color: var(--globalcss-primary-focus);
+        --global-form-element-focus-color: var(--global-primary-focus);
     }
     :root:not([data-theme])
         details
@@ -560,130 +560,130 @@ details summary[role='button']:not(.outline)::after {
     }
 }
 [data-theme='dark'] {
-    --globalcss-background-color: #13171f;
-    --globalcss-color: #c2c7d0;
-    --globalcss-text-selection-color: rgba(163, 158, 143, 0.1875);
-    --globalcss-muted-color: #7b8495;
-    --globalcss-muted-border-color: #202632;
-    --globalcss-primary: #a39e8f;
-    --globalcss-primary-background: #ccc6b4;
-    --globalcss-primary-border: var(--globalcss-primary-background);
-    --globalcss-primary-underline: rgba(163, 158, 143, 0.5);
-    --globalcss-primary-hover: #beb8a7;
-    --globalcss-primary-hover-background: #dad4c2;
-    --globalcss-primary-hover-border: var(--globalcss-primary-hover-background);
-    --globalcss-primary-hover-underline: var(--globalcss-primary-hover);
-    --globalcss-primary-focus: rgba(163, 158, 143, 0.375);
-    --globalcss-primary-inverse: #000;
-    --globalcss-secondary: #969eaf;
-    --globalcss-secondary-background: #525f7a;
-    --globalcss-secondary-border: var(--globalcss-secondary-background);
-    --globalcss-secondary-underline: rgba(150, 158, 175, 0.5);
-    --globalcss-secondary-hover: #b3b9c5;
-    --globalcss-secondary-hover-background: #5d6b89;
-    --globalcss-secondary-hover-border: var(
-        --globalcss-secondary-hover-background
+    --global-background-color: #13171f;
+    --global-color: #c2c7d0;
+    --global-text-selection-color: rgba(163, 158, 143, 0.1875);
+    --global-muted-color: #7b8495;
+    --global-muted-border-color: #202632;
+    --global-primary: #a39e8f;
+    --global-primary-background: #ccc6b4;
+    --global-primary-border: var(--global-primary-background);
+    --global-primary-underline: rgba(163, 158, 143, 0.5);
+    --global-primary-hover: #beb8a7;
+    --global-primary-hover-background: #dad4c2;
+    --global-primary-hover-border: var(--global-primary-hover-background);
+    --global-primary-hover-underline: var(--global-primary-hover);
+    --global-primary-focus: rgba(163, 158, 143, 0.375);
+    --global-primary-inverse: #000;
+    --global-secondary: #969eaf;
+    --global-secondary-background: #525f7a;
+    --global-secondary-border: var(--global-secondary-background);
+    --global-secondary-underline: rgba(150, 158, 175, 0.5);
+    --global-secondary-hover: #b3b9c5;
+    --global-secondary-hover-background: #5d6b89;
+    --global-secondary-hover-border: var(
+        --global-secondary-hover-background
     );
-    --globalcss-secondary-hover-underline: var(--globalcss-secondary-hover);
-    --globalcss-secondary-focus: rgba(144, 158, 190, 0.25);
-    --globalcss-secondary-inverse: #fff;
-    --globalcss-contrast: #dfe3eb;
-    --globalcss-contrast-background: #eff1f4;
-    --globalcss-contrast-border: var(--globalcss-contrast-background);
-    --globalcss-contrast-underline: rgba(223, 227, 235, 0.5);
-    --globalcss-contrast-hover: #fff;
-    --globalcss-contrast-hover-background: #fff;
-    --globalcss-contrast-hover-border: var(
-        --globalcss-contrast-hover-background
+    --global-secondary-hover-underline: var(--global-secondary-hover);
+    --global-secondary-focus: rgba(144, 158, 190, 0.25);
+    --global-secondary-inverse: #fff;
+    --global-contrast: #dfe3eb;
+    --global-contrast-background: #eff1f4;
+    --global-contrast-border: var(--global-contrast-background);
+    --global-contrast-underline: rgba(223, 227, 235, 0.5);
+    --global-contrast-hover: #fff;
+    --global-contrast-hover-background: #fff;
+    --global-contrast-hover-border: var(
+        --global-contrast-hover-background
     );
-    --globalcss-contrast-hover-underline: var(--globalcss-contrast-hover);
-    --globalcss-contrast-focus: rgba(207, 213, 226, 0.25);
-    --globalcss-contrast-inverse: #000;
-    --globalcss-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(7, 9, 12, 0.01698),
+    --global-contrast-hover-underline: var(--global-contrast-hover);
+    --global-contrast-focus: rgba(207, 213, 226, 0.25);
+    --global-contrast-inverse: #000;
+    --global-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(7, 9, 12, 0.01698),
         0.0335rem 0.067rem 0.402rem rgba(7, 9, 12, 0.024),
         0.0625rem 0.125rem 0.75rem rgba(7, 9, 12, 0.03),
         0.1125rem 0.225rem 1.35rem rgba(7, 9, 12, 0.036),
         0.2085rem 0.417rem 2.502rem rgba(7, 9, 12, 0.04302),
         0.5rem 1rem 6rem rgba(7, 9, 12, 0.06),
         0 0 0 0.0625rem rgba(7, 9, 12, 0.015);
-    --globalcss-h1-color: #f0f1f3;
-    --globalcss-h2-color: #e0e3e7;
-    --globalcss-h3-color: #c2c7d0;
-    --globalcss-h4-color: #b3b9c5;
-    --globalcss-h5-color: #a4acba;
-    --globalcss-h6-color: #8891a4;
-    --globalcss-mark-background-color: #014063;
-    --globalcss-mark-color: #fff;
-    --globalcss-ins-color: #62af9a;
-    --globalcss-del-color: #ce7e7b;
-    --globalcss-blockquote-border-color: var(--globalcss-muted-border-color);
-    --globalcss-blockquote-footer-color: var(--globalcss-muted-color);
-    --globalcss-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --globalcss-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    --globalcss-table-border-color: var(--globalcss-muted-border-color);
-    --globalcss-table-row-stripped-background-color: rgba(
+    --global-h1-color: #f0f1f3;
+    --global-h2-color: #e0e3e7;
+    --global-h3-color: #c2c7d0;
+    --global-h4-color: #b3b9c5;
+    --global-h5-color: #a4acba;
+    --global-h6-color: #8891a4;
+    --global-mark-background-color: #014063;
+    --global-mark-color: #fff;
+    --global-ins-color: #62af9a;
+    --global-del-color: #ce7e7b;
+    --global-blockquote-border-color: var(--global-muted-border-color);
+    --global-blockquote-footer-color: var(--global-muted-color);
+    --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    --global-table-border-color: var(--global-muted-border-color);
+    --global-table-row-stripped-background-color: rgba(
         111,
         120,
         135,
         0.0375
     );
-    --globalcss-code-background-color: #1a1f28;
-    --globalcss-code-color: #8891a4;
-    --globalcss-code-kbd-background-color: var(--globalcss-color);
-    --globalcss-code-kbd-color: var(--globalcss-background-color);
-    --globalcss-form-element-background-color: #1c212c;
-    --globalcss-form-element-selected-background-color: #2a3140;
-    --globalcss-form-element-border-color: #2a3140;
-    --globalcss-form-element-color: #e0e3e7;
-    --globalcss-form-element-placeholder-color: #8891a4;
-    --globalcss-form-element-active-background-color: #1a1f28;
-    --globalcss-form-element-active-border-color: var(
-        --globalcss-primary-border
+    --global-code-background-color: #1a1f28;
+    --global-code-color: #8891a4;
+    --global-code-kbd-background-color: var(--global-color);
+    --global-code-kbd-color: var(--global-background-color);
+    --global-form-element-background-color: #1c212c;
+    --global-form-element-selected-background-color: #2a3140;
+    --global-form-element-border-color: #2a3140;
+    --global-form-element-color: #e0e3e7;
+    --global-form-element-placeholder-color: #8891a4;
+    --global-form-element-active-background-color: #1a1f28;
+    --global-form-element-active-border-color: var(
+        --global-primary-border
     );
-    --globalcss-form-element-focus-color: var(--globalcss-primary-border);
-    --globalcss-form-element-disabled-opacity: 0.5;
-    --globalcss-form-element-invalid-border-color: #964a50;
-    --globalcss-form-element-invalid-active-border-color: #b7403b;
-    --globalcss-form-element-invalid-focus-color: var(
-        --globalcss-form-element-invalid-active-border-color
+    --global-form-element-focus-color: var(--global-primary-border);
+    --global-form-element-disabled-opacity: 0.5;
+    --global-form-element-invalid-border-color: #964a50;
+    --global-form-element-invalid-active-border-color: #b7403b;
+    --global-form-element-invalid-focus-color: var(
+        --global-form-element-invalid-active-border-color
     );
-    --globalcss-form-element-valid-border-color: #2a7b6f;
-    --globalcss-form-element-valid-active-border-color: #16896a;
-    --globalcss-form-element-valid-focus-color: var(
-        --globalcss-form-element-valid-active-border-color
+    --global-form-element-valid-border-color: #2a7b6f;
+    --global-form-element-valid-active-border-color: #16896a;
+    --global-form-element-valid-focus-color: var(
+        --global-form-element-valid-active-border-color
     );
-    --globalcss-switch-background-color: #333c4e;
-    --globalcss-switch-checked-background-color: var(
-        --globalcss-primary-background
+    --global-switch-background-color: #333c4e;
+    --global-switch-checked-background-color: var(
+        --global-primary-background
     );
-    --globalcss-switch-color: #fff;
-    --globalcss-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-    --globalcss-range-border-color: #202632;
-    --globalcss-range-active-border-color: #2a3140;
-    --globalcss-range-thumb-border-color: var(--globalcss-background-color);
-    --globalcss-range-thumb-color: var(--globalcss-secondary-background);
-    --globalcss-range-thumb-active-color: var(--globalcss-primary-background);
-    --globalcss-accordion-border-color: var(--globalcss-muted-border-color);
-    --globalcss-accordion-active-summary-color: var(--globalcss-primary-hover);
-    --globalcss-accordion-close-summary-color: var(--globalcss-color);
-    --globalcss-accordion-open-summary-color: var(--globalcss-muted-color);
-    --globalcss-card-background-color: #181c25;
-    --globalcss-card-border-color: var(--globalcss-card-background-color);
-    --globalcss-card-box-shadow: var(--globalcss-box-shadow);
-    --globalcss-card-sectioning-background-color: #1a1f28;
-    --globalcss-dropdown-background-color: #181c25;
-    --globalcss-dropdown-border-color: #202632;
-    --globalcss-dropdown-box-shadow: var(--globalcss-box-shadow);
-    --globalcss-dropdown-color: var(--globalcss-color);
-    --globalcss-dropdown-hover-background-color: #202632;
-    --globalcss-loading-spinner-opacity: 0.5;
-    --globalcss-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
-    --globalcss-progress-background-color: #202632;
-    --globalcss-progress-color: var(--globalcss-primary-background);
-    --globalcss-tooltip-background-color: var(--globalcss-contrast-background);
-    --globalcss-tooltip-color: var(--globalcss-contrast-inverse);
-    --globalcss-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(42, 123, 111)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    --globalcss-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(150, 74, 80)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
+    --global-switch-color: #fff;
+    --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+    --global-range-border-color: #202632;
+    --global-range-active-border-color: #2a3140;
+    --global-range-thumb-border-color: var(--global-background-color);
+    --global-range-thumb-color: var(--global-secondary-background);
+    --global-range-thumb-active-color: var(--global-primary-background);
+    --global-accordion-border-color: var(--global-muted-border-color);
+    --global-accordion-active-summary-color: var(--global-primary-hover);
+    --global-accordion-close-summary-color: var(--global-color);
+    --global-accordion-open-summary-color: var(--global-muted-color);
+    --global-card-background-color: #181c25;
+    --global-card-border-color: var(--global-card-background-color);
+    --global-card-box-shadow: var(--global-box-shadow);
+    --global-card-sectioning-background-color: #1a1f28;
+    --global-dropdown-background-color: #181c25;
+    --global-dropdown-border-color: #202632;
+    --global-dropdown-box-shadow: var(--global-box-shadow);
+    --global-dropdown-color: var(--global-color);
+    --global-dropdown-hover-background-color: #202632;
+    --global-loading-spinner-opacity: 0.5;
+    --global-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
+    --global-progress-background-color: #202632;
+    --global-progress-color: var(--global-primary-background);
+    --global-tooltip-background-color: var(--global-contrast-background);
+    --global-tooltip-color: var(--global-contrast-inverse);
+    --global-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(42, 123, 111)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    --global-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(150, 74, 80)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
     color-scheme: dark;
 }
 [data-theme='dark']
@@ -695,7 +695,7 @@ details summary[role='button']:not(.outline)::after {
         [type='radio'],
         [type='file']
     ) {
-    --globalcss-form-element-focus-color: var(--globalcss-primary-focus);
+    --global-form-element-focus-color: var(--global-primary-focus);
 }
 [data-theme='dark']
     details
@@ -717,7 +717,7 @@ progress,
 [type='checkbox'],
 [type='radio'],
 [type='range'] {
-    accent-color: var(--globalcss-primary);
+    accent-color: var(--global-primary);
 }
 
 /**
@@ -742,13 +742,13 @@ progress,
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    background-color: var(--globalcss-background-color);
-    color: var(--globalcss-color);
-    font-weight: var(--globalcss-font-weight);
-    font-size: var(--globalcss-font-size);
-    line-height: var(--globalcss-line-height);
-    font-family: var(--globalcss-font-family);
-    text-underline-offset: var(--globalcss-text-underline-offset);
+    background-color: var(--global-background-color);
+    color: var(--global-color);
+    font-weight: var(--global-font-weight);
+    font-size: var(--global-font-size);
+    line-height: var(--global-line-height);
+    font-family: var(--global-font-family);
+    text-underline-offset: var(--global-text-underline-offset);
     text-rendering: optimizeLegibility;
     overflow-wrap: break-word;
     -moz-tab-size: 4;
@@ -771,14 +771,14 @@ main {
 body > header,
 body > main,
 body > footer {
-    padding-block: var(--globalcss-block-spacing-vertical);
+    padding-block: var(--global-block-spacing-vertical);
 }
 
 /**
  * Section
  */
 section {
-    margin-bottom: var(--globalcss-block-spacing-vertical);
+    margin-bottom: var(--global-block-spacing-vertical);
 }
 
 /**
@@ -789,8 +789,8 @@ section {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-right: var(--globalcss-spacing);
-    padding-left: var(--globalcss-spacing);
+    padding-right: var(--global-spacing);
+    padding-left: var(--global-spacing);
 }
 
 @media (min-width: 576px) {
@@ -826,8 +826,8 @@ section {
  * Minimal grid system with auto-layout columns
  */
 .grid {
-    grid-column-gap: var(--globalcss-grid-column-gap);
-    grid-row-gap: var(--globalcss-grid-row-gap);
+    grid-column-gap: var(--global-grid-column-gap);
+    grid-row-gap: var(--global-grid-row-gap);
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -880,10 +880,10 @@ pre,
 table,
 ul {
     margin-top: 0;
-    margin-bottom: var(--globalcss-typography-spacing-vertical);
-    color: var(--globalcss-color);
+    margin-bottom: var(--global-typography-spacing-vertical);
+    color: var(--global-color);
     font-style: normal;
-    font-weight: var(--globalcss-font-weight);
+    font-weight: var(--global-font-weight);
 }
 
 h1,
@@ -893,67 +893,67 @@ h4,
 h5,
 h6 {
     margin-top: 0;
-    margin-bottom: var(--globalcss-typography-spacing-vertical);
-    color: var(--globalcss-color);
-    font-weight: var(--globalcss-font-weight);
-    font-size: var(--globalcss-font-size);
-    line-height: var(--globalcss-line-height);
-    font-family: var(--globalcss-font-family);
+    margin-bottom: var(--global-typography-spacing-vertical);
+    color: var(--global-color);
+    font-weight: var(--global-font-weight);
+    font-size: var(--global-font-size);
+    line-height: var(--global-line-height);
+    font-family: var(--global-font-family);
 }
 
 h1 {
-    --globalcss-color: var(--globalcss-h1-color);
+    --global-color: var(--global-h1-color);
 }
 
 h2 {
-    --globalcss-color: var(--globalcss-h2-color);
+    --global-color: var(--global-h2-color);
 }
 
 h3 {
-    --globalcss-color: var(--globalcss-h3-color);
+    --global-color: var(--global-h3-color);
 }
 
 h4 {
-    --globalcss-color: var(--globalcss-h4-color);
+    --global-color: var(--global-h4-color);
 }
 
 h5 {
-    --globalcss-color: var(--globalcss-h5-color);
+    --global-color: var(--global-h5-color);
 }
 
 h6 {
-    --globalcss-color: var(--globalcss-h6-color);
+    --global-color: var(--global-h6-color);
 }
 
 :where(article, address, blockquote, dl, figure, form, ol, p, pre, table, ul)
     ~ :is(h1, h2, h3, h4, h5, h6) {
-    margin-top: var(--globalcss-typography-spacing-top);
+    margin-top: var(--global-typography-spacing-top);
 }
 
 p {
-    margin-bottom: var(--globalcss-typography-spacing-vertical);
+    margin-bottom: var(--global-typography-spacing-vertical);
 }
 
 hgroup {
-    margin-bottom: var(--globalcss-typography-spacing-vertical);
+    margin-bottom: var(--global-typography-spacing-vertical);
 }
 hgroup > * {
     margin-top: 0;
     margin-bottom: 0;
 }
 hgroup > *:not(:first-child):last-child {
-    --globalcss-color: var(--globalcss-muted-color);
-    --globalcss-font-weight: unset;
+    --global-color: var(--global-muted-color);
+    --global-font-weight: unset;
     font-size: 1rem;
 }
 
 :where(ol, ul) li {
-    margin-bottom: calc(var(--globalcss-typography-spacing-vertical) * 0.25);
+    margin-bottom: calc(var(--global-typography-spacing-vertical) * 0.25);
 }
 
 :where(dl, ol, ul) :where(dl, ol, ul) {
     margin: 0;
-    margin-top: calc(var(--globalcss-typography-spacing-vertical) * 0.25);
+    margin-top: calc(var(--global-typography-spacing-vertical) * 0.25);
 }
 
 ul li {
@@ -962,23 +962,23 @@ ul li {
 
 mark {
     padding: 0.125rem 0.25rem;
-    background-color: var(--globalcss-mark-background-color);
-    color: var(--globalcss-mark-color);
+    background-color: var(--global-mark-background-color);
+    color: var(--global-mark-color);
     vertical-align: baseline;
 }
 
 blockquote {
     display: block;
-    margin: var(--globalcss-typography-spacing-vertical) 0;
-    padding: var(--globalcss-spacing);
+    margin: var(--global-typography-spacing-vertical) 0;
+    padding: var(--global-spacing);
     border-right: none;
-    border-left: 0.25rem solid var(--globalcss-blockquote-border-color);
-    border-inline-start: 0.25rem solid var(--globalcss-blockquote-border-color);
+    border-left: 0.25rem solid var(--global-blockquote-border-color);
+    border-inline-start: 0.25rem solid var(--global-blockquote-border-color);
     border-inline-end: none;
 }
 blockquote footer {
-    margin-top: calc(var(--globalcss-typography-spacing-vertical) * 0.5);
-    color: var(--globalcss-blockquote-footer-color);
+    margin-top: calc(var(--global-typography-spacing-vertical) * 0.5);
+    color: var(--global-blockquote-footer-color);
 }
 
 abbr[title] {
@@ -988,20 +988,20 @@ abbr[title] {
 }
 
 ins {
-    color: var(--globalcss-ins-color);
+    color: var(--global-ins-color);
     text-decoration: none;
 }
 
 del {
-    color: var(--globalcss-del-color);
+    color: var(--global-del-color);
 }
 
 ::-moz-selection {
-    background-color: var(--globalcss-text-selection-color);
+    background-color: var(--global-text-selection-color);
 }
 
 ::selection {
-    background-color: var(--globalcss-text-selection-color);
+    background-color: var(--global-text-selection-color);
 }
 
 /**
@@ -1009,29 +1009,29 @@ del {
  */
 :where(a:not([role='button'])),
 [role='link'] {
-    --globalcss-color: var(--globalcss-primary);
-    --globalcss-background-color: transparent;
-    --globalcss-underline: var(--globalcss-primary-underline);
+    --global-color: var(--global-primary);
+    --global-background-color: transparent;
+    --global-underline: var(--global-primary-underline);
     outline: none;
-    background-color: var(--globalcss-background-color);
-    color: var(--globalcss-color);
-    -webkit-text-decoration: var(--globalcss-text-decoration);
-    text-decoration: var(--globalcss-text-decoration);
-    text-decoration-color: var(--globalcss-underline);
+    background-color: var(--global-background-color);
+    color: var(--global-color);
+    -webkit-text-decoration: var(--global-text-decoration);
+    text-decoration: var(--global-text-decoration);
+    text-decoration-color: var(--global-underline);
     text-underline-offset: 0.125em;
-    transition: background-color var(--globalcss-transition),
-        color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition),
-        -webkit-text-decoration var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        color var(--globalcss-transition),
-        text-decoration var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        color var(--globalcss-transition),
-        text-decoration var(--globalcss-transition),
-        box-shadow var(--globalcss-transition),
-        -webkit-text-decoration var(--globalcss-transition);
+    transition: background-color var(--global-transition),
+        color var(--global-transition),
+        box-shadow var(--global-transition),
+        -webkit-text-decoration var(--global-transition);
+    transition: background-color var(--global-transition),
+        color var(--global-transition),
+        text-decoration var(--global-transition),
+        box-shadow var(--global-transition);
+    transition: background-color var(--global-transition),
+        color var(--global-transition),
+        text-decoration var(--global-transition),
+        box-shadow var(--global-transition),
+        -webkit-text-decoration var(--global-transition);
 }
 :where(a:not([role='button'])):is(
         [aria-current]:not([aria-current='false']),
@@ -1045,19 +1045,19 @@ del {
         :active,
         :focus
     ) {
-    --globalcss-color: var(--globalcss-primary-hover);
-    --globalcss-underline: var(--globalcss-primary-hover-underline);
-    --globalcss-text-decoration: underline;
+    --global-color: var(--global-primary-hover);
+    --global-underline: var(--global-primary-hover-underline);
+    --global-text-decoration: underline;
 }
 :where(a:not([role='button'])):focus-visible,
 [role='link']:focus-visible {
-    box-shadow: 0 0 0 var(--globalcss-outline-width)
-        var(--globalcss-primary-focus);
+    box-shadow: 0 0 0 var(--global-outline-width)
+        var(--global-primary-focus);
 }
 :where(a:not([role='button'])).secondary,
 [role='link'].secondary {
-    --globalcss-color: var(--globalcss-secondary);
-    --globalcss-underline: var(--globalcss-secondary-underline);
+    --global-color: var(--global-secondary);
+    --global-underline: var(--global-secondary-underline);
 }
 :where(a:not([role='button'])).secondary:is(
         [aria-current]:not([aria-current='false']),
@@ -1071,13 +1071,13 @@ del {
         :active,
         :focus
     ) {
-    --globalcss-color: var(--globalcss-secondary-hover);
-    --globalcss-underline: var(--globalcss-secondary-hover-underline);
+    --global-color: var(--global-secondary-hover);
+    --global-underline: var(--global-secondary-hover-underline);
 }
 :where(a:not([role='button'])).contrast,
 [role='link'].contrast {
-    --globalcss-color: var(--globalcss-contrast);
-    --globalcss-underline: var(--globalcss-contrast-underline);
+    --global-color: var(--global-contrast);
+    --global-underline: var(--global-contrast-underline);
 }
 :where(a:not([role='button'])).contrast:is(
         [aria-current]:not([aria-current='false']),
@@ -1091,8 +1091,8 @@ del {
         :active,
         :focus
     ) {
-    --globalcss-color: var(--globalcss-contrast-hover);
-    --globalcss-underline: var(--globalcss-contrast-hover-underline);
+    --global-color: var(--global-contrast-hover);
+    --global-underline: var(--global-contrast-hover-underline);
 }
 
 a[role='button'] {
@@ -1122,34 +1122,34 @@ button,
 [type='button'],
 [type='file']::file-selector-button,
 [role='button'] {
-    --globalcss-background-color: var(--globalcss-primary-background);
-    --globalcss-border-color: var(--globalcss-primary-border);
-    --globalcss-color: var(--globalcss-primary-inverse);
-    --globalcss-box-shadow: var(
-        --globalcss-button-box-shadow,
+    --global-background-color: var(--global-primary-background);
+    --global-border-color: var(--global-primary-border);
+    --global-color: var(--global-primary-inverse);
+    --global-box-shadow: var(
+        --global-button-box-shadow,
         0 0 0 rgba(0, 0, 0, 0)
     );
-    padding: var(--globalcss-form-element-spacing-vertical)
-        var(--globalcss-form-element-spacing-horizontal);
-    border: var(--globalcss-border-width) solid var(--globalcss-border-color);
-    border-radius: var(--globalcss-border-radius);
+    padding: var(--global-form-element-spacing-vertical)
+        var(--global-form-element-spacing-horizontal);
+    border: var(--global-border-width) solid var(--global-border-color);
+    border-radius: var(--global-border-radius);
     outline: none;
-    background-color: var(--globalcss-background-color);
-    box-shadow: var(--globalcss-box-shadow);
-    color: var(--globalcss-color);
-    font-weight: var(--globalcss-font-weight);
+    background-color: var(--global-background-color);
+    box-shadow: var(--global-box-shadow);
+    color: var(--global-color);
+    font-weight: var(--global-font-weight);
     font-size: 1rem;
-    line-height: var(--globalcss-line-height);
+    line-height: var(--global-line-height);
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    transition: background-color var(--globalcss-transition),
-        border-color var(--globalcss-transition),
-        color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
+    transition: background-color var(--global-transition),
+        border-color var(--global-transition),
+        color var(--global-transition),
+        box-shadow var(--global-transition);
 }
 button:is([aria-current]:not([aria-current='false'])),
 button:is(:hover, :active, :focus),
@@ -1165,13 +1165,13 @@ button:is(:hover, :active, :focus),
 [type='file']::file-selector-button:is(:hover, :active, :focus),
 [role='button']:is([aria-current]:not([aria-current='false'])),
 [role='button']:is(:hover, :active, :focus) {
-    --globalcss-background-color: var(--globalcss-primary-hover-background);
-    --globalcss-border-color: var(--globalcss-primary-hover-border);
-    --globalcss-box-shadow: var(
-        --globalcss-button-hover-box-shadow,
+    --global-background-color: var(--global-primary-hover-background);
+    --global-border-color: var(--global-primary-hover-border);
+    --global-box-shadow: var(
+        --global-button-hover-box-shadow,
         0 0 0 rgba(0, 0, 0, 0)
     );
-    --globalcss-color: var(--globalcss-primary-inverse);
+    --global-color: var(--global-primary-inverse);
 }
 button:focus,
 button:is([aria-current]:not([aria-current='false'])):focus,
@@ -1187,25 +1187,25 @@ button:is([aria-current]:not([aria-current='false'])):focus,
     ):focus,
 [role='button']:focus,
 [role='button']:is([aria-current]:not([aria-current='false'])):focus {
-    --globalcss-box-shadow: var(
-            --globalcss-button-hover-box-shadow,
+    --global-box-shadow: var(
+            --global-button-hover-box-shadow,
             0 0 0 rgba(0, 0, 0, 0)
         ),
-        0 0 0 var(--globalcss-outline-width) var(--globalcss-primary-focus);
+        0 0 0 var(--global-outline-width) var(--global-primary-focus);
 }
 
 [type='submit'],
 [type='reset'],
 [type='button'] {
-    margin-bottom: var(--globalcss-spacing);
+    margin-bottom: var(--global-spacing);
 }
 
 :is(button, [type='submit'], [type='button'], [role='button']).secondary,
 [type='reset'],
 [type='file']::file-selector-button {
-    --globalcss-background-color: var(--globalcss-secondary-background);
-    --globalcss-border-color: var(--globalcss-secondary-border);
-    --globalcss-color: var(--globalcss-secondary-inverse);
+    --global-background-color: var(--global-secondary-background);
+    --global-border-color: var(--global-secondary-border);
+    --global-color: var(--global-secondary-inverse);
     cursor: pointer;
 }
 :is(button, [type='submit'], [type='button'], [role='button']).secondary:is(
@@ -1226,9 +1226,9 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         :active,
         :focus
     ) {
-    --globalcss-background-color: var(--globalcss-secondary-hover-background);
-    --globalcss-border-color: var(--globalcss-secondary-hover-border);
-    --globalcss-color: var(--globalcss-secondary-inverse);
+    --global-background-color: var(--global-secondary-hover-background);
+    --global-border-color: var(--global-secondary-hover-border);
+    --global-color: var(--global-secondary-inverse);
 }
 :is(button, [type='submit'], [type='button'], [role='button']).secondary:focus,
 :is(button, [type='submit'], [type='button'], [role='button']).secondary:is(
@@ -1240,17 +1240,17 @@ button:is([aria-current]:not([aria-current='false'])):focus,
 [type='file']::file-selector-button:is(
         [aria-current]:not([aria-current='false'])
     ):focus {
-    --globalcss-box-shadow: var(
-            --globalcss-button-hover-box-shadow,
+    --global-box-shadow: var(
+            --global-button-hover-box-shadow,
             0 0 0 rgba(0, 0, 0, 0)
         ),
-        0 0 0 var(--globalcss-outline-width) var(--globalcss-secondary-focus);
+        0 0 0 var(--global-outline-width) var(--global-secondary-focus);
 }
 
 :is(button, [type='submit'], [type='button'], [role='button']).contrast {
-    --globalcss-background-color: var(--globalcss-contrast-background);
-    --globalcss-border-color: var(--globalcss-contrast-border);
-    --globalcss-color: var(--globalcss-contrast-inverse);
+    --global-background-color: var(--global-contrast-background);
+    --global-border-color: var(--global-contrast-border);
+    --global-color: var(--global-contrast-inverse);
 }
 :is(button, [type='submit'], [type='button'], [role='button']).contrast:is(
         [aria-current]:not([aria-current='false']),
@@ -1258,26 +1258,26 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         :active,
         :focus
     ) {
-    --globalcss-background-color: var(--globalcss-contrast-hover-background);
-    --globalcss-border-color: var(--globalcss-contrast-hover-border);
-    --globalcss-color: var(--globalcss-contrast-inverse);
+    --global-background-color: var(--global-contrast-hover-background);
+    --global-border-color: var(--global-contrast-hover-border);
+    --global-color: var(--global-contrast-inverse);
 }
 :is(button, [type='submit'], [type='button'], [role='button']).contrast:focus,
 :is(button, [type='submit'], [type='button'], [role='button']).contrast:is(
         [aria-current]:not([aria-current='false'])
     ):focus {
-    --globalcss-box-shadow: var(
-            --globalcss-button-hover-box-shadow,
+    --global-box-shadow: var(
+            --global-button-hover-box-shadow,
             0 0 0 rgba(0, 0, 0, 0)
         ),
-        0 0 0 var(--globalcss-outline-width) var(--globalcss-contrast-focus);
+        0 0 0 var(--global-outline-width) var(--global-contrast-focus);
 }
 
 :is(button, [type='submit'], [type='button'], [role='button']).outline,
 [type='reset'].outline {
-    --globalcss-background-color: transparent;
-    --globalcss-color: var(--globalcss-primary);
-    --globalcss-border-color: var(--globalcss-primary);
+    --global-background-color: transparent;
+    --global-color: var(--global-primary);
+    --global-border-color: var(--global-primary);
 }
 :is(button, [type='submit'], [type='button'], [role='button']).outline:is(
         [aria-current]:not([aria-current='false']),
@@ -1291,9 +1291,9 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         :active,
         :focus
     ) {
-    --globalcss-background-color: transparent;
-    --globalcss-color: var(--globalcss-primary-hover);
-    --globalcss-border-color: var(--globalcss-primary-hover);
+    --global-background-color: transparent;
+    --global-color: var(--global-primary-hover);
+    --global-border-color: var(--global-primary-hover);
 }
 
 :is(
@@ -1303,8 +1303,8 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         [role='button']
     ).outline.secondary,
 [type='reset'].outline {
-    --globalcss-color: var(--globalcss-secondary);
-    --globalcss-border-color: var(--globalcss-secondary);
+    --global-color: var(--global-secondary);
+    --global-border-color: var(--global-secondary);
 }
 :is(
         button,
@@ -1323,8 +1323,8 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         :active,
         :focus
     ) {
-    --globalcss-color: var(--globalcss-secondary-hover);
-    --globalcss-border-color: var(--globalcss-secondary-hover);
+    --global-color: var(--global-secondary-hover);
+    --global-border-color: var(--global-secondary-hover);
 }
 
 :is(
@@ -1333,8 +1333,8 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         [type='button'],
         [role='button']
     ).outline.contrast {
-    --globalcss-color: var(--globalcss-contrast);
-    --globalcss-border-color: var(--globalcss-contrast);
+    --global-color: var(--global-contrast);
+    --global-border-color: var(--global-contrast);
 }
 :is(
         button,
@@ -1347,8 +1347,8 @@ button:is([aria-current]:not([aria-current='false'])):focus,
         :active,
         :focus
     ) {
-    --globalcss-color: var(--globalcss-contrast-hover);
-    --globalcss-border-color: var(--globalcss-contrast-hover);
+    --global-color: var(--global-contrast-hover);
+    --global-border-color: var(--global-contrast-hover);
 }
 
 :where(
@@ -1382,26 +1382,26 @@ button:is([aria-current]:not([aria-current='false'])):focus,
 
 th,
 td {
-    padding: calc(var(--globalcss-spacing) / 2) var(--globalcss-spacing);
-    border-bottom: var(--globalcss-border-width) solid
-        var(--globalcss-table-border-color);
-    background-color: var(--globalcss-background-color);
-    color: var(--globalcss-color);
-    font-weight: var(--globalcss-font-weight);
+    padding: calc(var(--global-spacing) / 2) var(--global-spacing);
+    border-bottom: var(--global-border-width) solid
+        var(--global-table-border-color);
+    background-color: var(--global-background-color);
+    color: var(--global-color);
+    font-weight: var(--global-font-weight);
     text-align: left;
     text-align: start;
 }
 
 tfoot th,
 tfoot td {
-    border-top: var(--globalcss-border-width) solid
-        var(--globalcss-table-border-color);
+    border-top: var(--global-border-width) solid
+        var(--global-table-border-color);
     border-bottom: 0;
 }
 
 table.striped tbody tr:nth-child(odd) th,
 table.striped tbody tr:nth-child(odd) td {
-    background-color: var(--globalcss-table-row-stripped-background-color);
+    background-color: var(--global-table-row-stripped-background-color);
 }
 
 /**
@@ -1447,7 +1447,7 @@ code,
 kbd,
 samp {
     font-size: 0.875em;
-    font-family: var(--globalcss-font-family);
+    font-family: var(--global-font-family);
 }
 
 pre code {
@@ -1463,10 +1463,10 @@ pre {
 pre,
 code,
 kbd {
-    border-radius: var(--globalcss-border-radius);
-    background: var(--globalcss-code-background-color);
-    color: var(--globalcss-code-color);
-    font-weight: var(--globalcss-font-weight);
+    border-radius: var(--global-border-radius);
+    background: var(--global-code-background-color);
+    color: var(--global-code-color);
+    font-weight: var(--global-font-weight);
     line-height: initial;
 }
 
@@ -1478,19 +1478,19 @@ kbd {
 
 pre {
     display: block;
-    margin-bottom: var(--globalcss-spacing);
+    margin-bottom: var(--global-spacing);
     overflow-x: auto;
 }
 pre > code {
     display: block;
-    padding: var(--globalcss-spacing);
+    padding: var(--global-spacing);
     background: none;
-    line-height: var(--globalcss-line-height);
+    line-height: var(--global-line-height);
 }
 
 kbd {
-    background-color: var(--globalcss-code-kbd-background-color);
-    color: var(--globalcss-code-kbd-color);
+    background-color: var(--global-code-kbd-background-color);
+    color: var(--global-code-kbd-color);
     vertical-align: baseline;
 }
 
@@ -1503,8 +1503,8 @@ figure {
     padding: 0;
 }
 figure figcaption {
-    padding: calc(var(--globalcss-spacing) * 0.5) 0;
-    color: var(--globalcss-muted-color);
+    padding: calc(var(--global-spacing) * 0.5) 0;
+    color: var(--global-muted-color);
 }
 
 /**
@@ -1512,9 +1512,9 @@ figure figcaption {
  */
 hr {
     height: 0;
-    margin: var(--globalcss-typography-spacing-vertical) 0;
+    margin: var(--global-typography-spacing-vertical) 0;
     border: 0;
-    border-top: 1px solid var(--globalcss-muted-border-color);
+    border-top: 1px solid var(--global-muted-border-color);
     color: inherit;
 }
 
@@ -1536,7 +1536,7 @@ select,
 textarea {
     margin: 0;
     font-size: 1rem;
-    line-height: var(--globalcss-line-height);
+    line-height: var(--global-line-height);
     font-family: inherit;
     letter-spacing: inherit;
 }
@@ -1609,16 +1609,16 @@ textarea {
 
 input:not([type='checkbox'], [type='radio'], [type='range']) {
     height: calc(
-        1rem * var(--globalcss-line-height) +
-            var(--globalcss-form-element-spacing-vertical) * 2 +
-            var(--globalcss-border-width) * 2
+        1rem * var(--global-line-height) +
+            var(--global-form-element-spacing-vertical) * 2 +
+            var(--global-border-width) * 2
     );
 }
 
 fieldset {
     width: 100%;
     margin: 0;
-    margin-bottom: var(--globalcss-spacing);
+    margin-bottom: var(--global-spacing);
     padding: 0;
     border: 0;
 }
@@ -1626,16 +1626,16 @@ fieldset {
 label,
 fieldset legend {
     display: block;
-    margin-bottom: calc(var(--globalcss-spacing) * 0.375);
-    color: var(--globalcss-color);
+    margin-bottom: calc(var(--global-spacing) * 0.375);
+    color: var(--global-color);
     font-weight: var(
-        --globalcss-form-label-font-weight,
-        var(--globalcss-font-weight)
+        --global-form-label-font-weight,
+        var(--global-font-weight)
     );
 }
 
 fieldset legend {
-    margin-bottom: calc(var(--globalcss-spacing) * 0.5);
+    margin-bottom: calc(var(--global-spacing) * 0.5);
 }
 
 input:not([type='checkbox'], [type='radio']),
@@ -1651,30 +1651,30 @@ textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    padding: var(--globalcss-form-element-spacing-vertical)
-        var(--globalcss-form-element-spacing-horizontal);
+    padding: var(--global-form-element-spacing-vertical)
+        var(--global-form-element-spacing-horizontal);
 }
 
 input,
 select,
 textarea {
-    --globalcss-background-color: var(
-        --globalcss-form-element-background-color
+    --global-background-color: var(
+        --global-form-element-background-color
     );
-    --globalcss-border-color: var(--globalcss-form-element-border-color);
-    --globalcss-color: var(--globalcss-form-element-color);
-    --globalcss-box-shadow: none;
-    border: var(--globalcss-border-width) solid var(--globalcss-border-color);
-    border-radius: var(--globalcss-border-radius);
+    --global-border-color: var(--global-form-element-border-color);
+    --global-color: var(--global-form-element-color);
+    --global-box-shadow: none;
+    border: var(--global-border-width) solid var(--global-border-color);
+    border-radius: var(--global-border-radius);
     outline: none;
-    background-color: var(--globalcss-background-color);
-    box-shadow: var(--globalcss-box-shadow);
-    color: var(--globalcss-color);
-    font-weight: var(--globalcss-font-weight);
-    transition: background-color var(--globalcss-transition),
-        border-color var(--globalcss-transition),
-        color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
+    background-color: var(--global-background-color);
+    box-shadow: var(--global-box-shadow);
+    color: var(--global-color);
+    font-weight: var(--global-font-weight);
+    transition: background-color var(--global-transition),
+        border-color var(--global-transition),
+        color var(--global-transition),
+        box-shadow var(--global-transition);
 }
 
 input:not(
@@ -1686,8 +1686,8 @@ input:not(
         [readonly]
     ):is(:active, :focus),
 :where(select, textarea):not([readonly]):is(:active, :focus) {
-    --globalcss-background-color: var(
-        --globalcss-form-element-active-background-color
+    --global-background-color: var(
+        --global-form-element-active-background-color
     );
 }
 
@@ -1699,7 +1699,7 @@ input:not(
         [readonly]
     ):is(:active, :focus),
 :where(select, textarea):not([readonly]):is(:active, :focus) {
-    --globalcss-border-color: var(--globalcss-form-element-active-border-color);
+    --global-border-color: var(--global-form-element-active-border-color);
 }
 
 input:not(
@@ -1711,8 +1711,8 @@ input:not(
         [readonly]
     ):focus,
 :where(select, textarea):not([readonly]):focus {
-    --globalcss-box-shadow: 0 0 0 var(--globalcss-outline-width)
-        var(--globalcss-form-element-focus-color);
+    --global-box-shadow: 0 0 0 var(--global-outline-width)
+        var(--global-form-element-focus-color);
 }
 
 input:not([type='submit'], [type='button'], [type='reset'])[disabled],
@@ -1725,7 +1725,7 @@ label[aria-disabled='true'],
         select,
         textarea
     ) {
-    opacity: var(--globalcss-form-element-disabled-opacity);
+    opacity: var(--global-form-element-disabled-opacity);
     pointer-events: none;
 }
 
@@ -1744,14 +1744,14 @@ label[aria-disabled='true'] input[disabled] {
         [type='range']
     )[aria-invalid] {
     padding-right: calc(
-        var(--globalcss-form-element-spacing-horizontal) + 1.5rem
+        var(--global-form-element-spacing-horizontal) + 1.5rem
     ) !important;
-    padding-left: var(--globalcss-form-element-spacing-horizontal);
+    padding-left: var(--global-form-element-spacing-horizontal);
     padding-inline-start: var(
-        --globalcss-form-element-spacing-horizontal
+        --global-form-element-spacing-horizontal
     ) !important;
     padding-inline-end: calc(
-        var(--globalcss-form-element-spacing-horizontal) + 1.5rem
+        var(--global-form-element-spacing-horizontal) + 1.5rem
     ) !important;
     background-position: center right 0.75rem;
     background-size: 1rem auto;
@@ -1767,7 +1767,7 @@ label[aria-disabled='true'] input[disabled] {
         [type='week'],
         [type='range']
     )[aria-invalid='false']:not(select) {
-    background-image: var(--globalcss-icon-valid);
+    background-image: var(--global-icon-valid);
 }
 :where(input, select, textarea):not(
         [type='checkbox'],
@@ -1779,39 +1779,39 @@ label[aria-disabled='true'] input[disabled] {
         [type='week'],
         [type='range']
     )[aria-invalid='true']:not(select) {
-    background-image: var(--globalcss-icon-invalid);
+    background-image: var(--global-icon-invalid);
 }
 :where(input, select, textarea)[aria-invalid='false'] {
-    --globalcss-border-color: var(--globalcss-form-element-valid-border-color);
+    --global-border-color: var(--global-form-element-valid-border-color);
 }
 :where(input, select, textarea)[aria-invalid='false']:is(:active, :focus) {
-    --globalcss-border-color: var(
-        --globalcss-form-element-valid-active-border-color
+    --global-border-color: var(
+        --global-form-element-valid-active-border-color
     ) !important;
 }
 :where(input, select, textarea)[aria-invalid='false']:is(:active, :focus):not(
         [type='checkbox'],
         [type='radio']
     ) {
-    --globalcss-box-shadow: 0 0 0 var(--globalcss-outline-width)
-        var(--globalcss-form-element-valid-focus-color) !important;
+    --global-box-shadow: 0 0 0 var(--global-outline-width)
+        var(--global-form-element-valid-focus-color) !important;
 }
 :where(input, select, textarea)[aria-invalid='true'] {
-    --globalcss-border-color: var(
-        --globalcss-form-element-invalid-border-color
+    --global-border-color: var(
+        --global-form-element-invalid-border-color
     );
 }
 :where(input, select, textarea)[aria-invalid='true']:is(:active, :focus) {
-    --globalcss-border-color: var(
-        --globalcss-form-element-invalid-active-border-color
+    --global-border-color: var(
+        --global-form-element-invalid-active-border-color
     ) !important;
 }
 :where(input, select, textarea)[aria-invalid='true']:is(:active, :focus):not(
         [type='checkbox'],
         [type='radio']
     ) {
-    --globalcss-box-shadow: 0 0 0 var(--globalcss-outline-width)
-        var(--globalcss-form-element-invalid-focus-color) !important;
+    --global-box-shadow: 0 0 0 var(--global-outline-width)
+        var(--global-form-element-invalid-focus-color) !important;
 }
 
 [dir='rtl']
@@ -1828,14 +1828,14 @@ input::-webkit-input-placeholder,
 textarea::placeholder,
 textarea::-webkit-input-placeholder,
 select:invalid {
-    color: var(--globalcss-form-element-placeholder-color);
+    color: var(--global-form-element-placeholder-color);
     opacity: 1;
 }
 
 input:not([type='checkbox'], [type='radio']),
 select,
 textarea {
-    margin-bottom: var(--globalcss-spacing);
+    margin-bottom: var(--global-spacing);
 }
 
 select::-ms-expand {
@@ -1844,21 +1844,21 @@ select::-ms-expand {
 }
 select:not([multiple], [size]) {
     padding-right: calc(
-        var(--globalcss-form-element-spacing-horizontal) + 1.5rem
+        var(--global-form-element-spacing-horizontal) + 1.5rem
     );
-    padding-left: var(--globalcss-form-element-spacing-horizontal);
-    padding-inline-start: var(--globalcss-form-element-spacing-horizontal);
+    padding-left: var(--global-form-element-spacing-horizontal);
+    padding-inline-start: var(--global-form-element-spacing-horizontal);
     padding-inline-end: calc(
-        var(--globalcss-form-element-spacing-horizontal) + 1.5rem
+        var(--global-form-element-spacing-horizontal) + 1.5rem
     );
-    background-image: var(--globalcss-icon-chevron);
+    background-image: var(--global-icon-chevron);
     background-position: center right 0.75rem;
     background-size: 1rem auto;
     background-repeat: no-repeat;
 }
 select[multiple] option:checked {
-    background: var(--globalcss-form-element-selected-background-color);
-    color: var(--globalcss-form-element-color);
+    background: var(--global-form-element-selected-background-color);
+    color: var(--global-form-element-color);
 }
 
 [dir='rtl'] select:not([multiple], [size]) {
@@ -1870,31 +1870,31 @@ textarea {
     resize: vertical;
 }
 textarea[aria-invalid] {
-    --globalcss-icon-height: calc(
-        1rem * var(--globalcss-line-height) +
-            var(--globalcss-form-element-spacing-vertical) * 2 +
-            var(--globalcss-border-width) * 2
+    --global-icon-height: calc(
+        1rem * var(--global-line-height) +
+            var(--global-form-element-spacing-vertical) * 2 +
+            var(--global-border-width) * 2
     );
     background-position: top right 0.75rem !important;
-    background-size: 1rem var(--globalcss-icon-height) !important;
+    background-size: 1rem var(--global-icon-height) !important;
 }
 
 :where(input, select, textarea, fieldset, .grid) + small {
     display: block;
     width: 100%;
-    margin-top: calc(var(--globalcss-spacing) * -0.75);
-    margin-bottom: var(--globalcss-spacing);
-    color: var(--globalcss-muted-color);
+    margin-top: calc(var(--global-spacing) * -0.75);
+    margin-bottom: var(--global-spacing);
+    color: var(--global-muted-color);
 }
 :where(input, select, textarea, fieldset, .grid)[aria-invalid='false'] + small {
-    color: var(--globalcss-ins-color);
+    color: var(--global-ins-color);
 }
 :where(input, select, textarea, fieldset, .grid)[aria-invalid='true'] + small {
-    color: var(--globalcss-del-color);
+    color: var(--global-del-color);
 }
 
 label > :where(input, select, textarea) {
-    margin-top: calc(var(--globalcss-spacing) * 0.25);
+    margin-top: calc(var(--global-spacing) * 0.25);
 }
 
 /**
@@ -1915,7 +1915,7 @@ label:has([type='checkbox'], [type='radio']) {
     height: 1.25em;
     margin-top: -0.125em;
     margin-inline-end: 0.5em;
-    border-width: var(--globalcss-border-width);
+    border-width: var(--global-border-width);
     vertical-align: middle;
     cursor: pointer;
 }
@@ -1929,9 +1929,9 @@ label:has([type='checkbox'], [type='radio']) {
 [type='radio']:checked,
 [type='radio']:checked:active,
 [type='radio']:checked:focus {
-    --globalcss-background-color: var(--globalcss-primary-background);
-    --globalcss-border-color: var(--globalcss-primary-border);
-    background-image: var(--globalcss-icon-checkbox);
+    --global-background-color: var(--global-primary-background);
+    --global-border-color: var(--global-primary-border);
+    background-image: var(--global-icon-checkbox);
     background-position: center;
     background-size: 0.75em auto;
     background-repeat: no-repeat;
@@ -1948,9 +1948,9 @@ label:has([type='checkbox'], [type='radio']) {
 }
 
 [type='checkbox']:indeterminate {
-    --globalcss-background-color: var(--globalcss-primary-background);
-    --globalcss-border-color: var(--globalcss-primary-border);
-    background-image: var(--globalcss-icon-minus);
+    --global-background-color: var(--global-primary-background);
+    --global-border-color: var(--global-primary-border);
+    background-image: var(--global-icon-minus);
     background-position: center;
     background-size: 0.75em auto;
     background-repeat: no-repeat;
@@ -1962,50 +1962,50 @@ label:has([type='checkbox'], [type='radio']) {
 [type='radio']:checked,
 [type='radio']:checked:active,
 [type='radio']:checked:focus {
-    --globalcss-background-color: var(--globalcss-primary-inverse);
+    --global-background-color: var(--global-primary-inverse);
     border-width: 0.35em;
     background-image: none;
 }
 
 [type='checkbox'][role='switch'] {
-    --globalcss-background-color: var(--globalcss-switch-background-color);
-    --globalcss-color: var(--globalcss-switch-color);
+    --global-background-color: var(--global-switch-background-color);
+    --global-color: var(--global-switch-color);
     width: 2.25em;
     height: 1.25em;
-    border: var(--globalcss-border-width) solid var(--globalcss-border-color);
+    border: var(--global-border-width) solid var(--global-border-color);
     border-radius: 1.25em;
-    background-color: var(--globalcss-background-color);
+    background-color: var(--global-background-color);
     line-height: 1.25em;
 }
 [type='checkbox'][role='switch']:not([aria-invalid]) {
-    --globalcss-border-color: var(--globalcss-switch-background-color);
+    --global-border-color: var(--global-switch-background-color);
 }
 [type='checkbox'][role='switch']:before {
     display: block;
     aspect-ratio: 1;
     height: 100%;
     border-radius: 50%;
-    background-color: var(--globalcss-color);
-    box-shadow: var(--globalcss-switch-thumb-box-shadow);
+    background-color: var(--global-color);
+    box-shadow: var(--global-switch-thumb-box-shadow);
     content: '';
     transition: margin 0.1s ease-in-out;
 }
 [type='checkbox'][role='switch']:focus {
-    --globalcss-background-color: var(--globalcss-switch-background-color);
-    --globalcss-border-color: var(--globalcss-switch-background-color);
+    --global-background-color: var(--global-switch-background-color);
+    --global-border-color: var(--global-switch-background-color);
 }
 [type='checkbox'][role='switch']:checked {
-    --globalcss-background-color: var(
-        --globalcss-switch-checked-background-color
+    --global-background-color: var(
+        --global-switch-checked-background-color
     );
-    --globalcss-border-color: var(--globalcss-switch-checked-background-color);
+    --global-border-color: var(--global-switch-checked-background-color);
     background-image: none;
 }
 [type='checkbox'][role='switch']:checked::before {
     margin-inline-start: calc(2.25em - 1.25em);
 }
 [type='checkbox'][role='switch'][disabled] {
-    --globalcss-background-color: var(--globalcss-border-color);
+    --global-background-color: var(--global-border-color);
 }
 
 [type='checkbox'][aria-invalid='false']:checked,
@@ -2014,8 +2014,8 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch'][aria-invalid='false']:checked,
 [type='checkbox'][role='switch'][aria-invalid='false']:checked:active,
 [type='checkbox'][role='switch'][aria-invalid='false']:checked:focus {
-    --globalcss-background-color: var(
-        --globalcss-form-element-valid-border-color
+    --global-background-color: var(
+        --global-form-element-valid-border-color
     );
 }
 [type='checkbox']:checked[aria-invalid='true'],
@@ -2024,8 +2024,8 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch']:checked[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:active[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:focus[aria-invalid='true'] {
-    --globalcss-background-color: var(
-        --globalcss-form-element-invalid-border-color
+    --global-background-color: var(
+        --global-form-element-invalid-border-color
     );
 }
 
@@ -2038,7 +2038,7 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch'][aria-invalid='false']:checked,
 [type='checkbox'][role='switch'][aria-invalid='false']:checked:active,
 [type='checkbox'][role='switch'][aria-invalid='false']:checked:focus {
-    --globalcss-border-color: var(--globalcss-form-element-valid-border-color);
+    --global-border-color: var(--global-form-element-valid-border-color);
 }
 [type='checkbox']:checked[aria-invalid='true'],
 [type='checkbox']:checked:active[aria-invalid='true'],
@@ -2049,8 +2049,8 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch']:checked[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:active[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:focus[aria-invalid='true'] {
-    --globalcss-border-color: var(
-        --globalcss-form-element-invalid-border-color
+    --global-border-color: var(
+        --global-form-element-invalid-border-color
     );
 }
 
@@ -2065,11 +2065,11 @@ label:has([type='checkbox'], [type='radio']) {
 }
 [type='color']::-webkit-color-swatch {
     border: 0;
-    border-radius: calc(var(--globalcss-border-radius) * 0.5);
+    border-radius: calc(var(--global-border-radius) * 0.5);
 }
 [type='color']::-moz-color-swatch {
     border: 0;
-    border-radius: calc(var(--globalcss-border-radius) * 0.5);
+    border-radius: calc(var(--global-border-radius) * 0.5);
 }
 
 /**
@@ -2082,14 +2082,14 @@ input:not([type='checkbox'], [type='radio'], [type='range'], [type='file']):is(
         [type='time'],
         [type='week']
     ) {
-    --globalcss-icon-position: 0.75rem;
-    --globalcss-icon-width: 1rem;
+    --global-icon-position: 0.75rem;
+    --global-icon-width: 1rem;
     padding-right: calc(
-        var(--globalcss-icon-width) + var(--globalcss-icon-position)
+        var(--global-icon-width) + var(--global-icon-position)
     );
-    background-image: var(--globalcss-icon-date);
-    background-position: center right var(--globalcss-icon-position);
-    background-size: var(--globalcss-icon-width) auto;
+    background-image: var(--global-icon-date);
+    background-position: center right var(--global-icon-position);
+    background-size: var(--global-icon-width) auto;
     background-repeat: no-repeat;
 }
 input:not(
@@ -2098,7 +2098,7 @@ input:not(
         [type='range'],
         [type='file']
     )[type='time'] {
-    background-image: var(--globalcss-icon-time);
+    background-image: var(--global-icon-time);
 }
 
 [type='date']::-webkit-calendar-picker-indicator,
@@ -2106,9 +2106,9 @@ input:not(
 [type='month']::-webkit-calendar-picker-indicator,
 [type='time']::-webkit-calendar-picker-indicator,
 [type='week']::-webkit-calendar-picker-indicator {
-    width: var(--globalcss-icon-width);
-    margin-right: calc(var(--globalcss-icon-width) * -1);
-    margin-left: var(--globalcss-icon-position);
+    width: var(--global-icon-width);
+    margin-right: calc(var(--global-icon-width) * -1);
+    margin-left: var(--global-icon-position);
     opacity: 0;
 }
 
@@ -2119,7 +2119,7 @@ input:not(
     [type='time'],
     [type='week'] {
         padding-right: var(
-            --globalcss-form-element-spacing-horizontal
+            --global-form-element-spacing-horizontal
         ) !important;
         background-image: none !important;
     }
@@ -2139,29 +2139,29 @@ input:not(
  * Input type file
  */
 [type='file'] {
-    --globalcss-color: var(--globalcss-muted-color);
-    margin-left: calc(var(--globalcss-outline-width) * -1);
-    padding: calc(var(--globalcss-form-element-spacing-vertical) * 0.5) 0;
-    padding-left: var(--globalcss-outline-width);
+    --global-color: var(--global-muted-color);
+    margin-left: calc(var(--global-outline-width) * -1);
+    padding: calc(var(--global-form-element-spacing-vertical) * 0.5) 0;
+    padding-left: var(--global-outline-width);
     border: 0;
     border-radius: 0;
     background: none;
 }
 [type='file']::file-selector-button {
-    margin-right: calc(var(--globalcss-spacing) / 2);
-    padding: calc(var(--globalcss-form-element-spacing-vertical) * 0.5)
-        var(--globalcss-form-element-spacing-horizontal);
+    margin-right: calc(var(--global-spacing) / 2);
+    padding: calc(var(--global-form-element-spacing-vertical) * 0.5)
+        var(--global-form-element-spacing-horizontal);
 }
 [type='file']:is(:hover, :active, :focus)::file-selector-button {
-    --globalcss-background-color: var(--globalcss-secondary-hover-background);
-    --globalcss-border-color: var(--globalcss-secondary-hover-border);
+    --global-background-color: var(--global-secondary-hover-background);
+    --global-border-color: var(--global-secondary-hover-border);
 }
 [type='file']:focus::file-selector-button {
-    --globalcss-box-shadow: var(
-            --globalcss-button-hover-box-shadow,
+    --global-box-shadow: var(
+            --global-button-hover-box-shadow,
             0 0 0 rgba(0, 0, 0, 0)
         ),
-        0 0 0 var(--globalcss-outline-width) var(--globalcss-secondary-focus);
+        0 0 0 var(--global-outline-width) var(--global-secondary-focus);
 }
 
 /**
@@ -2178,79 +2178,79 @@ input:not(
 [type='range']::-webkit-slider-runnable-track {
     width: 100%;
     height: 0.375rem;
-    border-radius: var(--globalcss-border-radius);
-    background-color: var(--globalcss-range-border-color);
-    -webkit-transition: background-color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
+    border-radius: var(--global-border-radius);
+    background-color: var(--global-range-border-color);
+    -webkit-transition: background-color var(--global-transition),
+        box-shadow var(--global-transition);
+    transition: background-color var(--global-transition),
+        box-shadow var(--global-transition);
 }
 [type='range']::-moz-range-track {
     width: 100%;
     height: 0.375rem;
-    border-radius: var(--globalcss-border-radius);
-    background-color: var(--globalcss-range-border-color);
-    -moz-transition: background-color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
+    border-radius: var(--global-border-radius);
+    background-color: var(--global-range-border-color);
+    -moz-transition: background-color var(--global-transition),
+        box-shadow var(--global-transition);
+    transition: background-color var(--global-transition),
+        box-shadow var(--global-transition);
 }
 [type='range']::-ms-track {
     width: 100%;
     height: 0.375rem;
-    border-radius: var(--globalcss-border-radius);
-    background-color: var(--globalcss-range-border-color);
-    -ms-transition: background-color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
+    border-radius: var(--global-border-radius);
+    background-color: var(--global-range-border-color);
+    -ms-transition: background-color var(--global-transition),
+        box-shadow var(--global-transition);
+    transition: background-color var(--global-transition),
+        box-shadow var(--global-transition);
 }
 [type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 1.25rem;
     height: 1.25rem;
     margin-top: -0.4375rem;
-    border: 2px solid var(--globalcss-range-thumb-border-color);
+    border: 2px solid var(--global-range-thumb-border-color);
     border-radius: 50%;
-    background-color: var(--globalcss-range-thumb-color);
+    background-color: var(--global-range-thumb-color);
     cursor: pointer;
-    -webkit-transition: background-color var(--globalcss-transition),
-        transform var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        transform var(--globalcss-transition);
+    -webkit-transition: background-color var(--global-transition),
+        transform var(--global-transition);
+    transition: background-color var(--global-transition),
+        transform var(--global-transition);
 }
 [type='range']::-moz-range-thumb {
     -webkit-appearance: none;
     width: 1.25rem;
     height: 1.25rem;
     margin-top: -0.4375rem;
-    border: 2px solid var(--globalcss-range-thumb-border-color);
+    border: 2px solid var(--global-range-thumb-border-color);
     border-radius: 50%;
-    background-color: var(--globalcss-range-thumb-color);
+    background-color: var(--global-range-thumb-color);
     cursor: pointer;
-    -moz-transition: background-color var(--globalcss-transition),
-        transform var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        transform var(--globalcss-transition);
+    -moz-transition: background-color var(--global-transition),
+        transform var(--global-transition);
+    transition: background-color var(--global-transition),
+        transform var(--global-transition);
 }
 [type='range']::-ms-thumb {
     -webkit-appearance: none;
     width: 1.25rem;
     height: 1.25rem;
     margin-top: -0.4375rem;
-    border: 2px solid var(--globalcss-range-thumb-border-color);
+    border: 2px solid var(--global-range-thumb-border-color);
     border-radius: 50%;
-    background-color: var(--globalcss-range-thumb-color);
+    background-color: var(--global-range-thumb-color);
     cursor: pointer;
-    -ms-transition: background-color var(--globalcss-transition),
-        transform var(--globalcss-transition);
-    transition: background-color var(--globalcss-transition),
-        transform var(--globalcss-transition);
+    -ms-transition: background-color var(--global-transition),
+        transform var(--global-transition);
+    transition: background-color var(--global-transition),
+        transform var(--global-transition);
 }
 [type='range']:active,
 [type='range']:focus-within {
-    --globalcss-range-border-color: var(--globalcss-range-active-border-color);
-    --globalcss-range-thumb-color: var(--globalcss-range-thumb-active-color);
+    --global-range-border-color: var(--global-range-active-border-color);
+    --global-range-thumb-color: var(--global-range-thumb-active-color);
 }
 [type='range']:active::-webkit-slider-thumb {
     transform: scale(1.25);
@@ -2272,11 +2272,11 @@ input:not(
         [type='file']
     )[type='search'] {
     padding-inline-start: calc(
-        var(--globalcss-form-element-spacing-horizontal) + 1.75rem
+        var(--global-form-element-spacing-horizontal) + 1.75rem
     );
-    background-image: var(--globalcss-icon-search);
+    background-image: var(--global-icon-search);
     background-position: center left
-        calc(var(--globalcss-form-element-spacing-horizontal) + 0.125rem);
+        calc(var(--global-form-element-spacing-horizontal) + 0.125rem);
     background-size: 1rem auto;
     background-repeat: no-repeat;
 }
@@ -2287,7 +2287,7 @@ input:not(
         [type='file']
     )[type='search'][aria-invalid] {
     padding-inline-start: calc(
-        var(--globalcss-form-element-spacing-horizontal) + 1.75rem
+        var(--global-form-element-spacing-horizontal) + 1.75rem
     ) !important;
     background-position: center left 1.125rem, center right 0.75rem;
 }
@@ -2297,7 +2297,7 @@ input:not(
         [type='range'],
         [type='file']
     )[type='search'][aria-invalid='false'] {
-    background-image: var(--globalcss-icon-search), var(--globalcss-icon-valid);
+    background-image: var(--global-icon-search), var(--global-icon-valid);
 }
 input:not(
         [type='checkbox'],
@@ -2305,8 +2305,8 @@ input:not(
         [type='range'],
         [type='file']
     )[type='search'][aria-invalid='true'] {
-    background-image: var(--globalcss-icon-search),
-        var(--globalcss-icon-invalid);
+    background-image: var(--global-icon-search),
+        var(--global-icon-invalid);
 }
 
 [dir='rtl']
@@ -2333,16 +2333,16 @@ input:not(
  */
 details {
     display: block;
-    margin-bottom: var(--globalcss-spacing);
+    margin-bottom: var(--global-spacing);
 }
 details summary {
     line-height: 1rem;
     list-style-type: none;
     cursor: pointer;
-    transition: color var(--globalcss-transition);
+    transition: color var(--global-transition);
 }
 details summary:not([role]) {
-    color: var(--globalcss-accordion-close-summary-color);
+    color: var(--global-accordion-close-summary-color);
 }
 details summary::-webkit-details-marker {
     display: none;
@@ -2357,39 +2357,39 @@ details summary::after {
     display: block;
     width: 1rem;
     height: 1rem;
-    margin-inline-start: calc(var(--globalcss-spacing, 1rem) * 0.5);
+    margin-inline-start: calc(var(--global-spacing, 1rem) * 0.5);
     float: right;
     transform: rotate(-90deg);
-    background-image: var(--globalcss-icon-chevron);
+    background-image: var(--global-icon-chevron);
     background-position: right center;
     background-size: 1rem auto;
     background-repeat: no-repeat;
     content: '';
-    transition: transform var(--globalcss-transition);
+    transition: transform var(--global-transition);
 }
 details summary:focus {
     outline: none;
 }
 details summary:focus:not([role]) {
-    color: var(--globalcss-accordion-active-summary-color);
+    color: var(--global-accordion-active-summary-color);
 }
 details summary:focus-visible:not([role]) {
-    outline: var(--globalcss-outline-width) solid var(--globalcss-primary-focus);
-    outline-offset: calc(var(--globalcss-spacing, 1rem) * 0.5);
-    color: var(--globalcss-primary);
+    outline: var(--global-outline-width) solid var(--global-primary-focus);
+    outline-offset: calc(var(--global-spacing, 1rem) * 0.5);
+    color: var(--global-primary);
 }
 details summary[role='button'] {
     width: 100%;
     text-align: left;
 }
 details summary[role='button']::after {
-    height: calc(1rem * var(--globalcss-line-height, 1.5));
+    height: calc(1rem * var(--global-line-height, 1.5));
 }
 details[open] > summary {
-    margin-bottom: var(--globalcss-spacing);
+    margin-bottom: var(--global-spacing);
 }
 details[open] > summary:not([role]):not(:focus) {
-    color: var(--globalcss-accordion-open-summary-color);
+    color: var(--global-accordion-open-summary-color);
 }
 details[open] > summary::after {
     transform: rotate(0);
@@ -2407,36 +2407,36 @@ details[open] > summary::after {
  * Card (<article>)
  */
 article {
-    margin-bottom: var(--globalcss-block-spacing-vertical);
-    padding: var(--globalcss-block-spacing-vertical)
-        var(--globalcss-block-spacing-horizontal);
-    border-radius: var(--globalcss-border-radius);
-    background: var(--globalcss-card-background-color);
-    box-shadow: var(--globalcss-card-box-shadow);
+    margin-bottom: var(--global-block-spacing-vertical);
+    padding: var(--global-block-spacing-vertical)
+        var(--global-block-spacing-horizontal);
+    border-radius: var(--global-border-radius);
+    background: var(--global-card-background-color);
+    box-shadow: var(--global-card-box-shadow);
 }
 article > header,
 article > footer {
-    margin-right: calc(var(--globalcss-block-spacing-horizontal) * -1);
-    margin-left: calc(var(--globalcss-block-spacing-horizontal) * -1);
-    padding: calc(var(--globalcss-block-spacing-vertical) * 0.66)
-        var(--globalcss-block-spacing-horizontal);
-    background-color: var(--globalcss-card-sectioning-background-color);
+    margin-right: calc(var(--global-block-spacing-horizontal) * -1);
+    margin-left: calc(var(--global-block-spacing-horizontal) * -1);
+    padding: calc(var(--global-block-spacing-vertical) * 0.66)
+        var(--global-block-spacing-horizontal);
+    background-color: var(--global-card-sectioning-background-color);
 }
 article > header {
-    margin-top: calc(var(--globalcss-block-spacing-vertical) * -1);
-    margin-bottom: var(--globalcss-block-spacing-vertical);
-    border-bottom: var(--globalcss-border-width) solid
-        var(--globalcss-card-border-color);
-    border-top-right-radius: var(--globalcss-border-radius);
-    border-top-left-radius: var(--globalcss-border-radius);
+    margin-top: calc(var(--global-block-spacing-vertical) * -1);
+    margin-bottom: var(--global-block-spacing-vertical);
+    border-bottom: var(--global-border-width) solid
+        var(--global-card-border-color);
+    border-top-right-radius: var(--global-border-radius);
+    border-top-left-radius: var(--global-border-radius);
 }
 article > footer {
-    margin-top: var(--globalcss-block-spacing-vertical);
-    margin-bottom: calc(var(--globalcss-block-spacing-vertical) * -1);
-    border-top: var(--globalcss-border-width) solid
-        var(--globalcss-card-border-color);
-    border-bottom-right-radius: var(--globalcss-border-radius);
-    border-bottom-left-radius: var(--globalcss-border-radius);
+    margin-top: var(--global-block-spacing-vertical);
+    margin-bottom: calc(var(--global-block-spacing-vertical) * -1);
+    border-top: var(--global-border-width) solid
+        var(--global-card-border-color);
+    border-bottom-right-radius: var(--global-border-radius);
+    border-bottom-left-radius: var(--global-border-radius);
 }
 
 /**
@@ -2451,11 +2451,11 @@ details.dropdown > button::after,
 details.dropdown > a::after {
     display: block;
     width: 1rem;
-    height: calc(1rem * var(--globalcss-line-height, 1.5));
+    height: calc(1rem * var(--global-line-height, 1.5));
     margin-inline-start: 0.25rem;
     float: right;
     transform: rotate(0deg) translateX(0.2rem);
-    background-image: var(--globalcss-icon-chevron);
+    background-image: var(--global-icon-chevron);
     background-position: right center;
     background-size: 1rem auto;
     background-repeat: no-repeat;
@@ -2468,83 +2468,83 @@ nav details.dropdown {
 
 details.dropdown summary:not([role]) {
     height: calc(
-        1rem * var(--globalcss-line-height) +
-            var(--globalcss-form-element-spacing-vertical) * 2 +
-            var(--globalcss-border-width) * 2
+        1rem * var(--global-line-height) +
+            var(--global-form-element-spacing-vertical) * 2 +
+            var(--global-border-width) * 2
     );
-    padding: var(--globalcss-form-element-spacing-vertical)
-        var(--globalcss-form-element-spacing-horizontal);
-    border: var(--globalcss-border-width) solid
-        var(--globalcss-form-element-border-color);
-    border-radius: var(--globalcss-border-radius);
-    background-color: var(--globalcss-form-element-background-color);
-    color: var(--globalcss-form-element-placeholder-color);
+    padding: var(--global-form-element-spacing-vertical)
+        var(--global-form-element-spacing-horizontal);
+    border: var(--global-border-width) solid
+        var(--global-form-element-border-color);
+    border-radius: var(--global-border-radius);
+    background-color: var(--global-form-element-background-color);
+    color: var(--global-form-element-placeholder-color);
     line-height: inherit;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    transition: background-color var(--globalcss-transition),
-        border-color var(--globalcss-transition),
-        color var(--globalcss-transition),
-        box-shadow var(--globalcss-transition);
+    transition: background-color var(--global-transition),
+        border-color var(--global-transition),
+        color var(--global-transition),
+        box-shadow var(--global-transition);
 }
 details.dropdown summary:not([role]):active,
 details.dropdown summary:not([role]):focus {
-    border-color: var(--globalcss-form-element-active-border-color);
-    background-color: var(--globalcss-form-element-active-background-color);
+    border-color: var(--global-form-element-active-border-color);
+    background-color: var(--global-form-element-active-background-color);
 }
 details.dropdown summary:not([role]):focus {
-    box-shadow: 0 0 0 var(--globalcss-outline-width)
-        var(--globalcss-form-element-focus-color);
+    box-shadow: 0 0 0 var(--global-outline-width)
+        var(--global-form-element-focus-color);
 }
 details.dropdown summary:not([role]):focus-visible {
     outline: none;
 }
 details.dropdown summary:not([role])[aria-invalid='false'] {
-    --globalcss-form-element-border-color: var(
-        --globalcss-form-element-valid-border-color
+    --global-form-element-border-color: var(
+        --global-form-element-valid-border-color
     );
-    --globalcss-form-element-active-border-color: var(
-        --globalcss-form-element-valid-focus-color
+    --global-form-element-active-border-color: var(
+        --global-form-element-valid-focus-color
     );
-    --globalcss-form-element-focus-color: var(
-        --globalcss-form-element-valid-focus-color
+    --global-form-element-focus-color: var(
+        --global-form-element-valid-focus-color
     );
 }
 details.dropdown summary:not([role])[aria-invalid='true'] {
-    --globalcss-form-element-border-color: var(
-        --globalcss-form-element-invalid-border-color
+    --global-form-element-border-color: var(
+        --global-form-element-invalid-border-color
     );
-    --globalcss-form-element-active-border-color: var(
-        --globalcss-form-element-invalid-focus-color
+    --global-form-element-active-border-color: var(
+        --global-form-element-invalid-focus-color
     );
-    --globalcss-form-element-focus-color: var(
-        --globalcss-form-element-invalid-focus-color
+    --global-form-element-focus-color: var(
+        --global-form-element-invalid-focus-color
     );
 }
 
 nav details.dropdown {
     display: inline;
-    margin: calc(var(--globalcss-nav-element-spacing-vertical) * -1) 0;
+    margin: calc(var(--global-nav-element-spacing-vertical) * -1) 0;
 }
 nav details.dropdown summary::after {
     transform: rotate(0deg) translateX(0rem);
 }
 nav details.dropdown summary:not([role]) {
     height: calc(
-        1rem * var(--globalcss-line-height) +
-            var(--globalcss-nav-link-spacing-vertical) * 2
+        1rem * var(--global-line-height) +
+            var(--global-nav-link-spacing-vertical) * 2
     );
     padding: calc(
-            var(--globalcss-nav-link-spacing-vertical) -
-                var(--globalcss-border-width) * 2
+            var(--global-nav-link-spacing-vertical) -
+                var(--global-border-width) * 2
         )
-        var(--globalcss-nav-link-spacing-horizontal);
+        var(--global-nav-link-spacing-horizontal);
 }
 nav details.dropdown summary:not([role]):focus-visible {
-    box-shadow: 0 0 0 var(--globalcss-outline-width)
-        var(--globalcss-primary-focus);
+    box-shadow: 0 0 0 var(--global-outline-width)
+        var(--global-primary-focus);
 }
 
 details.dropdown summary + ul {
@@ -2557,17 +2557,17 @@ details.dropdown summary + ul {
     min-width: -moz-fit-content;
     min-width: fit-content;
     margin: 0;
-    margin-top: var(--globalcss-outline-width);
+    margin-top: var(--global-outline-width);
     padding: 0;
-    border: var(--globalcss-border-width) solid
-        var(--globalcss-dropdown-border-color);
-    border-radius: var(--globalcss-border-radius);
-    background-color: var(--globalcss-dropdown-background-color);
-    box-shadow: var(--globalcss-dropdown-box-shadow);
-    color: var(--globalcss-dropdown-color);
+    border: var(--global-border-width) solid
+        var(--global-dropdown-border-color);
+    border-radius: var(--global-border-radius);
+    background-color: var(--global-dropdown-background-color);
+    box-shadow: var(--global-dropdown-box-shadow);
+    color: var(--global-dropdown-color);
     white-space: nowrap;
     opacity: 0;
-    transition: opacity var(--globalcss-transition), transform 0s ease-in-out 1s;
+    transition: opacity var(--global-transition), transform 0s ease-in-out 1s;
 }
 details.dropdown summary + ul[dir='rtl'] {
     right: 0;
@@ -2576,25 +2576,25 @@ details.dropdown summary + ul[dir='rtl'] {
 details.dropdown summary + ul li {
     width: 100%;
     margin-bottom: 0;
-    padding: calc(var(--globalcss-form-element-spacing-vertical) * 0.5)
-        var(--globalcss-form-element-spacing-horizontal);
+    padding: calc(var(--global-form-element-spacing-vertical) * 0.5)
+        var(--global-form-element-spacing-horizontal);
     list-style: none;
 }
 details.dropdown summary + ul li:first-of-type {
-    margin-top: calc(var(--globalcss-form-element-spacing-vertical) * 0.5);
+    margin-top: calc(var(--global-form-element-spacing-vertical) * 0.5);
 }
 details.dropdown summary + ul li:last-of-type {
-    margin-bottom: calc(var(--globalcss-form-element-spacing-vertical) * 0.5);
+    margin-bottom: calc(var(--global-form-element-spacing-vertical) * 0.5);
 }
 details.dropdown summary + ul li a {
     display: block;
-    margin: calc(var(--globalcss-form-element-spacing-vertical) * -0.5)
-        calc(var(--globalcss-form-element-spacing-horizontal) * -1);
-    padding: calc(var(--globalcss-form-element-spacing-vertical) * 0.5)
-        var(--globalcss-form-element-spacing-horizontal);
+    margin: calc(var(--global-form-element-spacing-vertical) * -0.5)
+        calc(var(--global-form-element-spacing-horizontal) * -1);
+    padding: calc(var(--global-form-element-spacing-vertical) * 0.5)
+        var(--global-form-element-spacing-horizontal);
     overflow: hidden;
     border-radius: 0;
-    color: var(--globalcss-dropdown-color);
+    color: var(--global-dropdown-color);
     text-decoration: none;
     text-overflow: ellipsis;
 }
@@ -2603,13 +2603,13 @@ details.dropdown summary + ul li a:focus,
 details.dropdown summary + ul li a:active,
 details.dropdown summary + ul li a:focus-visible,
 details.dropdown summary + ul li a[aria-current]:not([aria-current='false']) {
-    background-color: var(--globalcss-dropdown-hover-background-color);
+    background-color: var(--global-dropdown-hover-background-color);
 }
 details.dropdown summary + ul li label {
     width: 100%;
 }
 details.dropdown summary + ul li:has(label):hover {
-    background-color: var(--globalcss-dropdown-hover-background-color);
+    background-color: var(--global-dropdown-hover-background-color);
 }
 
 details.dropdown[open] summary {
@@ -2619,7 +2619,7 @@ details.dropdown[open] summary {
 details.dropdown[open] summary + ul {
     transform: scaleY(1);
     opacity: 1;
-    transition: opacity var(--globalcss-transition), transform 0s ease-in-out 0s;
+    transition: opacity var(--global-transition), transform 0s ease-in-out 0s;
 }
 
 details.dropdown[open] summary::before {
@@ -2635,7 +2635,7 @@ details.dropdown[open] summary::before {
 }
 
 label > details.dropdown {
-    margin-top: calc(var(--globalcss-spacing) * 0.25);
+    margin-top: calc(var(--global-spacing) * 0.25);
 }
 
 /**
@@ -2646,11 +2646,11 @@ label > details.dropdown {
     display: inline-flex;
     position: relative;
     width: 100%;
-    margin-bottom: var(--globalcss-spacing);
-    border-radius: var(--globalcss-border-radius);
-    box-shadow: var(--globalcss-group-box-shadow, 0 0 0 rgba(0, 0, 0, 0));
+    margin-bottom: var(--global-spacing);
+    border-radius: var(--global-border-radius);
+    box-shadow: var(--global-group-box-shadow, 0 0 0 rgba(0, 0, 0, 0));
     vertical-align: middle;
-    transition: box-shadow var(--globalcss-transition);
+    transition: box-shadow var(--global-transition);
 }
 [role='search'] > *,
 [role='search'] input:not([type='checkbox'], [type='radio']),
@@ -2703,7 +2703,7 @@ label > details.dropdown {
 [role='group'] [role='button']:not(:first-child),
 [role='group'] input:not([type='checkbox'], [type='radio']):not(:first-child),
 [role='group'] select:not(:first-child) {
-    margin-left: calc(var(--globalcss-border-width) * -1);
+    margin-left: calc(var(--global-border-width) * -1);
 }
 [role='search'] button,
 [role='search'] [type='submit'],
@@ -2730,8 +2730,8 @@ label > details.dropdown {
             [type='button']:focus,
             [role='button']:focus
         ) {
-        --globalcss-group-box-shadow: var(
-            --globalcss-group-box-shadow-focus-with-button
+        --global-group-box-shadow: var(
+            --global-group-box-shadow-focus-with-button
         );
     }
     [role='search']:has(
@@ -2772,8 +2772,8 @@ label > details.dropdown {
             input:not([type='submit'], [type='button']):focus,
             select:focus
         ) {
-        --globalcss-group-box-shadow: var(
-            --globalcss-group-box-shadow-focus-with-input
+        --global-group-box-shadow: var(
+            --global-group-box-shadow-focus-with-input
         );
     }
     [role='search']:has(
@@ -2816,10 +2816,10 @@ label > details.dropdown {
             select:focus
         )
         [role='button'] {
-        --globalcss-button-box-shadow: 0 0 0 var(--globalcss-border-width)
-            var(--globalcss-primary-border);
-        --globalcss-button-hover-box-shadow: 0 0 0 var(--globalcss-border-width)
-            var(--globalcss-primary-hover-border);
+        --global-button-box-shadow: 0 0 0 var(--global-border-width)
+            var(--global-primary-border);
+        --global-button-hover-box-shadow: 0 0 0 var(--global-border-width)
+            var(--global-primary-hover-border);
     }
     [role='search'] button:focus,
     [role='search'] [type='submit']:focus,
@@ -2854,14 +2854,14 @@ label > details.dropdown {
     display: inline-block;
     width: 1em;
     height: 1em;
-    background-image: var(--globalcss-icon-loading);
+    background-image: var(--global-icon-loading);
     background-size: 1em auto;
     background-repeat: no-repeat;
     content: '';
     vertical-align: -0.125em;
 }
 [aria-busy='true']:not(input, select, textarea, html):not(:empty)::before {
-    margin-inline-end: calc(var(--globalcss-spacing) * 0.5);
+    margin-inline-end: calc(var(--global-spacing) * 0.5);
 }
 [aria-busy='true']:not(input, select, textarea, html):empty {
     text-align: center;
@@ -2880,7 +2880,7 @@ a[aria-busy='true'] {
  * Modal (<dialog>)
  */
 :root {
-    --globalcss-scrollbar-width: 0px;
+    --global-scrollbar-width: 0px;
 }
 
 dialog {
@@ -2899,15 +2899,15 @@ dialog {
     min-height: 100%;
     padding: 0;
     border: 0;
-    -webkit-backdrop-filter: var(--globalcss-modal-overlay-backdrop-filter);
-    backdrop-filter: var(--globalcss-modal-overlay-backdrop-filter);
-    background-color: var(--globalcss-modal-overlay-background-color);
-    color: var(--globalcss-color);
+    -webkit-backdrop-filter: var(--global-modal-overlay-backdrop-filter);
+    backdrop-filter: var(--global-modal-overlay-backdrop-filter);
+    background-color: var(--global-modal-overlay-background-color);
+    color: var(--global-color);
 }
 dialog article {
     width: 100%;
-    max-height: calc(100vh - var(--globalcss-spacing) * 2);
-    margin: var(--globalcss-spacing);
+    max-height: calc(100vh - var(--global-spacing) * 2);
+    margin: var(--global-spacing);
     overflow: auto;
 }
 @media (min-width: 576px) {
@@ -2926,7 +2926,7 @@ dialog article > header > * {
 dialog article > header .close,
 dialog article > header :is(a, button)[rel='prev'] {
     margin: 0;
-    margin-left: var(--globalcss-spacing);
+    margin-left: var(--global-spacing);
     padding: 0;
     float: right;
 }
@@ -2939,24 +2939,24 @@ dialog article > footer [role='button'] {
 }
 dialog article > footer button:not(:first-of-type),
 dialog article > footer [role='button']:not(:first-of-type) {
-    margin-left: calc(var(--globalcss-spacing) * 0.5);
+    margin-left: calc(var(--global-spacing) * 0.5);
 }
 dialog article .close,
 dialog article :is(a, button)[rel='prev'] {
     display: block;
     width: 1rem;
     height: 1rem;
-    margin-top: calc(var(--globalcss-spacing) * -1);
-    margin-bottom: var(--globalcss-spacing);
+    margin-top: calc(var(--global-spacing) * -1);
+    margin-bottom: var(--global-spacing);
     margin-left: auto;
     border: none;
-    background-image: var(--globalcss-icon-close);
+    background-image: var(--global-icon-close);
     background-position: center;
     background-size: auto 1rem;
     background-repeat: no-repeat;
     background-color: transparent;
     opacity: 0.5;
-    transition: opacity var(--globalcss-transition);
+    transition: opacity var(--global-transition);
 }
 dialog
     article
@@ -2982,7 +2982,7 @@ dialog[open='false'] {
 }
 
 .modal-is-open {
-    padding-right: var(--globalcss-scrollbar-width, 0px);
+    padding-right: var(--global-scrollbar-width, 0px);
     overflow: hidden;
     pointer-events: none;
     touch-action: none;
@@ -3052,25 +3052,25 @@ nav ul {
 }
 nav ol:first-of-type,
 nav ul:first-of-type {
-    margin-left: calc(var(--globalcss-nav-element-spacing-horizontal) * -1);
+    margin-left: calc(var(--global-nav-element-spacing-horizontal) * -1);
 }
 nav ol:last-of-type,
 nav ul:last-of-type {
-    margin-right: calc(var(--globalcss-nav-element-spacing-horizontal) * -1);
+    margin-right: calc(var(--global-nav-element-spacing-horizontal) * -1);
 }
 nav li {
     display: inline-block;
     margin: 0;
-    padding: var(--globalcss-nav-element-spacing-vertical)
-        var(--globalcss-nav-element-spacing-horizontal);
+    padding: var(--global-nav-element-spacing-vertical)
+        var(--global-nav-element-spacing-horizontal);
 }
 nav li :where(a, [role='link']) {
     display: inline-block;
-    margin: calc(var(--globalcss-nav-link-spacing-vertical) * -1)
-        calc(var(--globalcss-nav-link-spacing-horizontal) * -1);
-    padding: var(--globalcss-nav-link-spacing-vertical)
-        var(--globalcss-nav-link-spacing-horizontal);
-    border-radius: var(--globalcss-border-radius);
+    margin: calc(var(--global-nav-link-spacing-vertical) * -1)
+        calc(var(--global-nav-link-spacing-horizontal) * -1);
+    padding: var(--global-nav-link-spacing-vertical)
+        var(--global-nav-link-spacing-horizontal);
+    border-radius: var(--global-border-radius);
 }
 nav li :where(a, [role='link']):not(:hover) {
     text-decoration: none;
@@ -3087,31 +3087,31 @@ nav li select {
     margin-bottom: 0;
     margin-left: inherit;
     padding: calc(
-            var(--globalcss-nav-link-spacing-vertical) -
-                var(--globalcss-border-width) * 2
+            var(--global-nav-link-spacing-vertical) -
+                var(--global-border-width) * 2
         )
-        var(--globalcss-nav-link-spacing-horizontal);
+        var(--global-nav-link-spacing-horizontal);
 }
 nav[aria-label='breadcrumb'] {
     align-items: center;
     justify-content: start;
 }
 nav[aria-label='breadcrumb'] ul li:not(:first-child) {
-    margin-inline-start: var(--globalcss-nav-link-spacing-horizontal);
+    margin-inline-start: var(--global-nav-link-spacing-horizontal);
 }
 nav[aria-label='breadcrumb'] ul li a {
-    margin: calc(var(--globalcss-nav-link-spacing-vertical) * -1) 0;
+    margin: calc(var(--global-nav-link-spacing-vertical) * -1) 0;
     margin-inline-start: calc(
-        var(--globalcss-nav-link-spacing-horizontal) * -1
+        var(--global-nav-link-spacing-horizontal) * -1
     );
 }
 nav[aria-label='breadcrumb'] ul li:not(:last-child)::after {
     display: inline-block;
     position: absolute;
-    width: calc(var(--globalcss-nav-link-spacing-horizontal) * 4);
-    margin: 0 calc(var(--globalcss-nav-link-spacing-horizontal) * -1);
-    content: var(--globalcss-nav-breadcrumb-divider);
-    color: var(--globalcss-muted-color);
+    width: calc(var(--global-nav-link-spacing-horizontal) * 4);
+    margin: 0 calc(var(--global-nav-link-spacing-horizontal) * -1);
+    content: var(--global-nav-breadcrumb-divider);
+    color: var(--global-muted-color);
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
@@ -3130,8 +3130,8 @@ aside li {
     display: block;
 }
 aside li {
-    padding: calc(var(--globalcss-nav-element-spacing-vertical) * 0.5)
-        var(--globalcss-nav-element-spacing-horizontal);
+    padding: calc(var(--global-nav-element-spacing-vertical) * 0.5)
+        var(--global-nav-element-spacing-horizontal);
 }
 aside li a {
     display: block;
@@ -3159,32 +3159,32 @@ progress {
     appearance: none;
     width: 100%;
     height: 0.5rem;
-    margin-bottom: calc(var(--globalcss-spacing) * 0.5);
+    margin-bottom: calc(var(--global-spacing) * 0.5);
     overflow: hidden;
     border: 0;
-    border-radius: var(--globalcss-border-radius);
-    background-color: var(--globalcss-progress-background-color);
-    color: var(--globalcss-progress-color);
+    border-radius: var(--global-border-radius);
+    background-color: var(--global-progress-background-color);
+    color: var(--global-progress-color);
 }
 progress::-webkit-progress-bar {
-    border-radius: var(--globalcss-border-radius);
+    border-radius: var(--global-border-radius);
     background: none;
 }
 progress[value]::-webkit-progress-value {
-    background-color: var(--globalcss-progress-color);
-    -webkit-transition: inline-size var(--globalcss-transition);
-    transition: inline-size var(--globalcss-transition);
+    background-color: var(--global-progress-color);
+    -webkit-transition: inline-size var(--global-transition);
+    transition: inline-size var(--global-transition);
 }
 progress::-moz-progress-bar {
-    background-color: var(--globalcss-progress-color);
+    background-color: var(--global-progress-color);
 }
 @media (prefers-reduced-motion: no-preference) {
     progress:indeterminate {
-        background: var(--globalcss-progress-background-color)
+        background: var(--global-progress-background-color)
             linear-gradient(
                 to right,
-                var(--globalcss-progress-color) 30%,
-                var(--globalcss-progress-background-color) 30%
+                var(--global-progress-color) 30%,
+                var(--global-progress-background-color) 30%
             )
             top left/150% 150% no-repeat;
         animation: progress-indeterminate 1s linear infinite;
@@ -3234,12 +3234,12 @@ progress::-moz-progress-bar {
     padding: 0.25rem 0.5rem;
     overflow: hidden;
     transform: translate(-50%, -0.25rem);
-    border-radius: var(--globalcss-border-radius);
-    background: var(--globalcss-tooltip-background-color);
+    border-radius: var(--global-border-radius);
+    background: var(--global-tooltip-background-color);
     content: attr(data-tooltip);
-    color: var(--globalcss-tooltip-color);
+    color: var(--global-tooltip-color);
     font-style: normal;
-    font-weight: var(--globalcss-font-weight);
+    font-weight: var(--global-font-weight);
     font-size: 0.875rem;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -3257,7 +3257,7 @@ progress::-moz-progress-bar {
     border-radius: 0;
     background-color: transparent;
     content: '';
-    color: var(--globalcss-tooltip-background-color);
+    color: var(--global-tooltip-background-color);
 }
 [data-tooltip][data-placement='bottom']::before,
 [data-tooltip][data-placement='bottom']::after {
@@ -3307,7 +3307,7 @@ progress::-moz-progress-bar {
     [data-tooltip]:focus::after,
     [data-tooltip]:hover::before,
     [data-tooltip]:hover::after {
-        --globalcss-tooltip-slide-to: translate(-50%, -0.25rem);
+        --global-tooltip-slide-to: translate(-50%, -0.25rem);
         transform: translate(-50%, 0.75rem);
         animation-duration: 0.2s;
         animation-fill-mode: forwards;
@@ -3316,7 +3316,7 @@ progress::-moz-progress-bar {
     }
     [data-tooltip]:focus::after,
     [data-tooltip]:hover::after {
-        --globalcss-tooltip-caret-slide-to: translate(-50%, 0rem);
+        --global-tooltip-caret-slide-to: translate(-50%, 0rem);
         transform: translate(-50%, -0.25rem);
         animation-name: tooltip-caret-slide;
     }
@@ -3324,13 +3324,13 @@ progress::-moz-progress-bar {
     [data-tooltip][data-placement='bottom']:focus::after,
     [data-tooltip][data-placement='bottom']:hover::before,
     [data-tooltip][data-placement='bottom']:hover::after {
-        --globalcss-tooltip-slide-to: translate(-50%, 0.25rem);
+        --global-tooltip-slide-to: translate(-50%, 0.25rem);
         transform: translate(-50%, -0.75rem);
         animation-name: tooltip-slide;
     }
     [data-tooltip][data-placement='bottom']:focus::after,
     [data-tooltip][data-placement='bottom']:hover::after {
-        --globalcss-tooltip-caret-slide-to: translate(-50%, -0.3rem);
+        --global-tooltip-caret-slide-to: translate(-50%, -0.3rem);
         transform: translate(-50%, -0.5rem);
         animation-name: tooltip-caret-slide;
     }
@@ -3338,13 +3338,13 @@ progress::-moz-progress-bar {
     [data-tooltip][data-placement='left']:focus::after,
     [data-tooltip][data-placement='left']:hover::before,
     [data-tooltip][data-placement='left']:hover::after {
-        --globalcss-tooltip-slide-to: translate(-0.25rem, -50%);
+        --global-tooltip-slide-to: translate(-0.25rem, -50%);
         transform: translate(0.75rem, -50%);
         animation-name: tooltip-slide;
     }
     [data-tooltip][data-placement='left']:focus::after,
     [data-tooltip][data-placement='left']:hover::after {
-        --globalcss-tooltip-caret-slide-to: translate(0.3rem, -50%);
+        --global-tooltip-caret-slide-to: translate(0.3rem, -50%);
         transform: translate(0.05rem, -50%);
         animation-name: tooltip-caret-slide;
     }
@@ -3352,20 +3352,20 @@ progress::-moz-progress-bar {
     [data-tooltip][data-placement='right']:focus::after,
     [data-tooltip][data-placement='right']:hover::before,
     [data-tooltip][data-placement='right']:hover::after {
-        --globalcss-tooltip-slide-to: translate(0.25rem, -50%);
+        --global-tooltip-slide-to: translate(0.25rem, -50%);
         transform: translate(-0.75rem, -50%);
         animation-name: tooltip-slide;
     }
     [data-tooltip][data-placement='right']:focus::after,
     [data-tooltip][data-placement='right']:hover::after {
-        --globalcss-tooltip-caret-slide-to: translate(-0.3rem, -50%);
+        --global-tooltip-caret-slide-to: translate(-0.3rem, -50%);
         transform: translate(-0.05rem, -50%);
         animation-name: tooltip-caret-slide;
     }
 }
 @keyframes tooltip-slide {
     to {
-        transform: var(--globalcss-tooltip-slide-to);
+        transform: var(--global-tooltip-slide-to);
         opacity: 1;
     }
 }
@@ -3374,7 +3374,7 @@ progress::-moz-progress-bar {
         opacity: 0;
     }
     to {
-        transform: var(--globalcss-tooltip-caret-slide-to);
+        transform: var(--global-tooltip-caret-slide-to);
         opacity: 1;
     }
 }
