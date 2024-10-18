@@ -1,11 +1,10 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
     --global-font-family-emoji: 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --global-font-family-sans-serif: system-ui, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, Helvetica, Arial, 'Helvetica Neue', sans-serif,
-        var(--global-font-family-emoji);
+    --global-font-family-sans-serif: "Inter", sans-serif;
     --global-font-family-monospace: ui-monospace, SFMono-Regular, 'SF Mono',
         Menlo, Consolas, 'Liberation Mono', monospace,
         var(--global-font-family-emoji);
