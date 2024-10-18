@@ -4,7 +4,7 @@
 :root {
     --global-font-family-emoji: 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --global-font-family-sans-serif: "Inter", sans-serif;
+    --global-font-family-sans-serif: 'Inter', sans-serif;
     --global-font-family-monospace: ui-monospace, SFMono-Regular, 'SF Mono',
         Menlo, Consolas, 'Liberation Mono', monospace,
         var(--global-font-family-emoji);
@@ -249,6 +249,8 @@ details summary[role='button']:not(.outline)::after {
     --global-text-selection-color: rgba(149, 144, 130, 0.25);
     --global-muted-color: #646b79;
     --global-muted-border-color: #e7eaf0;
+    --global-tab-active-background: #ccc6b480;
+    --global-tab-hover-background: #eeeeee8d;
     --global-primary: #6e6a60;
     --global-primary-background: #ccc6b4;
     --global-primary-border: var(--global-primary-background);
@@ -259,15 +261,13 @@ details summary[role='button']:not(.outline)::after {
     --global-primary-hover-underline: var(--global-primary-hover);
     --global-primary-focus: rgba(149, 144, 130, 0.5);
     --global-primary-inverse: #000;
-    --global-secondary: #282622; 
+    --global-secondary: #282622;
     --global-secondary-background: #474640;
     --global-secondary-border: var(--global-secondary-background);
     --global-secondary-underline: #1d1b19;
     --global-secondary-hover: #615e56;
     --global-secondary-hover-background: #32302c;
-    --global-secondary-hover-border: var(
-        --global-secondary-hover-background
-    );
+    --global-secondary-hover-border: var(--global-secondary-hover-background);
     --global-secondary-hover-underline: var(--global-secondary-hover);
     --global-secondary-focus: #a39e90;
     --global-secondary-inverse: #fff;
@@ -277,9 +277,7 @@ details summary[role='button']:not(.outline)::after {
     --global-contrast-underline: rgba(24, 28, 37, 0.5);
     --global-contrast-hover: #000;
     --global-contrast-hover-background: #000;
-    --global-contrast-hover-border: var(
-        --global-contrast-hover-background
-    );
+    --global-contrast-hover-border: var(--global-contrast-hover-background);
     --global-contrast-hover-underline: var(--global-secondary-hover);
     --global-contrast-focus: rgba(93, 107, 137, 0.25);
     --global-contrast-inverse: #fff;
@@ -306,12 +304,7 @@ details summary[role='button']:not(.outline)::after {
     --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-table-border-color: var(--global-muted-border-color);
-    --global-table-row-stripped-background-color: rgba(
-        111,
-        120,
-        135,
-        0.0375
-    );
+    --global-table-row-stripped-background-color: rgba(111, 120, 135, 0.0375);
     --global-code-background-color: #f3f5f7;
     --global-code-color: #646b79;
     --global-code-kbd-background-color: var(--global-color);
@@ -322,9 +315,7 @@ details summary[role='button']:not(.outline)::after {
     --global-form-element-color: #23262c;
     --global-form-element-placeholder-color: var(--global-muted-color);
     --global-form-element-active-background-color: #fff;
-    --global-form-element-active-border-color: var(
-        --global-primary-border
-    );
+    --global-form-element-active-border-color: var(--global-primary-border);
     --global-form-element-focus-color: var(--global-primary-border);
     --global-form-element-disabled-opacity: 0.5;
     --global-form-element-invalid-border-color: #b86a6b;
@@ -338,9 +329,7 @@ details summary[role='button']:not(.outline)::after {
         --global-form-element-valid-active-border-color
     );
     --global-switch-background-color: #bfc7d9;
-    --global-switch-checked-background-color: var(
-        --global-primary-background
-    );
+    --global-switch-checked-background-color: var(--global-primary-background);
     --global-switch-color: #fff;
     --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
     --global-range-border-color: #dfe3eb;
@@ -405,13 +394,11 @@ details summary[role='button']:not(.outline)::after {
         --global-primary-underline: rgba(163, 158, 143, 0.5);
         --global-primary-hover: #beb8a7;
         --global-primary-hover-background: #dad4c2;
-        --global-primary-hover-border: var(
-            --global-primary-hover-background
-        );
+        --global-primary-hover-border: var(--global-primary-hover-background);
         --global-primary-hover-underline: var(--global-primary-hover);
         --global-primary-focus: rgba(163, 158, 143, 0.375);
         --global-primary-inverse: #000;
-        --global-secondary: #282622; 
+        --global-secondary: #282622;
         --global-secondary-background: #474640;
         --global-secondary-border: var(--global-secondary-background);
         --global-secondary-underline: #1d1b19;
@@ -429,14 +416,11 @@ details summary[role='button']:not(.outline)::after {
         --global-contrast-underline: rgba(223, 227, 235, 0.5);
         --global-contrast-hover: #fff;
         --global-contrast-hover-background: #fff;
-        --global-contrast-hover-border: var(
-            --global-contrast-hover-background
-        );
+        --global-contrast-hover-border: var(--global-contrast-hover-background);
         --global-contrast-hover-underline: var(--global-contrast-hover);
         --global-contrast-focus: rgba(207, 213, 226, 0.25);
         --global-contrast-inverse: #000;
-        --global-box-shadow: 0.0145rem 0.029rem 0.174rem
-                rgba(7, 9, 12, 0.01698),
+        --global-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(7, 9, 12, 0.01698),
             0.0335rem 0.067rem 0.402rem rgba(7, 9, 12, 0.024),
             0.0625rem 0.125rem 0.75rem rgba(7, 9, 12, 0.03),
             0.1125rem 0.225rem 1.35rem rgba(7, 9, 12, 0.036),
@@ -453,9 +437,7 @@ details summary[role='button']:not(.outline)::after {
         --global-mark-color: #fff;
         --global-ins-color: #62af9a;
         --global-del-color: #ce7e7b;
-        --global-blockquote-border-color: var(
-            --global-muted-border-color
-        );
+        --global-blockquote-border-color: var(--global-muted-border-color);
         --global-blockquote-footer-color: var(--global-muted-color);
         --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
         --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -476,9 +458,7 @@ details summary[role='button']:not(.outline)::after {
         --global-form-element-color: #e0e3e7;
         --global-form-element-placeholder-color: #8891a4;
         --global-form-element-active-background-color: #1a1f28;
-        --global-form-element-active-border-color: var(
-            --global-primary-border
-        );
+        --global-form-element-active-border-color: var(--global-primary-border);
         --global-form-element-focus-color: var(--global-primary-border);
         --global-form-element-disabled-opacity: 0.5;
         --global-form-element-invalid-border-color: #964a50;
@@ -501,13 +481,9 @@ details summary[role='button']:not(.outline)::after {
         --global-range-active-border-color: #2a3140;
         --global-range-thumb-border-color: var(--global-background-color);
         --global-range-thumb-color: var(--global-secondary-background);
-        --global-range-thumb-active-color: var(
-            --global-primary-background
-        );
+        --global-range-thumb-active-color: var(--global-primary-background);
         --global-accordion-border-color: var(--global-muted-border-color);
-        --global-accordion-active-summary-color: var(
-            --global-primary-hover
-        );
+        --global-accordion-active-summary-color: var(--global-primary-hover);
         --global-accordion-close-summary-color: var(--global-color);
         --global-accordion-open-summary-color: var(--global-muted-color);
         --global-card-background-color: #181c25;
@@ -523,9 +499,7 @@ details summary[role='button']:not(.outline)::after {
         --global-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
         --global-progress-background-color: #202632;
         --global-progress-color: var(--global-primary-background);
-        --global-tooltip-background-color: var(
-            --global-contrast-background
-        );
+        --global-tooltip-background-color: var(--global-contrast-background);
         --global-tooltip-color: var(--global-contrast-inverse);
         --global-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(42, 123, 111)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
         --global-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(150, 74, 80)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
@@ -580,9 +554,7 @@ details summary[role='button']:not(.outline)::after {
     --global-secondary-underline: rgba(150, 158, 175, 0.5);
     --global-secondary-hover: #b3b9c5;
     --global-secondary-hover-background: #5d6b89;
-    --global-secondary-hover-border: var(
-        --global-secondary-hover-background
-    );
+    --global-secondary-hover-border: var(--global-secondary-hover-background);
     --global-secondary-hover-underline: var(--global-secondary-hover);
     --global-secondary-focus: rgba(144, 158, 190, 0.25);
     --global-secondary-inverse: #fff;
@@ -592,9 +564,7 @@ details summary[role='button']:not(.outline)::after {
     --global-contrast-underline: rgba(223, 227, 235, 0.5);
     --global-contrast-hover: #fff;
     --global-contrast-hover-background: #fff;
-    --global-contrast-hover-border: var(
-        --global-contrast-hover-background
-    );
+    --global-contrast-hover-border: var(--global-contrast-hover-background);
     --global-contrast-hover-underline: var(--global-contrast-hover);
     --global-contrast-focus: rgba(207, 213, 226, 0.25);
     --global-contrast-inverse: #000;
@@ -620,12 +590,7 @@ details summary[role='button']:not(.outline)::after {
     --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-table-border-color: var(--global-muted-border-color);
-    --global-table-row-stripped-background-color: rgba(
-        111,
-        120,
-        135,
-        0.0375
-    );
+    --global-table-row-stripped-background-color: rgba(111, 120, 135, 0.0375);
     --global-code-background-color: #1a1f28;
     --global-code-color: #8891a4;
     --global-code-kbd-background-color: var(--global-color);
@@ -636,9 +601,7 @@ details summary[role='button']:not(.outline)::after {
     --global-form-element-color: #e0e3e7;
     --global-form-element-placeholder-color: #8891a4;
     --global-form-element-active-background-color: #1a1f28;
-    --global-form-element-active-border-color: var(
-        --global-primary-border
-    );
+    --global-form-element-active-border-color: var(--global-primary-border);
     --global-form-element-focus-color: var(--global-primary-border);
     --global-form-element-disabled-opacity: 0.5;
     --global-form-element-invalid-border-color: #964a50;
@@ -652,9 +615,7 @@ details summary[role='button']:not(.outline)::after {
         --global-form-element-valid-active-border-color
     );
     --global-switch-background-color: #333c4e;
-    --global-switch-checked-background-color: var(
-        --global-primary-background
-    );
+    --global-switch-checked-background-color: var(--global-primary-background);
     --global-switch-color: #fff;
     --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
     --global-range-border-color: #202632;
@@ -1019,16 +980,13 @@ del {
     text-decoration-color: var(--global-underline);
     text-underline-offset: 0.125em;
     transition: background-color var(--global-transition),
-        color var(--global-transition),
-        box-shadow var(--global-transition),
+        color var(--global-transition), box-shadow var(--global-transition),
         -webkit-text-decoration var(--global-transition);
     transition: background-color var(--global-transition),
-        color var(--global-transition),
-        text-decoration var(--global-transition),
+        color var(--global-transition), text-decoration var(--global-transition),
         box-shadow var(--global-transition);
     transition: background-color var(--global-transition),
-        color var(--global-transition),
-        text-decoration var(--global-transition),
+        color var(--global-transition), text-decoration var(--global-transition),
         box-shadow var(--global-transition),
         -webkit-text-decoration var(--global-transition);
 }
@@ -1050,8 +1008,7 @@ del {
 }
 :where(a:not([role='button'])):focus-visible,
 [role='link']:focus-visible {
-    box-shadow: 0 0 0 var(--global-outline-width)
-        var(--global-primary-focus);
+    box-shadow: 0 0 0 var(--global-outline-width) var(--global-primary-focus);
 }
 :where(a:not([role='button'])).secondary,
 [role='link'].secondary {
@@ -1146,8 +1103,7 @@ button,
     -moz-user-select: none;
     user-select: none;
     transition: background-color var(--global-transition),
-        border-color var(--global-transition),
-        color var(--global-transition),
+        border-color var(--global-transition), color var(--global-transition),
         box-shadow var(--global-transition);
 }
 button:is([aria-current]:not([aria-current='false'])),
@@ -1657,9 +1613,7 @@ textarea {
 input,
 select,
 textarea {
-    --global-background-color: var(
-        --global-form-element-background-color
-    );
+    --global-background-color: var(--global-form-element-background-color);
     --global-border-color: var(--global-form-element-border-color);
     --global-color: var(--global-form-element-color);
     --global-box-shadow: none;
@@ -1671,8 +1625,7 @@ textarea {
     color: var(--global-color);
     font-weight: var(--global-font-weight);
     transition: background-color var(--global-transition),
-        border-color var(--global-transition),
-        color var(--global-transition),
+        border-color var(--global-transition), color var(--global-transition),
         box-shadow var(--global-transition);
 }
 
@@ -1796,9 +1749,7 @@ label[aria-disabled='true'] input[disabled] {
         var(--global-form-element-valid-focus-color) !important;
 }
 :where(input, select, textarea)[aria-invalid='true'] {
-    --global-border-color: var(
-        --global-form-element-invalid-border-color
-    );
+    --global-border-color: var(--global-form-element-invalid-border-color);
 }
 :where(input, select, textarea)[aria-invalid='true']:is(:active, :focus) {
     --global-border-color: var(
@@ -1842,9 +1793,7 @@ select::-ms-expand {
     background-color: transparent;
 }
 select:not([multiple], [size]) {
-    padding-right: calc(
-        var(--global-form-element-spacing-horizontal) + 1.5rem
-    );
+    padding-right: calc(var(--global-form-element-spacing-horizontal) + 1.5rem);
     padding-left: var(--global-form-element-spacing-horizontal);
     padding-inline-start: var(--global-form-element-spacing-horizontal);
     padding-inline-end: calc(
@@ -1994,9 +1943,7 @@ label:has([type='checkbox'], [type='radio']) {
     --global-border-color: var(--global-switch-background-color);
 }
 [type='checkbox'][role='switch']:checked {
-    --global-background-color: var(
-        --global-switch-checked-background-color
-    );
+    --global-background-color: var(--global-switch-checked-background-color);
     --global-border-color: var(--global-switch-checked-background-color);
     background-image: none;
 }
@@ -2013,9 +1960,7 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch'][aria-invalid='false']:checked,
 [type='checkbox'][role='switch'][aria-invalid='false']:checked:active,
 [type='checkbox'][role='switch'][aria-invalid='false']:checked:focus {
-    --global-background-color: var(
-        --global-form-element-valid-border-color
-    );
+    --global-background-color: var(--global-form-element-valid-border-color);
 }
 [type='checkbox']:checked[aria-invalid='true'],
 [type='checkbox']:checked:active[aria-invalid='true'],
@@ -2023,9 +1968,7 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch']:checked[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:active[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:focus[aria-invalid='true'] {
-    --global-background-color: var(
-        --global-form-element-invalid-border-color
-    );
+    --global-background-color: var(--global-form-element-invalid-border-color);
 }
 
 [type='checkbox'][aria-invalid='false']:checked,
@@ -2048,9 +1991,7 @@ label:has([type='checkbox'], [type='radio']) {
 [type='checkbox'][role='switch']:checked[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:active[aria-invalid='true'],
 [type='checkbox'][role='switch']:checked:focus[aria-invalid='true'] {
-    --global-border-color: var(
-        --global-form-element-invalid-border-color
-    );
+    --global-border-color: var(--global-form-element-invalid-border-color);
 }
 
 /**
@@ -2083,9 +2024,7 @@ input:not([type='checkbox'], [type='radio'], [type='range'], [type='file']):is(
     ) {
     --global-icon-position: 0.75rem;
     --global-icon-width: 1rem;
-    padding-right: calc(
-        var(--global-icon-width) + var(--global-icon-position)
-    );
+    padding-right: calc(var(--global-icon-width) + var(--global-icon-position));
     background-image: var(--global-icon-date);
     background-position: center right var(--global-icon-position);
     background-size: var(--global-icon-width) auto;
@@ -2117,9 +2056,7 @@ input:not(
     [type='month'],
     [type='time'],
     [type='week'] {
-        padding-right: var(
-            --global-form-element-spacing-horizontal
-        ) !important;
+        padding-right: var(--global-form-element-spacing-horizontal) !important;
         background-image: none !important;
     }
 }
@@ -2304,8 +2241,7 @@ input:not(
         [type='range'],
         [type='file']
     )[type='search'][aria-invalid='true'] {
-    background-image: var(--global-icon-search),
-        var(--global-icon-invalid);
+    background-image: var(--global-icon-search), var(--global-icon-invalid);
 }
 
 [dir='rtl']
@@ -2432,8 +2368,7 @@ article > header {
 article > footer {
     margin-top: var(--global-block-spacing-vertical);
     margin-bottom: calc(var(--global-block-spacing-vertical) * -1);
-    border-top: var(--global-border-width) solid
-        var(--global-card-border-color);
+    border-top: var(--global-border-width) solid var(--global-card-border-color);
     border-bottom-right-radius: var(--global-border-radius);
     border-bottom-left-radius: var(--global-border-radius);
 }
@@ -2484,8 +2419,7 @@ details.dropdown summary:not([role]) {
     -moz-user-select: none;
     user-select: none;
     transition: background-color var(--global-transition),
-        border-color var(--global-transition),
-        color var(--global-transition),
+        border-color var(--global-transition), color var(--global-transition),
         box-shadow var(--global-transition);
 }
 details.dropdown summary:not([role]):active,
@@ -2536,14 +2470,13 @@ nav details.dropdown summary:not([role]) {
             var(--global-nav-link-spacing-vertical) * 2
     );
     padding: calc(
-            var(--global-nav-link-spacing-vertical) -
-                var(--global-border-width) * 2
+            var(--global-nav-link-spacing-vertical) - var(--global-border-width) *
+                2
         )
         var(--global-nav-link-spacing-horizontal);
 }
 nav details.dropdown summary:not([role]):focus-visible {
-    box-shadow: 0 0 0 var(--global-outline-width)
-        var(--global-primary-focus);
+    box-shadow: 0 0 0 var(--global-outline-width) var(--global-primary-focus);
 }
 
 details.dropdown summary + ul {
@@ -2558,8 +2491,7 @@ details.dropdown summary + ul {
     margin: 0;
     margin-top: var(--global-outline-width);
     padding: 0;
-    border: var(--global-border-width) solid
-        var(--global-dropdown-border-color);
+    border: var(--global-border-width) solid var(--global-dropdown-border-color);
     border-radius: var(--global-border-radius);
     background-color: var(--global-dropdown-background-color);
     box-shadow: var(--global-dropdown-box-shadow);
@@ -3049,14 +2981,6 @@ nav ul {
     padding: 0;
     list-style: none;
 }
-nav ol:first-of-type,
-nav ul:first-of-type {
-    margin-left: calc(var(--global-nav-element-spacing-horizontal) * -1);
-}
-nav ol:last-of-type,
-nav ul:last-of-type {
-    margin-right: calc(var(--global-nav-element-spacing-horizontal) * -1);
-}
 nav li {
     display: inline-block;
     margin: 0;
@@ -3086,8 +3010,8 @@ nav li select {
     margin-bottom: 0;
     margin-left: inherit;
     padding: calc(
-            var(--global-nav-link-spacing-vertical) -
-                var(--global-border-width) * 2
+            var(--global-nav-link-spacing-vertical) - var(--global-border-width) *
+                2
         )
         var(--global-nav-link-spacing-horizontal);
 }
@@ -3100,9 +3024,7 @@ nav[aria-label='breadcrumb'] ul li:not(:first-child) {
 }
 nav[aria-label='breadcrumb'] ul li a {
     margin: calc(var(--global-nav-link-spacing-vertical) * -1) 0;
-    margin-inline-start: calc(
-        var(--global-nav-link-spacing-horizontal) * -1
-    );
+    margin-inline-start: calc(var(--global-nav-link-spacing-horizontal) * -1);
 }
 nav[aria-label='breadcrumb'] ul li:not(:last-child)::after {
     display: inline-block;
