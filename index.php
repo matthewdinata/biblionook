@@ -1,6 +1,4 @@
 <?php
-// // Establish database connection
-// $db = new PDO("mysql:host=localhost;dbname=your_database", "username", "password");
 
 // Function to safely escape output
 function e($string)
@@ -8,18 +6,34 @@ function e($string)
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
-// // Fetch recommended books
-// $stmt = $db->query("SELECT title, image_path FROM books WHERE recommended = 1 LIMIT 4");
-// $recommended_books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// REMOVE COMMENTS
+// require_once "lib/db.php";
 
-// // Fetch new arrivals
-// $stmt = $db->query("SELECT title, author, genre FROM books ORDER BY release_date DESC LIMIT 3");
-// $new_arrivals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $sql = "SELECT title, thumbnail_url FROM Book WHERE is_featured = 1 LIMIT 5";
+// $result = $db->query($sql);
+
+// $recommended_books = [];
+// if ($result->num_rows > 0) {
+//     while ($row = $result->fetch_assoc()) {
+//         $recommended_books[] = $row;
+//     }
+// }
+
+// $sql = "SELECT title, author, genre, thumbnail_url FROM Book ORDER BY date_added LIMIT 8";
+// $result = $db->query($sql);
+
+// $new_arrivals = [];
+// if ($result->num_rows > 0) {
+//     while ($row = $result->fetch_assoc()) {
+//         $new_arrivals[] = $row;
+//     }
+// }
+
 $recommended_books = [
-    ['title' => '1000 Black Umbrella', 'image' => 'https://bookcoverarchive.com/wp-content/uploads/2016/08/SquareSpace6.jpg'],
-    ['title' => 'The Everlasting', 'image' => 'https://bookcoverarchive.com/wp-content/uploads/2020/07/The-Everlasting-final-cover.jpg'],
-    ['title' => 'The Visible Man: A Novel', 'image' => 'https://bookcoverarchive.com/wp-content/uploads/2015/10/visible-man.jpg'],
-    ['title' => 'Alena: A Novel', 'image' => 'https://bookcoverarchive.com/wp-content/uploads/2015/12/alena.jpg'],
+    ['title' => '1000 Black Umbrella', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2016/08/SquareSpace6.jpg'],
+    ['title' => 'The Everlasting', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2020/07/The-Everlasting-final-cover.jpg'],
+    ['title' => 'The Visible Man: A Novel', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2015/10/visible-man.jpg'],
+    ['title' => 'Alena: A Novel', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2015/12/alena.jpg'],
 ];
 
 $new_arrivals = [
@@ -27,21 +41,21 @@ $new_arrivals = [
         'id' => 1,
         'title' => 'The Lovely Bones',
         'author' => 'Alice Sebold',
-        'cover_path' => 'https://bookcoverarchive.com/wp-content/uploads/2016/08/SquareSpace6.jpg',
+        'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2016/08/SquareSpace6.jpg',
         'genre' => 'Biographic',
     ],
     [
         'id' => 2,
         'title' => 'The Girl in Red',
         'author' => 'Cristina Henry',
-        'cover_path' => 'https://bookcoverarchive.com/wp-content/uploads/2020/07/The-Everlasting-final-cover.jpg',
+        'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2020/07/The-Everlasting-final-cover.jpg',
         'genre' => 'Mystery',
     ],
     [
         'id' => 3,
         'title' => 'The Bees',
         'author' => 'Laline Paull',
-        'cover_path' => 'https://bookcoverarchive.com/wp-content/uploads/2015/10/visible-man.jpg',
+        'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2015/10/visible-man.jpg',
         'genre' => 'Fiction',
     ],
 ];
@@ -66,8 +80,9 @@ $new_arrivals = [
     ?>
     <div class="main-content">
         <div class="search-bar">
-            <form action="search.php" method="GET" class="input-box">
-                <input type="text" name="query" placeholder="Search your favorite books..." />
+            <form action="search.php" method="GET">
+                <input type="text" id="search-input" name="query" placeholder="Search your favorite books..." />
+                <div id="suggestions" class="suggestions"></div>
             </form>
         </div>
 
@@ -76,7 +91,7 @@ $new_arrivals = [
             <div class="book-grid">
                 <?php foreach ($recommended_books as $book): ?>
                     <div class="book-card">
-                        <img src="<?= e($book['image']) ?>" alt="<?= e($book['title']) ?>" />
+                        <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -84,21 +99,21 @@ $new_arrivals = [
                 <div class="group">
                     <?php foreach ($recommended_books as $book): ?>
                         <div class="book-card card">
-                            <img src="<?= e($book['image']) ?>" alt="<?= e($book['title']) ?>" />
+                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
                         </div>
                     <?php endforeach; ?>
                 </div>
                 <div aria-hidden class="group">
                     <?php foreach ($recommended_books as $book): ?>
                         <div class="book-card card">
-                            <img src="<?= e($book['image']) ?>" alt="<?= e($book['title']) ?>" />
+                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
                         </div>
                     <?php endforeach; ?>
                 </div>
                 <div aria-hidden class="group">
                     <?php foreach ($recommended_books as $book): ?>
                         <div class="book-card card">
-                            <img src="<?= e($book['image']) ?>" alt="<?= e($book['title']) ?>" />
+                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -106,7 +121,6 @@ $new_arrivals = [
         </section>
 
         <section class="new-arrivals">
-
             <h3>New Arrivals</h3>
             <div class="book-table">
                 <table>
@@ -122,7 +136,7 @@ $new_arrivals = [
                         <?php foreach ($new_arrivals as $book): ?>
                             <tr>
                                 <td>
-                                    <img src="<?= e($book['cover_path']) ?>" alt="<?= e($book['title']) ?>"
+                                    <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
                                         class="book-cover">
                                     <?= e($book['title']) ?>
                                 </td>
@@ -139,5 +153,8 @@ $new_arrivals = [
                 </table>
         </section>
     </div>
+    <!-- REMOVE COMMENTS -->
+    <!-- <script src="js/index.js"></script> -->
+</body>
 
 </html>
