@@ -23,12 +23,6 @@ $recommended_books = [
 ];
 
 $new_arrivals = [
-    ['title' => 'Title 1', 'author' => 'Author 1', 'genre' => 'Genre 1'],
-    ['title' => 'Title 2', 'author' => 'Author 2', 'genre' => 'Genre 2'],
-    ['title' => 'Title 3', 'author' => 'Author 3', 'genre' => 'Genre 3'],
-];
-
-$books = [
     [
         'id' => 1,
         'title' => 'The Lovely Bones',
@@ -86,7 +80,7 @@ $books = [
                     </div>
                 <?php endforeach; ?>
             </div>
-            <!-- <div class="carousel">
+            <div class="carousel">
                 <div class="group">
                     <?php foreach ($recommended_books as $book): ?>
                         <div class="book-card card">
@@ -101,7 +95,14 @@ $books = [
                         </div>
                     <?php endforeach; ?>
                 </div>
-            </div> -->
+                <div aria-hidden class="group">
+                    <?php foreach ($recommended_books as $book): ?>
+                        <div class="book-card card">
+                            <img src="<?= e($book['image']) ?>" alt="<?= e($book['title']) ?>" />
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </section>
 
         <section class="new-arrivals">
@@ -112,22 +113,22 @@ $books = [
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Author</th>
-                            <th>Genre</th>
+                            <th class="author">Author</th>
+                            <th class="genre">Genre</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($books as $book): ?>
+                        <?php foreach ($new_arrivals as $book): ?>
                             <tr>
                                 <td>
                                     <img src="<?= e($book['cover_path']) ?>" alt="<?= e($book['title']) ?>"
                                         class="book-cover">
                                     <?= e($book['title']) ?>
                                 </td>
-                                <td><?= e($book['author']) ?></td>
-                                <td><span
-                                        class="category-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                <td class="author"><?= e($book['author']) ?></td>
+                                <td class="genre"><span
+                                        class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                 </td>
                                 <td>
                                     <a href="" class="action-button">View Details</a>
