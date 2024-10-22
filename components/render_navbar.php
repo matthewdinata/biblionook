@@ -27,11 +27,12 @@ function renderNavbar($currentPage)
     }
     echo '</ul>';
 
-    echo "<a><li class='sign-in'>
+    echo "<a href='auth.php' class='sign-in-link'>
+        <li class='sign-in'>
             <img src='$signin' alt='Sign In Logo'/>
             <span>Sign In</span>
-        </li></a>";
+        </li>
+    </a>";
 
     echo '</nav>';
-
 }

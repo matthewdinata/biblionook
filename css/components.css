@@ -14,7 +14,9 @@ nav ul a {
     width: 100%;
 }
 
-/* first li items in the list */
+nav .sign-in {
+    font-weight: 500;
+}
 
 nav .logo {
     font-size: 1.4rem;
