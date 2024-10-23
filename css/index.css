@@ -184,7 +184,7 @@
 
 .book-table a {
     color: var(--global-primary);
-    font-style: underline;
+    text-decoration: underline;
     font-weight: 600;
 }
 

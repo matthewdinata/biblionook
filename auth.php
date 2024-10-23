@@ -33,24 +33,27 @@
                 </div>
 
                 <!-- Create Account Form -->
-                <form id="create-account-form" class="tab-content active" action="process_registration.php"
+                <form id="create-account-form" class="tab-content active" action="./utils/auth/process_registration.php"
                     method="POST">
                     <div class="form-group">
                         <label for="reg-name">Name</label>
                         <input type="text" id="reg-name" name="name" placeholder="Brian Clark" required>
+                        <span id="nameError" class="error"></span>
                     </div>
                     <div class="form-group">
                         <label for="reg-email">Email</label>
                         <input type="email" id="reg-email" name="email" placeholder="example@youremail.com" required>
+                        <span id="emailError" class="error"></span>
                     </div>
                     <div class="form-group">
                         <label for="reg-password">Password</label>
-                        <input type="password" id="reg-password" name="password" placeholder="********" required>
+                        <input type="password" id="reg-password" name="password" required>
+                        <span id="passwordError" class="error"></span>
                     </div>
                     <div class="form-group">
                         <label for="reg-confirm-password">Confirm Password</label>
-                        <input type="password" id="reg-confirm-password" name="confirm_password" placeholder="********"
-                            required>
+                        <input type="password" id="reg-confirm-password" name="confirm_password" required>
+                        <span id="confirmPasswordError" class="error"></span>
                     </div>
                     <button type="submit" class="submit-btn">Create Account →</button>
                 </form>

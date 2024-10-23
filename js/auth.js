@@ -35,6 +35,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Form validation
     const createAccountForm = document.getElementById("create-account-form");
+
+    const nameInput = document.getElementById("reg-name");
+    const emailInput = document.getElementById("reg-email");
+    const passwordInput = document.getElementById("reg-password");
+    const confirmPasswordInput = document.getElementById(
+        "reg-confirm-password"
+    );
+
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    const confirmPasswordError = document.getElementById(
+        "confirmPasswordError"
+    );
+
+    function validateName() {
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(nameInput.value)) {
+            nameError.textContent =
+                "Name should only contain alphabets and spaces.";
+            return false;
+        }
+        nameError.textContent = "";
+        return true;
+    }
+
+    function validateEmail() {
+        const emailRegex = /^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailRegex.test(emailInput.value)) {
+            emailError.textContent = "Please enter a valid email address.";
+            return false;
+        }
+        emailError.textContent = "";
+        return true;
+    }
+
+    function validatePassword() {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        if (!passwordRegex.test(passwordInput.value)) {
+            passwordError.textContent =
+                "Password should contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.";
+            return false;
+        }
+        passwordError.textContent = "";
+        return true;
+    }
+
+    function validateConfirmPassword() {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            confirmPasswordError.textContent = "Passwords do not match.";
+            return false;
+        }
+        confirmPasswordError.textContent = "";
+        return true;
+    }
+
+    function resetErrors() {
+        nameError.textContent = "";
+        emailError.textContent = "";
+        passwordError.textContent = "";
+        confirmPasswordError.textContent = "";
+    }
+
+    nameInput.addEventListener("input", validateName);
+    emailInput.addEventListener("input", validateEmail);
+    passwordInput.addEventListener("input", validatePassword);
+    confirmPasswordInput.addEventListener("input", validateConfirmPassword);
+
     if (createAccountForm) {
         createAccountForm.addEventListener("submit", function (e) {
             const password = document.getElementById("reg-password").value;

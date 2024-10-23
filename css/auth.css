@@ -56,12 +56,18 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     width: 100%;
     min-width: 30rem;
+    max-width: 30rem;
     padding: 24px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .tab-content {
         min-width: 20rem;
+        max-width: none;
+    }
+
+    .tab-container {
+        width: 90%;
     }
 }
 
@@ -122,7 +128,7 @@
 }
 
 .form-group {
-    margin-bottom: 20px;
+    min-height: 6.8rem;
 }
 
 .form-group label {
@@ -131,6 +137,12 @@
     color: var(--global-primary-hover);
     font-weight: 500;
     font-size: 0.7rem;
+}
+
+.form-group .error {
+    color: red;
+    font-size: 0.7em;
+    line-height: 1;
 }
 
 .form-group input {
@@ -143,7 +155,7 @@
 
 .submit-btn {
     padding: 12px;
-    background: var(--global-primary);
+    background: var(--global-primary-hover);
     color: var(--global-contrast-inverse);
     border: none;
     border-radius: 8px;
@@ -155,6 +167,7 @@
 }
 
 .submit-btn:hover {
-    background: var(--global-primary-hover);
+    background: var(--global-secondary-hover);
     color: var(--global-contrast-inverse);
 }
+
