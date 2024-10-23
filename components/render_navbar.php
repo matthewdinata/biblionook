@@ -47,7 +47,7 @@ function renderNavbar($currentPage)
                             </div>
                         </div>
                     </a>
-                    <a class='logout' href='logout.php'>
+                    <a class='logout'>
                         <img src='$signin' alt='Log Out Logo'/>
                     </a>
                 </li>
@@ -63,4 +63,20 @@ function renderNavbar($currentPage)
 
 
     echo '</nav>';
+    echo "
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.querySelector('.logout');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (confirm('Are you sure you want to log out?')) {
+                        window.location.href = './utils/auth/logout.php';
+                    }
+                });
+            }
+        });
+    </script>
+    ";
 }
