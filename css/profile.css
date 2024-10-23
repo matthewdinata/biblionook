@@ -1,0 +1,171 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.profile-box img {
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    width: 8rem;
+    height: 8rem;
+}
+
+.profile-box h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.profile-box p {
+    font-weight: 400;
+    color: var(--global-primary-hover);
+    font-style: italic;
+    margin-bottom: 3rem;
+}
+
+.data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.data-number {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.data-text {
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+
+/* Borrowed Books */
+
+.borrowed-books {
+    width: 100%;
+    padding: 0 4rem;
+    text-align: left;
+}
+
+
+.book-table {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+}
+
+.book-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+}
+
+.book-table th,
+.book-table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.book-table th {
+    background-color: var(--global-contrast-inverse);
+    font-weight: 600;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.book-table td {
+    border-bottom: 1px solid #dee2e6;
+    background-color: var(--global-contrast-inverse);
+}
+
+.book-table a {
+    color: var(--global-primary);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.book-table a:hover {
+    color: var(--global-secondary);
+}
+
+.book-table tr:last-child td {
+    border-bottom: none;
+}
+
+.book-cover {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 0.3rem;
+}
+
+.genre-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.mystery {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.fiction {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.biographic {
+    background-color: #e2e3ff;
+    color: #3d3d8f;
+}
+
+.romance {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.classic {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.action {
+    background-color: #d6d8d9;
+    color: #383d41;
+}
+
+.fantasy {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.thriller {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.dystopian {
+    background-color: #f8e7d7;
+    color: #723d1c;
+}
+
+@media screen and (max-width: 900px) {
+    .genre ,
+    .author {
+        display: none;
+    }
+}
