@@ -2,7 +2,7 @@ nav ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;;
+    align-items: flex-start;
     width: 100%;
     gap: 1rem;
 }
@@ -14,7 +14,9 @@ nav ul a {
     width: 100%;
 }
 
-/* first li items in the list */
+nav .sign-in {
+    font-weight: 500;
+}
 
 nav .logo {
     font-size: 1.4rem;
@@ -52,5 +54,60 @@ nav .sign-in {
 }
 
 nav .sign-in:hover {
+    background-color: var(--global-tab-hover-background);
+}
+
+nav .profile {
+    display: flex;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    justify-content: space-between;
+}
+
+nav .profile-left {
+    display: flex;
+}
+
+nav .profile .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+nav .profile span {
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1;
+    font-size: 0.8rem;
+}
+
+nav .profile-left img {
+    margin-right: 0.4rem;
+}
+
+nav .logout img {
+    margin-right: 0rem;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+nav .profile .email {
+    font-size: 0.6rem;
+    font-weight: 300;
+}
+
+nav .logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+nav .logout:hover img {
     background-color: var(--global-tab-hover-background);
 }

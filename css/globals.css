@@ -72,7 +72,7 @@
 }
 
 a {
-    --global-text-decoration: underline;
+    --global-text-decoration: none;
 }
 a.secondary,
 a.contrast {
@@ -2960,10 +2960,6 @@ dialog[open='false'] {
 /**
  * Nav
  */
-:where(nav li)::before {
-    float: left;
-    content: '​';
-}
 
 nav,
 nav ul {
