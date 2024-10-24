@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>BIBLIONOOK</title>
+    <title>BiblioNook - Your Books</title>
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/main.css" />

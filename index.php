@@ -65,7 +65,7 @@ $new_arrivals = [
 <html lang="en">
 
 <head>
-    <title>BIBLIONOOK</title>
+    <title>BiblioNook - Home</title>
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -137,12 +137,12 @@ $new_arrivals = [
                             <tr>
                                 <td>
                                     <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                        class="book-cover">
+                                         class="book-cover">
                                     <?= e($book['title']) ?>
                                 </td>
                                 <td class="author"><?= e($book['author']) ?></td>
                                 <td class="genre"><span
-                                        class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                          class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                 </td>
                                 <td>
                                     <a href="" class="action-button">View Details</a>
