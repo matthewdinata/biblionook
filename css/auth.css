@@ -96,7 +96,7 @@
     flex: 1;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--global-primary-hover)
+    color: var(--global-secondary-hover);
 }
 
 .title {
@@ -117,6 +117,7 @@
 
 .tab-btn.active {
     background-color: var(--global-contrast-inverse);
+    color: var(--global-primary-hover);
 }
 
 .tab-content {
@@ -170,4 +171,3 @@
     background: var(--global-secondary-hover);
     color: var(--global-contrast-inverse);
 }
-
