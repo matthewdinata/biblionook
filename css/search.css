@@ -1,0 +1,193 @@
+.main-container {
+    width: 100%;
+    padding: 50px;
+}
+
+.page-title {
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+    height: 2.75rem;
+}
+
+.search-bar .input-group {
+    display: flex;
+    flex-grow: 1;
+    border-radius: 12px;
+    border: 2px solid var(--global-secondary-border);
+    overflow: hidden;
+}
+
+.search-select {
+    width: 12rem;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.search-input {
+    flex-grow: 1;
+    margin-bottom: 0 !important;
+    border-radius: 0;
+    border-left: 2px solid var(--global-secondary-border);
+    max-height: 100%;
+}
+
+.search-button {
+    border: none;
+    border-radius: 12px;
+    background-color: var(--global-secondary-background);
+    cursor: pointer;
+    width: 5rem;
+
+    background-image: url('../assets/icons/search-inverted.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+
+    /* Add minimum height to ensure button size */
+    min-height: 2.5rem;
+
+    &:hover {
+        background-color: var(--global-secondary-hover-background);
+    }
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+.filters {
+    border-radius: 4px;
+}
+
+.filter-section {
+    margin-bottom: 1rem;
+}
+
+.filter-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.filter-item span {
+    font-size: 0.875rem;
+}
+
+.results-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.sort-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+    grid-template-rows: auto auto auto;
+}
+
+.book-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    background-color: var(--global-contrast-inverse);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s;
+}
+
+.book-cover {
+    height: 100%;
+    aspect-ratio: 2/3;
+    background-color: var(--global-secondary-background);
+}
+
+.book-cover > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0.3rem 1rem 0 1rem;
+}
+
+.book-author {
+    font-size: 0.875rem;
+    color: var(--global-muted-color);
+    margin: 0 1rem 1rem 1rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.pagination-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.pagination-text {
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
