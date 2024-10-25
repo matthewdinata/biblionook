@@ -244,7 +244,7 @@ details summary[role='button']:not(.outline)::after {
  */
 [data-theme='light'],
 :root:not([data-theme='dark']) {
-    --global-background-color: #f1f0ec;
+    --global-background-color: #f3f1e8;
     --global-color: #373c44;
     --global-text-selection-color: rgba(149, 144, 130, 0.25);
     --global-muted-color: #646b79;
