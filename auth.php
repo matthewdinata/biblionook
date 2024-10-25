@@ -3,6 +3,7 @@
 
 <head>
     <title>BiblioNook - Authentication</title>
+    <link rel="icon" href="assets/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/auth.css" />
@@ -34,7 +35,7 @@
 
                 <!-- Create Account Form -->
                 <form id="create-account-form" class="tab-content active" action="./utils/auth/process_registration.php"
-                    method="POST">
+                      method="POST">
                     <div class="form-group">
                         <label for="reg-name">Name</label>
                         <input type="text" id="reg-name" name="name" placeholder="Brian Clark" required>

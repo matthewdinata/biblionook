@@ -66,6 +66,7 @@ $new_arrivals = [
 
 <head>
     <title>BiblioNook - Home</title>
+    <link rel="icon" href="assets/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -154,7 +155,7 @@ $new_arrivals = [
         </section>
     </div>
     <!-- REMOVE COMMENTS -->
-    <!-- <script src="js/index.js"></script> -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>

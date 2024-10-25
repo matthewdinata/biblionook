@@ -37,6 +37,7 @@ $user_email = $_SESSION['user_email'];
 
 <head>
     <title>BiblioNook - Profile</title>
+    <link rel="icon" href="assets/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/main.css" />
