@@ -1,3 +1,5 @@
+/* render_navbar.php */
+
 nav ul {
     list-style-type: none;
     display: flex;
@@ -87,7 +89,7 @@ nav .profile-left img {
 }
 
 nav .logout img {
-    margin-right: 0rem;
+    margin-right: 0.2rem;
     padding: 0.2rem;
     border-radius: 0.2rem;
 }
