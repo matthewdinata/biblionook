@@ -79,8 +79,8 @@
 }
 
 .book-card img {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -133,13 +133,13 @@
 }
 
 @media (max-width: 900px) {
-    .carousel{
+    .carousel {
         display: none;
     }
 }
 
 @media (min-width: 900px) {
-    .book-grid{
+    .book-grid {
         display: none;
     }
 }
@@ -257,7 +257,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    .genre ,
+    .genre,
     .author {
         display: none;
     }
