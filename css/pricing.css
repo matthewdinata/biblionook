@@ -1,0 +1,146 @@
+.pricing-container {
+    padding: 2rem 4rem;
+    font-size: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.pricing-container h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.welcome-text {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+    font-size: 0.8rem;
+    font-family: "Inter", sans-serif;
+    text-wrap: pretty;
+}
+
+.plans-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    text-align: left;
+}
+
+.plan-card {
+    position: relative;
+    background: var(--global-contrast-inverse);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+}
+
+.plan-card.premium {
+    background: var(--global-secondary-background);
+    color: white;
+}
+
+.plan-header {
+    margin-bottom: 2rem;
+}
+
+.plan-header h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.price {
+    display: flex;
+    align-items: baseline;
+}
+
+.price .amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.price .period {
+    margin-left: 0.5rem;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-family: "Inter", sans-serif;
+}
+
+.feature img {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+}
+
+.plan-button img {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-left: 0.2rem;
+}
+
+.plan-button {
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--global-primary-hover-background);
+    color: #55524a;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background 0.3s ease;
+}
+
+.plan-button:hover {
+    background: var(--global-primary-background);
+}
+
+.plan-button.current {
+    background: var(--background-dark);
+    cursor: not-allowed;
+}
+
+.current-plan {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--global-primary-background);
+    color: white;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0 0 0 1rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+    .pricing-container {
+        padding: 2rem;
+    }
+
+    .plans-container {
+        grid-template-columns: 1fr;
+    }
+}
