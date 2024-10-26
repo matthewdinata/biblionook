@@ -118,11 +118,6 @@
     background: var(--global-primary-background);
 }
 
-.plan-button.current {
-    background: var(--background-dark);
-    cursor: not-allowed;
-}
-
 .current-plan {
     position: absolute;
     top: 0;
