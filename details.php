@@ -69,22 +69,23 @@ if ($book_id > 0) {
                             by <span class="author"><?= e($book['author'] ?? 'Author') ?></span> |
                             Published: <span class="publish-date"><?= e($book['publish_date'] ?? 'Jan 2009') ?></span>
                         </p>
+                        <div class="rating">
+                            <?php
+                            $rating = 4.5;
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ($i <= floor($rating)) {
+                                    echo '<img src="assets/icons/star-filled.svg" alt="Filled Star" class="star">';
+                                } elseif ($i - $rating <= 0.5) {
+                                    echo '<img src="assets/icons/star-half-filled.svg" alt="Half Filled Star" class="star">';
+                                } else {
+                                    echo '<img src="assets/icons/star-empty.svg" alt="Empty Star" class="star">';
+                                }
+                            }
+                            ?>
+                        </div>
                     </div>
 
-                    <div class="rating">
-                        <?php
-                        $rating = 4.5;
-                        for ($i = 1; $i <= 5; $i++) {
-                            if ($i <= floor($rating)) {
-                                echo '<span class="star filled"></span>';
-                            } elseif ($i - $rating <= 0.5) {
-                                echo '<span class="star half"></span>';
-                            } else {
-                                echo '<span class="star empty"></span>';
-                            }
-                        }
-                        ?>
-                    </div>
+
 
                     <div class="borrow-section">
                         <div class="borrowing-info">
@@ -109,9 +110,6 @@ if ($book_id > 0) {
                                 <span> <a href="join.php" class="join-link">Join now</a> for unlimited borrowing!</span>
 
                             </div>
-
-
-
                         </div>
 
                     </div>
@@ -123,27 +121,99 @@ if ($book_id > 0) {
 
                     <section class="user-reviews">
                         <h2>USER REVIEWS</h2>
+                        <?php
+                        $reviews = [
+                            [
+                                'title' => 'Amazing Book!',
+                                'rating' => 5,
+                                'content' => 'I absolutely loved this book. The story was captivating and the characters were well-developed.',
+                                'name' => 'John Doe',
+                                'review_date' => '2023-10-01'
+                            ],
+                            [
+                                'title' => 'Good Read',
+                                'rating' => 4,
+                                'content' => 'A very good read, although it had some slow parts. Overall, I enjoyed it.',
+                                'name' => 'Jane Smith',
+                                'review_date' => '2023-09-15'
+                            ],
+                            [
+                                'title' => 'Not my cup of tea',
+                                'rating' => 2,
+                                'content' => 'I found the book to be quite boring and couldn\'t finish it.',
+                                'name' => 'Alice Johnson',
+                                'review_date' => '2023-08-20'
+                            ],
+                            [
+                                'title' => 'Fantastic!',
+                                'rating' => 5,
+                                'content' => 'One of the best books I have read this year. Highly recommend!',
+                                'name' => 'Bob Brown',
+                                'review_date' => '2023-07-10'
+                            ],
+                            [
+                                'title' => 'Mediocre',
+                                'rating' => 3,
+                                'content' => 'The book was okay, but I expected more from the plot.',
+                                'name' => 'Charlie Davis',
+                                'review_date' => '2023-06-05'
+                            ]
+                        ];
+                        ?>
+
+                        <?php
+                        // Pagination logic
+                        $reviews_per_page = 3;
+                        $total_reviews = count($reviews);
+                        $total_pages = ceil($total_reviews / $reviews_per_page);
+                        $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                        $current_page = max(1, min($total_pages, $current_page));
+                        $start_index = ($current_page - 1) * $reviews_per_page;
+                        $end_index = min($start_index + $reviews_per_page, $total_reviews);
+                        ?>
+
                         <?php if (!empty($reviews)): ?>
-                            <?php foreach ($reviews as $review): ?>
-                                <div class="review">
+                            <?php for ($i = $start_index; $i < $end_index; $i++): ?>
+                                <?php $review = $reviews[$i]; ?>
+                                <article class="review">
                                     <div class="review-header">
                                         <h3 class="review-title"><?= e($review['title']) ?></h3>
                                         <div class="review-rating">
-                                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                                <span class="star <?= $i <= $review['rating'] ? 'filled' : 'empty' ?>"></span>
-                                            <?php endfor; ?>
+                                            <?php
+                                            $review_rating = $review['rating'];
+                                            for ($j = 1; $j <= 5; $j++) {
+                                                if ($j <= floor($review_rating)) {
+                                                    echo '<img src="assets/icons/star-filled.svg" alt="Filled Star" class="star">';
+                                                } elseif ($j - $review_rating <= 0.5) {
+                                                    echo '<img src="assets/icons/star-half-filled.svg" alt="Half Filled Star" class="star">';
+                                                } else {
+                                                    echo '<img src="assets/icons/star-empty.svg" alt="Empty Star" class="star">';
+                                                }
+                                            }
+                                            ?>
+
                                         </div>
                                     </div>
                                     <p class="review-content"><?= e($review['content']) ?></p>
-                                    <p class="review-meta">- <?= e($review['user_name']) ?>, <?= e($review['year']) ?></p>
-                                </div>
-                            <?php endforeach; ?>
+                                    <p class="review-meta">- <?= e($review['name']) ?>,
+                                        <?= e(date('Y', strtotime($review['review_date']))) ?>
+                                    </p>
+                                </article>
+                            <?php endfor; ?>
                         <?php endif; ?>
 
                         <div class="pagination">
-                            <span>&lt;</span>
-                            <span>1 of 2</span>
-                            <span>&gt;</span>
+                            <?php if ($current_page > 1): ?>
+                                <a href="?id=<?= $book_id ?>&page=<?= $current_page - 1 ?>">&lt;</a>
+                            <?php else: ?>
+                                <span>&lt;</span>
+                            <?php endif; ?>
+                            <span><?= $current_page ?> of <?= $total_pages ?></span>
+                            <?php if ($current_page < $total_pages): ?>
+                                <a href="?id=<?= $book_id ?>&page=<?= $current_page + 1 ?>">&gt;</a>
+                            <?php else: ?>
+                                <span>&gt;</span>
+                            <?php endif; ?>
                         </div>
                     </section>
                 </div>
