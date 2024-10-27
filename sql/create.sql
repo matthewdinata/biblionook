@@ -56,7 +56,7 @@ CREATE TABLE Review (
     rating INT NOT NULL,
     title VARCHAR(255),
     content TEXT,
-    review_date DATETIME NOT NULL,
+    review_date DATETIME NOT NULL DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES User(id),
     FOREIGN KEY (book_id) REFERENCES Book(id)
 );

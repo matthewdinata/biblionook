@@ -133,11 +133,12 @@
     background-color: var(--global-contrast-inverse);
     border-radius: 12px;
     overflow: hidden;
-}
 
-.book-card:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s;
+    &:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s;
+        text-decoration: none;
+    }
 }
 
 .book-cover {

@@ -6,10 +6,10 @@ function e($string)
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
-// REMOVE COMMENTS
+// TODO: fix logic
 require_once "lib/db.php";
 
-$sql = "SELECT title, thumbnail_url, author FROM Book WHERE is_featured = 1 LIMIT 5";
+$sql = "SELECT id, title, thumbnail_url, author FROM Book WHERE is_featured = 1 LIMIT 5";
 $result = $db->query($sql);
 
 $recommended_books = [];
@@ -152,12 +152,12 @@ if ($result->num_rows > 0) {
                     <div class="books-grid">
                         <!-- Book cards -->
                         <?php foreach ($recommended_books as $book): ?>
-                            <div class="book-card">
+                            <a class="book-card" href='details.php?id=<?= e($book['id']) ?>'>
                                 <div class="book-cover"><img src="<?= e($book['thumbnail_url']) ?>"
                                          alt="<?= e($book['title']) ?>" /></div>
                                 <h3 class="book-title"><?= e($book['title']) ?></h3>
                                 <p class="book-author"><?= e($book['author']) ?></p>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
 
