@@ -47,8 +47,34 @@ if ($book_id > 0) {
 
     <?php
     require_once 'components/render_navbar.php';
+    require_once 'components/render_slideout_menu.php';
+
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
+
+    // Payment form content
+    $paymentContent =
+        <<<HTML
+            <div class="payment-form">
+                <p class="text-center mb-4">
+                    Your chosen book: <strong>Fancy Piano</strong> at <strong>\$2.9</strong><br>
+                    Just one more page to turn before you can dive into your book of choice!
+                </p>
+
+                <div class="form-section">
+                    <div class="purchase-details mb-6">
+                        <h3>Payment due</h3>
+                        <div class="price-display">
+                            <span class="amount">\$2.9</span>
+                            <span class="period">/14 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        HTML;
+
+    // Render the slideout menu
+    renderSlideoutMenu('paymentSlideout', 'Complete your Payment', $paymentContent);
     ?>
 
 
@@ -103,7 +129,8 @@ if ($book_id > 0) {
                             </div>
                         </div>
                         <div class="borrowing-cta">
-                            <button class="borrow-button">Borrow Book</button>
+                            <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
+                                Book</button>
 
                             <div class="membership-prompt">
                                 <p>Not a member? 😊</p>
@@ -113,6 +140,8 @@ if ($book_id > 0) {
                         </div>
 
                     </div>
+
+
 
                     <section class="book-summary">
                         <h2>BOOK SUMMARY</h2>
@@ -220,6 +249,7 @@ if ($book_id > 0) {
             </div>
         </div>
     </div>
+    <script src='js/components/render_slideout_menu.js'></script>
     <script src="js/details.js"></script>
 </body>
 
