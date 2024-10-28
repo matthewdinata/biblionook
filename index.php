@@ -6,59 +6,27 @@ function e($string)
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
-// REMOVE COMMENTS
-// require_once "lib/db.php";
+require_once "lib/db.php";
 
-// $sql = "SELECT title, thumbnail_url FROM Book WHERE is_featured = 1 LIMIT 5";
-// $result = $db->query($sql);
+$sql = "SELECT title, thumbnail_url FROM Book WHERE is_featured = 1 LIMIT 5";
+$result = $db->query($sql);
 
-// $recommended_books = [];
-// if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//         $recommended_books[] = $row;
-//     }
-// }
+$recommended_books = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $recommended_books[] = $row;
+    }
+}
 
-// $sql = "SELECT title, author, genre, thumbnail_url FROM Book ORDER BY date_added LIMIT 8";
-// $result = $db->query($sql);
+$sql = "SELECT title, author, genre, thumbnail_url FROM Book ORDER BY date_added LIMIT 8";
+$result = $db->query($sql);
 
-// $new_arrivals = [];
-// if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//         $new_arrivals[] = $row;
-//     }
-// }
-
-$recommended_books = [
-    ['title' => '1000 Black Umbrella', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2016/08/SquareSpace6.jpg'],
-    ['title' => 'The Everlasting', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2020/07/The-Everlasting-final-cover.jpg'],
-    ['title' => 'The Visible Man: A Novel', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2015/10/visible-man.jpg'],
-    ['title' => 'Alena: A Novel', 'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2015/12/alena.jpg'],
-];
-
-$new_arrivals = [
-    [
-        'id' => 1,
-        'title' => 'The Lovely Bones',
-        'author' => 'Alice Sebold',
-        'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2016/08/SquareSpace6.jpg',
-        'genre' => 'Biographic',
-    ],
-    [
-        'id' => 2,
-        'title' => 'The Girl in Red',
-        'author' => 'Cristina Henry',
-        'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2020/07/The-Everlasting-final-cover.jpg',
-        'genre' => 'Mystery',
-    ],
-    [
-        'id' => 3,
-        'title' => 'The Bees',
-        'author' => 'Laline Paull',
-        'thumbnail_url' => 'https://bookcoverarchive.com/wp-content/uploads/2015/10/visible-man.jpg',
-        'genre' => 'Fiction',
-    ],
-];
+$new_arrivals = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $new_arrivals[] = $row;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -138,12 +106,12 @@ $new_arrivals = [
                             <tr>
                                 <td>
                                     <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                         class="book-cover">
+                                        class="book-cover">
                                     <?= e($book['title']) ?>
                                 </td>
                                 <td class="author"><?= e($book['author']) ?></td>
                                 <td class="genre"><span
-                                          class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                        class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                 </td>
                                 <td>
                                     <a href="" class="action-button">View Details</a>
@@ -154,7 +122,6 @@ $new_arrivals = [
                 </table>
         </section>
     </div>
-    <!-- REMOVE COMMENTS -->
     <script src="js/index.js"></script>
 </body>
 

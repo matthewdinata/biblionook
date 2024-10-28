@@ -10,13 +10,12 @@
 </head>
 
 <body>
-    <h1>Your Books</h1>
-
     <?php
     require_once 'components/render_navbar.php';
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
     ?>
+    <div class="main-content"></div>
 </body>
 
 </html>

@@ -47,7 +47,6 @@
     font-weight: 400;
 }
 
-
 /* Borrowed Books */
 
 .borrowed-books {
@@ -55,7 +54,6 @@
     padding: 0 4rem;
     text-align: left;
 }
-
 
 .book-table {
     background-color: white;
@@ -164,7 +162,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    .genre ,
+    .genre,
     .author {
         display: none;
     }

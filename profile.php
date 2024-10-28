@@ -84,12 +84,12 @@ $user_email = $_SESSION['user_email'];
                                 <tr>
                                     <td>
                                         <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                             class="book-cover">
+                                            class="book-cover">
                                         <?= e($book['title']) ?>
                                     </td>
                                     <td class="author"><?= e($book['author']) ?></td>
                                     <td class="genre"><span
-                                              class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                            class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                     </td>
                                     <td>
                                         <a href="" class="action-button">Review Book</a>
