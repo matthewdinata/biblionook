@@ -55,7 +55,7 @@ function renderNavbar($currentPage)
         $first_two_words = implode(' ', array_slice($name_parts, 0, 2));
         echo "
                 <li class='profile'>
-                    <a href='profile.php' class='profile-link'>
+                    <a class='profile-link'>
                         <div class='profile-left'>
                             <img src='$user' alt='People Logo'/>
                             <div class='text'>

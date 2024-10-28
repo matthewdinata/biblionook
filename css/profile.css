@@ -4,8 +4,9 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
+    padding: 2rem 0;
 }
 
 .profile-box img {
@@ -87,15 +88,20 @@
     background-color: var(--global-contrast-inverse);
 }
 
-.book-table a {
+.book-table .action-button {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
     color: var(--global-primary);
     text-decoration: underline;
-    font-weight: 600;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-.book-table a:hover {
-    color: var(--global-secondary);
+.book-table .action-button:hover {
+    color: var(--global-primary-hover);
 }
+
 
 .book-table tr:last-child td {
     border-bottom: none;

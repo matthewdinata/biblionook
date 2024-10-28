@@ -1,3 +1,116 @@
+<?php
+// Function to safely escape output
+function e($string)
+{
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
+// Define plan configurations
+$plans = [
+    'free' => [
+        'name' => 'Free plan',
+        'price' => 0,
+        'features' => [
+            'Pay-per-borrow basis',
+            'Basic Support'
+        ],
+        'is_premium' => false
+    ],
+    'lite' => [
+        'name' => 'Lite plan',
+        'price' => 9.9,
+        'features' => [
+            'Borrow up to 3 books at a time',
+            'Basic Support'
+        ],
+        'is_premium' => false
+    ],
+    'plus' => [
+        'name' => 'Plus plan',
+        'price' => 19.9,
+        'features' => [
+            'Everything on Lite plan',
+            'Borrow up to 10 books at a time',
+            'Advanced Search Functionality',
+            'Early access to new releases',
+            'Premium Support'
+        ],
+        'is_premium' => true
+    ]
+];
+
+// Function to render plan features
+function renderFeatures($features, $isPremium = false)
+{
+    $html = '<div class="plan-features">';
+    foreach ($features as $feature) {
+        $iconSrc = $isPremium ? 'assets/icons/check-white.png' : 'assets/icons/check.png';
+        $html .= <<<HTML
+            <div class="feature">
+                <img src="{$iconSrc}" alt="check">
+                <span>{$feature}</span>
+            </div>
+        HTML;
+    }
+    $html .= '</div>';
+    return $html;
+}
+
+// Function to render button based on plan type
+function renderButton($planKey)
+{
+    if ($planKey === 'free') {
+        return '<button class="current-plan">Current Plan</button>';
+    }
+
+    return <<<HTML
+        <button class="plan-button" onclick="openPaymentSlideout('{$planKey}')">
+            Upgrade to {$planKey} plan
+            <img src="assets/icons/arrow-right.png" alt="check">
+        </button>
+    HTML;
+}
+
+// Function to generate payment content based on selected plan
+function generatePaymentContent($plan)
+{
+    $html = <<<HTML
+        <div class="plan-header">
+            <div class="price">
+                <span class="amount">\${$plan['price']}</span>
+                <span class="period">/mon</span>
+            </div>
+            <h2>{$plan['name']}</h2>
+        </div>
+    HTML;
+
+    $html .= renderFeatures($plan['features'], false);
+    return $html;
+}
+
+// Function to render a plan card
+function renderPlanCard($planKey, $plan)
+{
+    $premiumClass = $plan['is_premium'] ? 'premium' : '';
+    $features = renderFeatures($plan['features'], $plan['is_premium']);
+    $button = renderButton($planKey);
+
+    return <<<HTML
+        <div class="plan-card {$premiumClass}">
+            <div class="plan-header">
+                <div class="price">
+                    <span class="amount">\${$plan['price']}</span>
+                    <span class="period">/mon</span>
+                </div>
+                <h2>{$plan['name']}</h2>
+            </div>
+            {$features}
+            {$button}
+        </div>
+    HTML;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +126,19 @@
 <body>
     <?php
     require_once 'components/render_navbar.php';
+    require_once 'components/render_slideout_menu.php';
+
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
+
+    // Store plans data for JavaScript use
+    $plansJson = json_encode($plans);
+    echo "<script>const plansData = " . $plansJson . ";</script>";
+
+    // Initially render empty payment content - it will be populated by JavaScript
+    renderSlideoutMenu('paymentSlideout', 'Complete your Payment', '');
     ?>
+
     <div class="main-content">
         <div class="pricing-container">
             <h1>Select Your Plan</h1>
@@ -26,93 +149,17 @@
             </p>
 
             <div class="plans-container">
-                <!-- Free Plan -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <div class="price">
-                            <span class="amount">$0</span>
-                            <span class="period">/mon</span>
-                        </div>
-                        <h2>Free plan</h2>
-                    </div>
-                    <div class="plan-features">
-                        <div class="feature">
-                            <img src="assets/icons/check.png" alt="check">
-                            <span>Pay-per-borrow basis</span>
-                        </div>
-                        <div class="feature">
-                            <img src="assets/icons/check.png" alt="check">
-                            <span>Basic Support</span>
-                        </div>
-                    </div>
-                    <button class="current-plan">Current Plan
-                    </button>
-                </div>
-
-                <!-- Lite Plan -->
-                <div class=" plan-card">
-                    <div class="plan-header">
-                        <div class="price">
-                            <span class="amount">$9.9</span>
-                            <span class="period">/mon</span>
-                        </div>
-                        <h2>Lite plan</h2>
-                    </div>
-                    <div class="plan-features">
-                        <div class="feature">
-                            <img src="assets/icons/check.png" alt="check">
-                            <span>Borrow up to 3 books at a time</span>
-                        </div>
-                        <div class="feature">
-                            <img src="assets/icons/check.png" alt="check">
-                            <span>Basic Support</span>
-                        </div>
-                    </div>
-                    <button class="plan-button" onclick="upgradePlan('lite')">Upgrade to Lite plan
-                        <img src="assets/icons/arrow-right.png" alt="check">
-                    </button>
-                </div>
-
-                <!-- Plus Plan -->
-                <div class="plan-card premium">
-                    <div class="plan-header">
-                        <div class="price">
-                            <span class="amount">$19.9</span>
-                            <span class="period">/mon</span>
-                        </div>
-                        <h2>Plus plan</h2>
-                    </div>
-                    <div class="plan-features">
-                        <div class="feature">
-                            <img src="assets/icons/check-white.png" alt="check">
-                            <span>Everything on Lite plan</span>
-                        </div>
-                        <div class="feature">
-                            <img src="assets/icons/check-white.png" alt="check">
-                            <span>Borrow up to 10 books at a time</span>
-                        </div>
-                        <div class="feature">
-                            <img src="assets/icons/check-white.png" alt="check">
-                            <span>Advanced Search Functionality</span>
-                        </div>
-                        <div class="feature">
-                            <img src="assets/icons/check-white.png" alt="check">
-                            <span>Early access to new releases</span>
-                        </div>
-                        <div class="feature">
-                            <img src="assets/icons/check-white.png" alt="check">
-                            <span>Premium Support</span>
-                        </div>
-                    </div>
-                    <button class="plan-button" onclick="upgradePlan('plus')">Upgrade to Plus plan
-                        <img src="assets/icons/arrow-right.png" alt="check">
-                    </button>
-                </div>
+                <?php
+                foreach ($plans as $planKey => $plan) {
+                    echo renderPlanCard($planKey, $plan);
+                }
+                ?>
             </div>
         </div>
     </div>
 
     <script src="js/pricing.js"></script>
+    <script src='js/components/render_slideout_menu.js'></script>
 </body>
 
 </html>
