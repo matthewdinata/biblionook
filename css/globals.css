@@ -1128,27 +1128,6 @@ button:is(:hover, :active, :focus),
     );
     --global-color: var(--global-primary-inverse);
 }
-button:focus,
-button:is([aria-current]:not([aria-current='false'])):focus,
-[type='submit']:focus,
-[type='submit']:is([aria-current]:not([aria-current='false'])):focus,
-[type='reset']:focus,
-[type='reset']:is([aria-current]:not([aria-current='false'])):focus,
-[type='button']:focus,
-[type='button']:is([aria-current]:not([aria-current='false'])):focus,
-[type='file']::file-selector-button:focus,
-[type='file']::file-selector-button:is(
-        [aria-current]:not([aria-current='false'])
-    ):focus,
-[role='button']:focus,
-[role='button']:is([aria-current]:not([aria-current='false'])):focus {
-    --global-box-shadow: var(
-            --global-button-hover-box-shadow,
-            0 0 0 rgba(0, 0, 0, 0)
-        ),
-        0 0 0 var(--global-outline-width) var(--global-primary-focus);
-}
-
 [type='submit'],
 [type='reset'],
 [type='button'] {
@@ -1883,16 +1862,6 @@ label:has([type='checkbox'], [type='radio']) {
     background-position: center;
     background-size: 0.75em auto;
     background-repeat: no-repeat;
-}
-[type='checkbox'] ~ label,
-[type='radio'] ~ label {
-    display: inline-block;
-    margin-bottom: 0;
-    cursor: pointer;
-}
-[type='checkbox'] ~ label:not(:last-of-type),
-[type='radio'] ~ label:not(:last-of-type) {
-    margin-inline-end: 1em;
 }
 
 [type='checkbox']:indeterminate {

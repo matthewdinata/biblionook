@@ -347,3 +347,102 @@ nav .logout:hover img {
         transform: translateY(0);
     }
 }
+
+/* render_review.php */
+
+#reviewSlideout .book-details {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#reviewSlideout .book-image img {
+    width: 8rem;
+    height: 12rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#reviewSlideout .book-info {
+    flex: 1;
+}
+
+/* Star rating styles */
+.rating-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.star-input {
+    display: none;
+}
+
+.star-label {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.star-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.star-icon.filled {
+    display: none;
+}
+
+.star-icon.empty {
+    display: block;
+}
+
+/* Show filled stars for checked state and hover */
+.star-input:checked ~ .star-label .star-icon.empty,
+.star-label:hover .star-icon.empty,
+.star-label:hover ~ .star-label .star-icon.empty {
+    display: none;
+}
+
+.star-input:checked ~ .star-label .star-icon.filled,
+.star-label:hover .star-icon.filled,
+.star-label:hover ~ .star-label .star-icon.filled {
+    display: block;
+}
+
+/* Hover animation */
+.star-label:hover .star-icon {
+    transform: scale(1.1);
+}
+
+/* Disabled state styles after submission */
+.rating-input.disabled .star-label {
+    cursor: default;
+    pointer-events: none;
+}
+
+.review-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    height: 100%;
+    margin-top: 2rem;
+}
+
+.success-icon {
+    background-color: #22c55e;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 1rem;
+}
