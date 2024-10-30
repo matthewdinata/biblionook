@@ -533,13 +533,15 @@ details summary[role='button']:not(.outline)::after {
     }
 }
 [data-theme='dark'] {
-    --global-background-color: #111110;
+    --global-background-color: #2b2b27;
     --global-color: #c2c7d0;
     --global-text-selection-color: rgba(163, 158, 143, 0.1875);
     --global-muted-color: #7b8495;
     --global-muted-border-color: #202632;
-    --global-primary: #a39e8f;
+    --global-primary: #afa99a;
     --global-primary-background: #ccc6b4;
+    --global-tab-active-background: #ccc6b480;
+    --global-tab-hover-background: #eeeeee8d;
     --global-primary-border: var(--global-primary-background);
     --global-primary-underline: rgba(163, 158, 143, 0.5);
     --global-primary-hover: #beb8a7;
@@ -548,15 +550,17 @@ details summary[role='button']:not(.outline)::after {
     --global-primary-hover-underline: var(--global-primary-hover);
     --global-primary-focus: rgba(163, 158, 143, 0.375);
     --global-primary-inverse: #000;
-    --global-secondary: #969eaf;
-    --global-secondary-background: #525f7a;
+    --global-secondary: #282622;
+    --global-secondary-background: #474640;
     --global-secondary-border: var(--global-secondary-background);
-    --global-secondary-underline: rgba(150, 158, 175, 0.5);
-    --global-secondary-hover: #b3b9c5;
-    --global-secondary-hover-background: #5d6b89;
-    --global-secondary-hover-border: var(--global-secondary-hover-background);
+    --global-secondary-underline: #1d1b19;
+    --global-secondary-hover: #615e56;
+    --global-secondary-hover-background: #32302c;
+    --global-secondary-hover-border: var(
+        --global-secondary-hover-background
+    );
     --global-secondary-hover-underline: var(--global-secondary-hover);
-    --global-secondary-focus: rgba(144, 158, 190, 0.25);
+    --global-secondary-focus: #a39e90;
     --global-secondary-inverse: #fff;
     --global-contrast: #dfe3eb;
     --global-contrast-background: #eff1f4;
@@ -567,7 +571,7 @@ details summary[role='button']:not(.outline)::after {
     --global-contrast-hover-border: var(--global-contrast-hover-background);
     --global-contrast-hover-underline: var(--global-contrast-hover);
     --global-contrast-focus: rgba(207, 213, 226, 0.25);
-    --global-contrast-inverse: #000;
+    --global-contrast-inverse: #23211e;
     --global-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(7, 9, 12, 0.01698),
         0.0335rem 0.067rem 0.402rem rgba(7, 9, 12, 0.024),
         0.0625rem 0.125rem 0.75rem rgba(7, 9, 12, 0.03),
@@ -590,17 +594,22 @@ details summary[role='button']:not(.outline)::after {
     --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-table-border-color: var(--global-muted-border-color);
-    --global-table-row-stripped-background-color: rgba(111, 120, 135, 0.0375);
+    --global-table-row-stripped-background-color: rgba(
+        111,
+        120,
+        135,
+        0.0375
+    );
     --global-code-background-color: #1a1f28;
     --global-code-color: #8891a4;
     --global-code-kbd-background-color: var(--global-color);
     --global-code-kbd-color: var(--global-background-color);
-    --global-form-element-background-color: #1c212c;
-    --global-form-element-selected-background-color: #2a3140;
-    --global-form-element-border-color: #2a3140;
+    --global-form-element-background-color: #2d2d29;
+    --global-form-element-selected-background-color: #2b2a28;
+    --global-form-element-border-color: #4a4537;
     --global-form-element-color: #e0e3e7;
     --global-form-element-placeholder-color: #8891a4;
-    --global-form-element-active-background-color: #1a1f28;
+    --global-form-element-active-background-color: #2b2a28;
     --global-form-element-active-border-color: var(--global-primary-border);
     --global-form-element-focus-color: var(--global-primary-border);
     --global-form-element-disabled-opacity: 0.5;
@@ -615,7 +624,9 @@ details summary[role='button']:not(.outline)::after {
         --global-form-element-valid-active-border-color
     );
     --global-switch-background-color: #333c4e;
-    --global-switch-checked-background-color: var(--global-primary-background);
+    --global-switch-checked-background-color: var(
+        --global-primary-background
+    );
     --global-switch-color: #fff;
     --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
     --global-range-border-color: #202632;
@@ -627,7 +638,7 @@ details summary[role='button']:not(.outline)::after {
     --global-accordion-active-summary-color: var(--global-primary-hover);
     --global-accordion-close-summary-color: var(--global-color);
     --global-accordion-open-summary-color: var(--global-muted-color);
-    --global-card-background-color: #181c25;
+    --global-card-background-color: #232121;
     --global-card-border-color: var(--global-card-background-color);
     --global-card-box-shadow: var(--global-box-shadow);
     --global-card-sectioning-background-color: #1a1f28;
@@ -722,6 +733,7 @@ progress,
 body {
     width: 100%;
     margin: 0;
+    text-wrap: pretty;
 }
 
 main {

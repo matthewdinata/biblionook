@@ -167,7 +167,7 @@ class ReviewFormValidator {
         // Create error message container for rating
         const errorDiv = document.createElement("div");
         errorDiv.className = "error-message";
-        this.ratingContainer.appendChild(errorDiv);
+        this.ratingContainer.after(errorDiv);
         this.errorMessages.set("rating", errorDiv);
 
         // Add rating change listener
@@ -284,33 +284,28 @@ class ReviewFormValidator {
             const formData = new FormData(this.form);
             const bookId = this.form.dataset.bookId;
             formData.append("book_id", bookId);
-            this.showSuccessState();
 
-            // // Send to server
-            // fetch("process_review.php", {
-            //     method: "POST",
-            //     body: formData,
-            // })
-            //     .then((response) => response.json())
-            //     .then((data) => {
-            //         if (data.success) {
-            //             this.showSuccessState();
-            //         } else {
-            //             // Reset button state
-            //             submitButton.disabled = false;
-            //             submitButton.textContent = originalText;
-
-            //             // Show error
-            //             alert(data.message || "Error submitting review");
-            //         }
-            //     })
-            //     .catch((error) => {
-            //         console.error("Error:", error);
-            //         // Reset button state
-            //         submitButton.disabled = false;
-            //         submitButton.textContent = originalText;
-            //         alert("Error submitting review. Please try again.");
-            //     });
+            // Send to server
+            fetch("./utils/review/process_review.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        this.showSuccessState();
+                    } else {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalText;
+                        alert(data.message || "Error submitting review");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                    alert("Error submitting review. Please try again.");
+                });
         }
     }
 }

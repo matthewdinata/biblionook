@@ -8,7 +8,7 @@ function e($string)
 
 require_once "lib/db.php";
 
-$sql = "SELECT title, thumbnail_url FROM Book WHERE is_featured = 1 LIMIT 5";
+$sql = "SELECT * FROM Book WHERE is_featured = 1 LIMIT 5";
 $result = $db->query($sql);
 
 $recommended_books = [];
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
     }
 }
 
-$sql = "SELECT title, author, genre, thumbnail_url FROM Book ORDER BY date_added LIMIT 8";
+$sql = "SELECT * FROM Book ORDER BY date_added LIMIT 8";
 $result = $db->query($sql);
 
 $new_arrivals = [];
@@ -44,8 +44,10 @@ if ($result->num_rows > 0) {
 <body>
     <?php
     require_once 'components/render_navbar.php';
+    require_once 'components/render_theme_toggle.php';
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
+    renderThemeToggle();
     ?>
     <div class="main-content">
         <div class="search-bar">
@@ -59,31 +61,39 @@ if ($result->num_rows > 0) {
             <h3>Recommended For You</h3>
             <div class="book-grid">
                 <?php foreach ($recommended_books as $book): ?>
-                    <div class="book-card">
-                        <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
-                    </div>
+                    <a href='details.php?id=<?= e($book['id']) ?>'>
+                        <div class="book-card">
+                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                        </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
             <div class="carousel">
                 <div class="group">
                     <?php foreach ($recommended_books as $book): ?>
-                        <div class="book-card card">
-                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
-                        </div>
+                        <a href='details.php?id=<?= e($book['id']) ?>'>
+                            <div class="book-card card">
+                                <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                            </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
                 <div aria-hidden class="group">
                     <?php foreach ($recommended_books as $book): ?>
-                        <div class="book-card card">
-                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
-                        </div>
+                        <a href='details.php?id=<?= e($book['id']) ?>'>
+                            <div class="book-card card">
+                                <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                            </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
                 <div aria-hidden class="group">
                     <?php foreach ($recommended_books as $book): ?>
-                        <div class="book-card card">
-                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
-                        </div>
+                        <a href='details.php?id=<?= e($book['id']) ?>'>
+                            <div class="book-card card">
+                                <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                            </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -114,7 +124,7 @@ if ($result->num_rows > 0) {
                                         class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                 </td>
                                 <td>
-                                    <a href="" class="action-button">View Details</a>
+                                    <a href='details.php?id=<?= e($book['id']) ?>' class="action-button">View Details</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -123,6 +133,23 @@ if ($result->num_rows > 0) {
         </section>
     </div>
     <script src="js/index.js"></script>
+    <script>
+        // Load theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-mode');
+            const theme = isDark ? 'dark' : 'light';
+
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+    </script>
 </body>
 
 </html>

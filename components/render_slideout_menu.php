@@ -27,7 +27,7 @@ function renderSlideoutMenu($id, $title, $content)
                         <div class="slideout-form-group">
                             <label for="slideout-cardNumber">Card Number</label>
                             <input type="text" id="slideout-cardNumber" placeholder="1234-5678-1234-5678" maxlength="19"
-                                   required>
+                                required>
                         </div>
 
                         <div class="slideout-form-row">

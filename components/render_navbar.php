@@ -44,7 +44,7 @@ function renderNavbar($currentPage)
         $img_src = $item['img'];
         $class = ($currentPage === $url) ? ' class="active"' : '';
         echo "<a href=\"$url\"$class>
-            <li><img src=\"$img_src\" alt=\"$title icon\" /> $title</li>
+            <li><img class=\"nav-icon\" src=\"$img_src\" alt=\"$title icon\" /> $title</li>
         </a>";
     }
     echo '</ul>';
@@ -53,6 +53,12 @@ function renderNavbar($currentPage)
         $name = $_SESSION["user_name"];
         $name_parts = explode(' ', $name);
         $first_two_words = implode(' ', array_slice($name_parts, 0, 2));
+
+        $email = $_SESSION["user_email"];
+        $max_email_length = 25; // Set the maximum length for the email
+        if (strlen($email) > $max_email_length) {
+            $email = substr($email, 0, $max_email_length) . '...';
+        }
         echo "
                 <li class='profile'>
                     <a class='profile-link'>
@@ -60,7 +66,7 @@ function renderNavbar($currentPage)
                             <img src='$user' alt='People Logo'/>
                             <div class='text'>
                                 <span class='name'>" . htmlspecialchars($first_two_words, ENT_QUOTES, 'UTF-8') . "</span>
-                                <span class='email'>{$_SESSION["user_email"]}</span>
+                                <span class='email'>{$email}</span>
                             </div>
                         </div>
                     </a>

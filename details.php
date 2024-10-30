@@ -48,13 +48,14 @@ if ($book_id > 0) {
     <?php
     require_once 'components/render_navbar.php';
     require_once 'components/render_slideout_menu.php';
-
+    require_once 'components/render_theme_toggle.php';
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
+    renderThemeToggle();
+
 
     // Payment form content
-    $paymentContent =
-        <<<HTML
+    $paymentContent = <<<HTML
             <div class="payment-form">
                 <p class="text-center mb-4">
                     Your chosen book: <strong>Fancy Piano</strong> at <strong>\$2.9</strong><br>
@@ -84,7 +85,7 @@ if ($book_id > 0) {
             <div class="book-details">
                 <div class="book-cover">
                     <img src="<?= e($book['thumbnail_url'] ?? 'assets/placeholder-cover.png') ?>"
-                         alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
+                        alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
                     <p class="isbn">ISBN: <?= e($book['isbn'] ?? '978-3-16-148410-0') ?></p>
                 </div>
 
@@ -94,7 +95,7 @@ if ($book_id > 0) {
                         <p class="book-meta">
                             by <span class="author"><?= e($book['author'] ?? 'Author') ?></span> |
                             Published: <span
-                                  class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
+                                class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
                         <div class="rating">
                             <?php

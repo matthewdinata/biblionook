@@ -66,7 +66,7 @@ function renderButton($planKey)
     return <<<HTML
         <button class="plan-button" onclick="openPaymentSlideout('{$planKey}')">
             Upgrade to {$planKey} plan
-            <img src="assets/icons/arrow-right.png" alt="check">
+            <img src="assets/icons/arrow-right.png" alt="arrow-right">
         </button>
     HTML;
 }
@@ -127,9 +127,11 @@ function renderPlanCard($planKey, $plan)
     <?php
     require_once 'components/render_navbar.php';
     require_once 'components/render_slideout_menu.php';
+    require_once 'components/render_theme_toggle.php';
 
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
+    renderThemeToggle();
 
     // Store plans data for JavaScript use
     $plansJson = json_encode($plans);

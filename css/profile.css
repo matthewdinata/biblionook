@@ -17,7 +17,7 @@
     height: 8rem;
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme='dark'] {
     .profile-box img {
         filter: brightness(1.5);
     }
@@ -60,6 +60,29 @@
     width: 100%;
     padding: 0 4rem;
     text-align: left;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.empty-icon {
+    width: 120px;
+    margin-bottom: 16px;
+}
+
+.empty-state h4 {
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: var(--muted-color);
+    margin-bottom: 24px;
 }
 
 .book-table {
@@ -127,6 +150,12 @@
     font-size: 12px;
 }
 
+.review {
+    font-weight: 500;
+    color: var(--global-primary);
+    font-style: italic;
+}
+
 .mystery {
     background-color: #fff3cd;
     color: #856404;
@@ -181,5 +210,11 @@
     .genre,
     .author {
         display: none;
+    }
+}
+
+[data-theme='dark'] {
+    .genre-tag {
+        filter: invert(1);
     }
 }
