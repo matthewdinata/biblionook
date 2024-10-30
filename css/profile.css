@@ -17,6 +17,12 @@
     height: 8rem;
 }
 
+@media (prefers-color-scheme: dark) {
+    .profile-box img {
+        filter: brightness(1.5);
+    }
+}
+
 .profile-box h1 {
     font-size: 2rem;
     font-weight: 600;
@@ -102,7 +108,6 @@
     color: var(--global-primary-hover);
 }
 
-
 .book-table tr:last-child td {
     border-bottom: none;
 }
@@ -165,6 +170,11 @@
 .dystopian {
     background-color: #f8e7d7;
     color: #723d1c;
+}
+
+.horror {
+    background-color: #edd9c7;
+    color: #420c12;
 }
 
 @media screen and (max-width: 900px) {

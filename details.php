@@ -12,7 +12,7 @@ require_once "lib/db.php";
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($book_id > 0) {
-    $sql = "SELECT title, thumbnail_url, author, summary, isbn FROM Book WHERE id = ?";
+    $sql = "SELECT title, thumbnail_url, author, summary, isbn, publication_date FROM Book WHERE id = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $book_id);
     $stmt->execute();
@@ -93,7 +93,8 @@ if ($book_id > 0) {
                         <h1 class="book-title"><?= e($book['title'] ?? 'Book Title') ?></h1>
                         <p class="book-meta">
                             by <span class="author"><?= e($book['author'] ?? 'Author') ?></span> |
-                            Published: <span class="publish-date"><?= e($book['publish_date'] ?? 'Jan 2009') ?></span>
+                            Published: <span
+                                  class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
                         <div class="rating">
                             <?php
