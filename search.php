@@ -79,7 +79,8 @@ if ($result->num_rows > 0) {
                                     'action' => 'Action',
                                     'fantasy' => 'Fantasy',
                                     'thriller' => 'Thriller',
-                                    'dystopian' => 'Dystopian'
+                                    'dystopian' => 'Dystopian',
+                                    'horror' => 'Horror'
                                 ];
 
                                 foreach ($genres as $value => $label): ?>

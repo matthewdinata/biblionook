@@ -102,7 +102,6 @@
     color: var(--global-primary-hover);
 }
 
-
 .book-table tr:last-child td {
     border-bottom: none;
 }
@@ -165,6 +164,11 @@
 .dystopian {
     background-color: #f8e7d7;
     color: #723d1c;
+}
+
+.horror {
+    background-color: #edd9c7;
+    color: #420c12;
 }
 
 @media screen and (max-width: 900px) {

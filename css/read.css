@@ -114,7 +114,18 @@
 
 .page-indicator {
     font-style: italic;
+    text-align: center;
     color: var(--global-primary);
+}
+
+.page-footer {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+}
+
+.page-title {
+    font-weight: 500;
 }
 
 @media print {
