@@ -16,6 +16,10 @@ $formData = $_SESSION['form_data'] ?? [];
 </head>
 
 <body>
+    <?php
+    require_once 'components/render_theme_toggle.php';
+    renderThemeToggle();
+    ?>
     <div class="auth-container">
         <div class="auth-header">
             <div class="logo">

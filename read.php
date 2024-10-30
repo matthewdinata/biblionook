@@ -130,8 +130,11 @@ if (!$book) {
 <body>
     <?php
     require_once 'components/render_navbar.php';
+    require_once 'components/render_theme_toggle.php';
     $current_script = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_script);
+    renderThemeToggle();
+
     ?>
     <div class="main-content">
 
@@ -145,7 +148,7 @@ if (!$book) {
 
                 <div class="book-info">
                     <img src="<?php echo e($book['thumbnail_url']); ?>" alt="<?php echo e($book['title']); ?> cover"
-                         class="book-thumbnail">
+                        class="book-thumbnail">
                 </div>
             <?php endif; ?>
 

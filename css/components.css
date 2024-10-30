@@ -90,8 +90,9 @@ nav .profile-left img {
 
 nav .logout img {
     margin-right: 0.2rem;
-    padding: 0.2rem;
+    padding: 0.3rem;
     border-radius: 0.2rem;
+    cursor: pointer;
 }
 
 nav a:hover {
@@ -108,10 +109,6 @@ nav .logout {
     align-items: center;
     justify-content: center;
     padding: 0;
-}
-
-nav .logout:hover img {
-    background-color: var(--global-tab-hover-background);
 }
 
 /** render_slideout_menu.php **/
@@ -418,6 +415,16 @@ nav .logout:hover img {
     display: block;
 }
 
+[data-theme='dark'] {
+    .star-icon {
+        filter: invert(1);
+    }
+
+    .star-icon.empty {
+        filter: invert(1);
+    }
+}
+
 /* Hover animation */
 .star-label:hover .star-icon {
     transform: scale(1.1);
@@ -453,3 +460,28 @@ nav .logout:hover img {
     margin: 0 auto 1rem;
 }
 
+/* Theme Toggle */
+.theme-toggle {
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--global-card-background-color);
+    border-radius: 10px;
+    z-index: 100;
+}
+
+.theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-color);
+}
+
+.moon, .dark-mode .sun {
+    display: none;
+}
+
+.sun, .dark-mode .moon {
+    display: block;
+}

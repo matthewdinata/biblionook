@@ -166,7 +166,7 @@
     margin: 0 1rem 1rem 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme='dark'] {
     .book-card {
         background-color: var(--global-secondary-background);
         filter: brightness(0.9);

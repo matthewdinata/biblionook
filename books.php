@@ -26,6 +26,7 @@ $sql = "SELECT
         JOIN User u ON b.user_id = u.id
         JOIN Book bk ON b.book_id = bk.id
         LEFT JOIN Review r ON b.book_id = r.book_id AND b.user_id = r.user_id
+        WHERE u.id = {$_SESSION['user_id']}
         ORDER BY b.borrow_date DESC;";
 $result = $db->query($sql);
 
@@ -78,9 +79,11 @@ if ($result->num_rows > 0) {
     <?php
     require_once 'components/render_navbar.php';
     require_once 'components/render_review.php';
+    require_once 'components/render_theme_toggle.php';
     $current_page = basename($_SERVER['PHP_SELF']);
     renderNavbar($current_page);
     renderReview('reviewSlideout');
+    renderThemeToggle();
     ?>
     <div class="main-content">
         <div class="container">
@@ -101,43 +104,52 @@ if ($result->num_rows > 0) {
             </section>
             <section class="borrowed-books">
                 <h3>Borrowed Books</h3>
-                <div class="book-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th class="author">Author</th>
-                                <th class="genre">Genre</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($borrowed_books as $book): ?>
+                <?php if (empty($borrowed_books)): ?>
+                    <div class="empty-state">
+                        <h4>No Books Borrowed Yet</h4>
+                        <p>Explore our collection and start your reading journey today!</p>
+                        <a href="./search.php" class="primary-button">Browse Books</a>
+                    </div>
+                <?php else: ?>
+                    <div class="book-table">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                            class="book-cover">
-                                        <?= e($book['title']) ?>
-                                    </td>
-                                    <td class="author"><?= e($book['author']) ?></td>
-                                    <td class="genre">
-                                        <span
-                                            class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
-                                    </td>
-                                    <td class="review">
-                                        <?php if ($book['is_reviewed']): ?>
-                                            Reviewed
-                                        <?php else: ?>
-                                            <a class="action-button"
-                                                onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
-                                                Review Book
-                                            </a>
-                                        <?php endif; ?>
-                                    </td>
+                                    <th>Title</th>
+                                    <th class="author">Author</th>
+                                    <th class="genre">Genre</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($borrowed_books as $book): ?>
+                                    <tr>
+                                        <td>
+                                            <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
+                                                class="book-cover">
+                                            <?= e($book['title']) ?>
+                                        </td>
+                                        <td class="author"><?= e($book['author']) ?></td>
+                                        <td class="genre">
+                                            <span
+                                                class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                        </td>
+                                        <td class="review">
+                                            <?php if ($book['is_reviewed']): ?>
+                                                Reviewed
+                                            <?php else: ?>
+                                                <a class="action-button"
+                                                    onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
+                                                    Review Book
+                                                </a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
             </section>
         </div>
     </div>
