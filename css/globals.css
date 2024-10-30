@@ -397,7 +397,7 @@ details summary[role='button']:not(.outline)::after {
         --global-primary-hover-border: var(--global-primary-hover-background);
         --global-primary-hover-underline: var(--global-primary-hover);
         --global-primary-focus: rgba(163, 158, 143, 0.375);
-        --global-primary-inverse: #c9c8bb;
+        --global-primary-inverse: #000;
         --global-secondary: #282622;
         --global-secondary-background: #474640;
         --global-secondary-border: var(--global-secondary-background);

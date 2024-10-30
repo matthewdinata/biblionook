@@ -17,6 +17,12 @@
     height: 8rem;
 }
 
+@media (prefers-color-scheme: dark) {
+    .profile-box img {
+        filter: brightness(1.5);
+    }
+}
+
 .profile-box h1 {
     font-size: 2rem;
     font-weight: 600;
