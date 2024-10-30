@@ -315,3 +315,13 @@
         gap: 1rem;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .rating {
+        filter: invert(1);
+    }
+
+    .review-rating .star {
+        filter: invert(1);
+    }
+}
