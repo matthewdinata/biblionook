@@ -1,7 +1,6 @@
 <?php
 function renderReview($modalId)
 {
-    // Remove hardcoded book data - will be populated via JavaScript
     ?>
     <div id="<?= e($modalId) ?>" class="slideout-menu">
         <div class="slideout-content">
@@ -23,14 +22,19 @@ function renderReview($modalId)
                         <div class="book-info">
                             <h2 class="book-title" id="review-book-title"></h2>
                             <p class="book-meta" id="review-book-meta"></p>
-                            <div class="rating-input">
-                                <?php for ($i = 5; $i >= 1; $i--): ?>
-                                    <input type="radio" id="star<?= $i ?>" name="rating" value="<?= $i ?>" class="star-input">
-                                    <label for="star<?= $i ?>" class="star-label" title="<?= $i ?> stars">
-                                        <img src="assets/icons/star-empty.svg" alt="<?= $i ?> stars" class="star-icon empty">
-                                        <img src="assets/icons/star-filled.svg" alt="<?= $i ?> stars" class="star-icon filled">
-                                    </label>
-                                <?php endfor; ?>
+                            <div class="slideout-form-group">
+                                <div class="rating-input">
+                                    <?php for ($i = 5; $i >= 1; $i--): ?>
+                                        <input type="radio" id="star<?= $i ?>" name="rating" value="<?= $i ?>"
+                                            class="star-input">
+                                        <label for="star<?= $i ?>" class="star-label" title="<?= $i ?> stars">
+                                            <img src="assets/icons/star-empty.svg" alt="<?= $i ?> stars"
+                                                class="star-icon empty">
+                                            <img src="assets/icons/star-filled.svg" alt="<?= $i ?> stars"
+                                                class="star-icon filled">
+                                        </label>
+                                    <?php endfor; ?>
+                                </div>
                             </div>
                             <div class="slideout-form-group">
                                 <label for="reviewTitle">Review Title</label>

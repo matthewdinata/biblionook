@@ -8,19 +8,59 @@ function e($string)
 
 require_once "lib/db.php";
 
-$sql = "SELECT * FROM Book ORDER BY date_added LIMIT 8";
+$sql = "SELECT 
+            bk.id as id,
+            u.name as borrower_name,
+            bk.title as title,
+            bk.thumbnail_url as thumbnail_url,
+            bk.author,
+            bk.genre,
+            b.borrow_date,
+            b.due_date,
+            u.membership_type,
+            CASE 
+                WHEN r.id IS NOT NULL THEN TRUE 
+                ELSE FALSE 
+            END as is_reviewed
+        FROM Borrowing b
+        JOIN User u ON b.user_id = u.id
+        JOIN Book bk ON b.book_id = bk.id
+        LEFT JOIN Review r ON b.book_id = r.book_id AND b.user_id = r.user_id
+        ORDER BY b.borrow_date DESC;";
 $result = $db->query($sql);
 
-$new_arrivals = [];
+$borrowed_books = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $new_arrivals[] = $row;
+        $borrowed_books[] = $row;
     }
 }
+
 $profileImage = './assets/icons/user_profile.png';
 $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
+
+$sql = "SELECT 
+            b.title as book_title,
+            b.author,
+            r.rating,
+            r.title as review_title,
+            r.content as review_content,
+            r.review_date
+        FROM Review r
+        JOIN Book b ON r.book_id = b.id
+        WHERE r.user_id = $user_id
+        ORDER BY r.review_date DESC;";
+
+$result = $db->query($sql);
+
+$reviewed_books = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $reviewed_books[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,11 +90,11 @@ $user_email = $_SESSION['user_email'];
                 <p><?= $user_email ?></p>
                 <div class="data">
                     <div class="data-item">
-                        <div class="data-number">205</div>
+                        <div class="data-number"><?= count($borrowed_books) ?></div>
                         <div class="data-text">Borrowed</div>
                     </div>
                     <div class="data-item">
-                        <div class="data-number">178</div>
+                        <div class="data-number"><?= count($reviewed_books) ?></div>
                         <div class="data-text">Reviewed</div>
                     </div>
                 </div>
@@ -72,7 +112,7 @@ $user_email = $_SESSION['user_email'];
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($new_arrivals as $book): ?>
+                            <?php foreach ($borrowed_books as $book): ?>
                                 <tr>
                                     <td>
                                         <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
@@ -84,11 +124,15 @@ $user_email = $_SESSION['user_email'];
                                         <span
                                             class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                     </td>
-                                    <td>
-                                        <a class="action-button"
-                                            onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
-                                            Review Book
-                                        </a>
+                                    <td class="review">
+                                        <?php if ($book['is_reviewed']): ?>
+                                            Reviewed
+                                        <?php else: ?>
+                                            <a class="action-button"
+                                                onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
+                                                Review Book
+                                            </a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

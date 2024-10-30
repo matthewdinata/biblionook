@@ -32,16 +32,16 @@ document.addEventListener("DOMContentLoaded", function () {
                             div.innerHTML = `
                                 <a href="details.php?id=${item.id}">
                                     <div class="suggestion-item">
-                                            <img src="${item.thumbnail_url}"
-                                                alt="${item.title}" />
-                                            <div class="text">
-                                                <span>${item.title}</span> by <span>${item.author}</span>
-                                            </div>
+                                        <img src="${item.thumbnail_url}"
+                                            alt="${item.title}" />
+                                        <div class="text">
+                                            <span>${item.title}</span> by <span>${item.author}</span>
+                                        </div>
                                     </div>
                                 </a>`;
                             div.className = "suggestion-item";
                             div.onclick = () => {
-                                searchInput.value = item.title;
+                                searchInput.value = "";
                                 suggestionsContainer.style.display = "none";
                             };
                             suggestionsContainer.appendChild(div);

@@ -122,6 +122,12 @@
     font-size: 12px;
 }
 
+.review {
+    font-weight: 500;
+    color: var(--global-primary);
+    font-style: italic;
+}
+
 .mystery {
     background-color: #fff3cd;
     color: #856404;
