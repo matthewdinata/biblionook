@@ -55,7 +55,6 @@
 .book-meta {
     color: var(--global-muted-color);
     font-size: 1rem;
-    filter: invert(0.5) brightness(1.25);
 }
 
 /* Rating Stars */
@@ -328,5 +327,9 @@
 
     .review-rating .star {
         filter: invert(1);
+    }
+
+    .book-meta {
+        filter: invert(0.5) brightness(1.25);
     }
 }

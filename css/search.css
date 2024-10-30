@@ -158,7 +158,6 @@
     font-size: 1rem;
     font-weight: 500;
     margin: 0.3rem 1rem 0 1rem;
-    filter: brightness(1.5);
 }
 
 .book-author {
@@ -171,6 +170,10 @@
     .book-card {
         background-color: var(--global-secondary-background);
         filter: brightness(0.9);
+    }
+
+    .book-title {
+        filter: brightness(1.5);
     }
 
     .book-author {
