@@ -25,7 +25,7 @@
     top: 100%;
     width: 50%;
     left: 25%;
-    background-color: #fff;
+    background-color: var(--global-contrast-inverse);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-top: none;
     border-radius: 6px;
@@ -52,12 +52,16 @@
     margin-right: 0.5rem;
 }
 
+.suggestions a:hover {
+    text-decoration: none;
+}
+
 .text span {
     font-weight: 600;
 }
 
 .suggestion-item:hover {
-    background-color: #f0f0f0;
+    background-color: var(--global-tab-hover-background);
 }
 
 @media screen and (max-width: 700px) {

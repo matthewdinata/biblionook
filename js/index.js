@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
             )
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
                     suggestionsContainer.innerHTML = "";
                     if (data.length > 0) {
                         data.forEach((item) => {
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                         </div>
                                     </div>
                                 </a>`;
-                            div.className = "suggestion-item";
                             div.onclick = () => {
                                 searchInput.value = "";
                                 suggestionsContainer.style.display = "none";
