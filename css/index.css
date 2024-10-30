@@ -84,6 +84,15 @@
     align-items: end;
 }
 
+.book-card {
+    cursor: pointer;
+}
+
+.book-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s;
+}
+
 .book-card img {
     height: 100%;
     width: auto;
@@ -112,12 +121,6 @@
     width: 200px;
     display: flex;
     align-items: flex-end;
-    cursor: pointer;
-}
-
-.card:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s;
 }
 
 .group {

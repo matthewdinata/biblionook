@@ -6,7 +6,7 @@ $query = isset($_GET['query']) ? $_GET['query'] : '';
 
 if (strlen($query) >= 2) {
     // Prepare the SQL statement
-    $sql = "SELECT title, author, thumbnail_url FROM Book WHERE title LIKE ? LIMIT 5";
+    $sql = "SELECT * FROM Book WHERE title LIKE ? LIMIT 5";
     $stmt = $db->prepare($sql);
 
     // Execute the query
