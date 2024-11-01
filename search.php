@@ -154,7 +154,6 @@ if ($result->num_rows > 0) {
                     </div>
 
                     <div class="books-grid">
-                        <!-- Featured Book cards -->
                         <?php foreach ($recommended_books as $book): ?>
                             <a class="book-card featured" href='details.php?id=<?= e($book['id']) ?>'>
                                 <div class="book-cover">

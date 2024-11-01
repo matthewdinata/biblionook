@@ -14,10 +14,15 @@ $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $itemsPerPage = 6;
 $offset = ($page - 1) * $itemsPerPage;
 
+// Get filter parameters
+$genres = !empty($_GET['genres']) ? explode(',', $_GET['genres']) : [];
+$authorRanges = !empty($_GET['authorRanges']) ? explode(',', $_GET['authorRanges']) : [];
+$titleRanges = !empty($_GET['titleRanges']) ? explode(',', $_GET['titleRanges']) : [];
+
 // Base query
 $baseQuery = "SELECT id, title, author, isbn, genre, thumbnail_url FROM Book";
 $countQuery = "SELECT COUNT(*) as total FROM Book";
-$whereClause = "";
+$whereConditions = [];
 $params = [];
 $types = "";
 
@@ -25,22 +30,83 @@ $types = "";
 if ($searchQuery !== '') {
     switch ($searchType) {
         case 'author':
-            $whereClause = " WHERE author LIKE ?";
+            $whereConditions[] = "author LIKE ?";
             $params[] = "%{$searchQuery}%";
             $types .= "s";
             break;
         case 'title':
-            $whereClause = " WHERE title LIKE ?";
+            $whereConditions[] = "title LIKE ?";
             $params[] = "%{$searchQuery}%";
             $types .= "s";
             break;
         case 'isbn':
-            $whereClause = " WHERE isbn LIKE ?";
+            $whereConditions[] = "isbn LIKE ?";
             $params[] = "%{$searchQuery}%";
             $types .= "s";
             break;
     }
 }
+
+// Add genre filters
+if (!empty($genres)) {
+    $genrePlaceholders = str_repeat('?,', count($genres) - 1) . '?';
+    $whereConditions[] = "genre IN ($genrePlaceholders)";
+    foreach ($genres as $genre) {
+        $params[] = $genre;
+        $types .= "s";
+    }
+}
+
+// Add author range filters
+if (!empty($authorRanges)) {
+    $authorConditions = [];
+    foreach ($authorRanges as $range) {
+        switch ($range) {
+            case '1':
+                $authorConditions[] = "(author >= 'A' AND author <= 'E')";
+                break;
+            case '2':
+                $authorConditions[] = "(author >= 'F' AND author <= 'L')";
+                break;
+            case '3':
+                $authorConditions[] = "(author >= 'M' AND author <= 'S')";
+                break;
+            case '4':
+                $authorConditions[] = "(author >= 'T' AND author <= 'Z')";
+                break;
+        }
+    }
+    if (!empty($authorConditions)) {
+        $whereConditions[] = "(" . implode(" OR ", $authorConditions) . ")";
+    }
+}
+
+// Add title range filters
+if (!empty($titleRanges)) {
+    $titleConditions = [];
+    foreach ($titleRanges as $range) {
+        switch ($range) {
+            case '1':
+                $titleConditions[] = "(title >= 'A' AND title <= 'E')";
+                break;
+            case '2':
+                $titleConditions[] = "(title >= 'F' AND title <= 'L')";
+                break;
+            case '3':
+                $titleConditions[] = "(title >= 'M' AND title <= 'S')";
+                break;
+            case '4':
+                $titleConditions[] = "(title >= 'T' AND title <= 'Z')";
+                break;
+        }
+    }
+    if (!empty($titleConditions)) {
+        $whereConditions[] = "(" . implode(" OR ", $titleConditions) . ")";
+    }
+}
+
+// Combine all conditions
+$whereClause = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";
 
 // Add pagination
 $query = $baseQuery . $whereClause . " LIMIT ? OFFSET ?";

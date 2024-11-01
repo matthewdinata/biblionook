@@ -6,12 +6,49 @@ document.addEventListener('DOMContentLoaded', function () {
     const paginationText = document.querySelector('.pagination-text');
     const prevButton = document.querySelector('.pagination-button:first-child');
     const nextButton = document.querySelector('.pagination-button:last-child');
+    const genreCheckboxes = document.querySelectorAll(
+        '.filter-section:nth-child(1) input[type="checkbox"]'
+    );
+    const authorCheckboxes = document.querySelectorAll(
+        '.filter-section:nth-child(2) input[type="checkbox"]'
+    );
+    const titleCheckboxes = document.querySelectorAll(
+        '.filter-section:nth-child(3) input[type="checkbox"]'
+    );
 
     let currentPage = 1;
     let totalPages = 1;
 
     // Store the initial featured books HTML
     const initialFeaturedBooks = booksGrid.innerHTML;
+
+    function getSelectedFilters() {
+        const filters = {
+            genres: [],
+            authorRanges: [],
+            titleRanges: [],
+        };
+
+        genreCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                filters.genres.push(checkbox.value);
+            }
+        });
+
+        authorCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                filters.authorRanges.push(checkbox.value);
+            }
+        });
+
+        titleCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                filters.titleRanges.push(checkbox.value);
+            }
+        });
+
+        return filters;
+    }
 
     // Debounce function to prevent too many API calls
     function debounce(func, wait) {
@@ -30,9 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
     async function performSearch() {
         const searchType = searchSelect.value;
         const searchQuery = searchInput.value.trim();
+        const filters = getSelectedFilters();
 
-        // If search is empty, restore featured books and reset pagination
-        if (searchQuery === '') {
+        if (
+            searchQuery === '' &&
+            filters.genres.length === 0 &&
+            filters.authorRanges.length === 0 &&
+            filters.titleRanges.length === 0
+        ) {
             booksGrid.classList.remove('no-results-grid');
             booksGrid.innerHTML = initialFeaturedBooks;
             paginationText.textContent = '1 of 1';
@@ -42,9 +84,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
+            const queryParams = new URLSearchParams({
+                type: searchType,
+                query: searchQuery,
+                page: currentPage,
+                genres: filters.genres.join(','),
+                authorRanges: filters.authorRanges.join(','),
+                titleRanges: filters.titleRanges.join(','),
+            });
             const response = await fetch(
-                `utils/search/search_books.php?type=${searchType}&query=${searchQuery}&page=${currentPage}`
+                `utils/search/search_books.php?${queryParams}`
             );
+
             const data = await response.json();
 
             // If there's an error in the response, throw it
@@ -113,6 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     searchButton.addEventListener('click', performSearch);
+
+    genreCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', performSearch);
+    });
+
+    authorCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', performSearch);
+    });
+
+    titleCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', performSearch);
+    });
 
     // Pagination handlers
     prevButton.addEventListener('click', () => {
