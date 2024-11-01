@@ -1,10 +1,18 @@
 const select = document.querySelector('.period-select');
+const priceAmountElement = document.querySelector('.price .amount');
+const pricePeriodElement = document.querySelector('.price .period');
+
+const baseFee = parseFloat(priceAmountElement.textContent.replace('$', ''));
 
 // Initial setup
 updateDisplayText();
+updatePrice();
 
 // Update when selection changes
-select.addEventListener('change', updateDisplayText);
+select.addEventListener('change', () => {
+    updateDisplayText();
+    updatePrice();
+});
 
 function updateDisplayText() {
     const selectedOption = select.options[select.selectedIndex];
@@ -26,4 +34,14 @@ function updateDisplayText() {
 
     // Insert the display option at the start
     select.insertBefore(displayOption, select.firstChild);
+}
+
+function updatePrice() {
+    const selectedValue = parseInt(select.value);
+    const numberOfDays = selectedValue * 7;
+    const totalFee = (baseFee * selectedValue).toFixed(2);
+
+    // Update the price display
+    priceAmountElement.textContent = `$${totalFee}`;
+    pricePeriodElement.textContent = `/ ${numberOfDays} days`;
 }
