@@ -94,6 +94,8 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 
 .filter-item span {
@@ -158,12 +160,14 @@
     font-size: 1rem;
     font-weight: 500;
     margin: 0.3rem 1rem 0 1rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .book-author {
     font-size: 0.875rem;
     color: var(--global-muted-color);
     margin: 0 1rem 1rem 1rem;
+    font-family: 'Inter', sans-serif;
 }
 
 [data-theme='dark'] {

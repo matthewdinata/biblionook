@@ -58,6 +58,7 @@ if ($result->num_rows > 0) {
                             <option value="author">Author</option>
                             <option value="title">Title</option>
                             <option value="genre">Genre</option>
+                            <option value="genre">ISBN</option>
                         </select>
                         <input type="text" class="search-input" placeholder="Search...">
                     </div>
@@ -146,8 +147,8 @@ if ($result->num_rows > 0) {
                         <button class="sort-button">
                             DATE
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6" />
                             </svg>
                         </button>
@@ -158,7 +159,7 @@ if ($result->num_rows > 0) {
                         <?php foreach ($recommended_books as $book): ?>
                             <a class="book-card" href='details.php?id=<?= e($book['id']) ?>'>
                                 <div class="book-cover"><img src="<?= e($book['thumbnail_url']) ?>"
-                                        alt="<?= e($book['title']) ?>" /></div>
+                                         alt="<?= e($book['title']) ?>" /></div>
                                 <h3 class="book-title"><?= e($book['title']) ?></h3>
                                 <p class="book-author"><?= e($book['author']) ?></p>
                             </a>
