@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Function to safely escape output
 function e($string)
 {
@@ -148,7 +149,7 @@ if (!$book) {
 
                 <div class="book-info">
                     <img src="<?php echo e($book['thumbnail_url']); ?>" alt="<?php echo e($book['title']); ?> cover"
-                        class="book-thumbnail">
+                         class="book-thumbnail">
                 </div>
             <?php endif; ?>
 
