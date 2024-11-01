@@ -114,34 +114,35 @@ HTML;
                     </div>
 
 
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <div class="borrow-section">
+                            <div class="borrowing-info">
+                                <div class="period">
+                                    <select class="period-select">
+                                        <option data-display="Borrowing Period: 7 days" value="1">7 days</option>
+                                        <option data-display="Borrowing Period: 14 days" value="2">14 days</option>
+                                        <option data-display="Borrowing Period: 21 days" value="3">21 days</option>
+                                        <option data-display="Borrowing Period: 28 days" value="4">28 days</option>
+                                    </select>
+                                </div>
+                                <div class="price">
+                                    <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
+                                    <span class="period">/ <?= e($book['borrow_period'] ?? '7') ?> days</span>
+                                </div>
+                            </div>
+                            <div class="borrowing-cta">
+                                <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
+                                    Book</button>
 
-                    <div class="borrow-section">
-                        <div class="borrowing-info">
-                            <div class="period">
-                                <select class="period-select">
-                                    <option data-display="Borrowing Period: 7 days" value="1">7 days</option>
-                                    <option data-display="Borrowing Period: 14 days" value="2">14 days</option>
-                                    <option data-display="Borrowing Period: 21 days" value="3">21 days</option>
-                                    <option data-display="Borrowing Period: 28 days" value="4">28 days</option>
-                                </select>
+                                <div class="membership-prompt">
+                                    <p>Not a member? 😊</p>
+                                    <span> <a href="join.php" class="join-link">Join now</a> for unlimited borrowing!</span>
+
+                                </div>
                             </div>
-                            <div class="price">
-                                <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
-                                <span class="period">/ <?= e($book['borrow_period'] ?? '7') ?> days</span>
-                            </div>
+
                         </div>
-                        <div class="borrowing-cta">
-                            <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
-                                Book</button>
-
-                            <div class="membership-prompt">
-                                <p>Not a member? 😊</p>
-                                <span> <a href="join.php" class="join-link">Join now</a> for unlimited borrowing!</span>
-
-                            </div>
-                        </div>
-
-                    </div>
+                    <?php endif; ?>
 
 
 
