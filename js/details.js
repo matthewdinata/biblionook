@@ -1,4 +1,3 @@
-// Get DOM elements
 const select = document.querySelector('.period-select');
 const priceAmountElement = document.querySelector('.price .amount');
 const pricePeriodElement = document.querySelector('.price .period');
@@ -9,7 +8,7 @@ if (priceAmountElement) {
     baseFee = parseFloat(priceAmountElement.textContent.replace('$', ''));
 }
 
-// Initial setup for display text (for both free and member selects)
+// Initial setup for display text
 if (select) {
     updateDisplayText();
 }
@@ -17,7 +16,7 @@ if (select) {
 // Initialize price display for free membership
 if (priceAmountElement && pricePeriodElement) {
     // Set initial period text
-    const initialDays = 7; // Default is 7 days
+    const initialDays = 7;
     pricePeriodElement.textContent = `/ ${initialDays} days`;
 
     // Update when selection changes
@@ -55,23 +54,21 @@ function handleMemberBorrow() {
     const selectedPeriod = periodSelect.value;
     const numberOfDays = selectedPeriod * 7;
 
-    // Show a confirmation dialog
     if (confirm(`Confirm borrowing this book for ${numberOfDays} days?`)) {
-        // Submit the borrowing request
         submitBorrowingRequest(selectedPeriod);
     }
 }
 
-// Function to submit borrowing request for members
+// Function to submit borrowing request for both free and premium members
 async function submitBorrowingRequest(periodValue) {
     try {
-        const response = await fetch('process_member_borrow.php', {
+        const response = await fetch('utils/details/process_borrow.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                book_id: bookId, // Make sure bookId is defined in your PHP template
+                book_id: bookId,
                 period: periodValue,
             }),
         });
@@ -79,8 +76,11 @@ async function submitBorrowingRequest(periodValue) {
         const data = await response.json();
 
         if (data.success) {
-            alert('Book borrowed successfully!');
-            window.location.href = 'my_books.php';
+            alert(
+                'Book borrowed successfully! Due date: ' +
+                    new Date(data.due_date).toLocaleDateString()
+            );
+            window.location.href = 'books.php';
         } else {
             alert(data.message || 'Failed to borrow book. Please try again.');
         }
@@ -101,7 +101,7 @@ function updateDisplayText() {
     const displayOption = document.createElement('option');
     displayOption.textContent = displayText;
     displayOption.value = selectedOption.value;
-    displayOption.hidden = true; // This hides it from the dropdown list
+    displayOption.hidden = true;
     displayOption.selected = true;
 
     // Remove any previous hidden display options
