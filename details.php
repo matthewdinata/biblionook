@@ -127,7 +127,7 @@ HTML;
                                 </div>
                                 <div class="price">
                                     <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
-                                    <span class="period">/ <?= e($book['borrow_period'] ?? '7') ?> days</span>
+                                    <span class="period"></span>
                                 </div>
                             </div>
                             <div class="borrowing-cta">
