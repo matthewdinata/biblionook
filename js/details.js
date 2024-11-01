@@ -1,37 +1,99 @@
+// Get DOM elements
 const select = document.querySelector('.period-select');
 const priceAmountElement = document.querySelector('.price .amount');
 const pricePeriodElement = document.querySelector('.price .period');
 
-const baseFee = parseFloat(priceAmountElement.textContent.replace('$', ''));
-
-// Initial setup
-updateDisplayText();
-updatePrice();
-
-// Update when selection changes
-select.addEventListener('change', () => {
-    updateDisplayText();
-    updatePrice();
-});
-
-// Add event listener for slideout menu opening
-const paymentSlideout = document.getElementById('paymentSlideout');
-if (paymentSlideout) {
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.target.classList.contains('active')) {
-                updatePaymentForm();
-            }
-        });
-    });
-
-    observer.observe(paymentSlideout, {
-        attributes: true,
-        attributeFilter: ['class'],
-    });
+// Initialize base fee
+let baseFee = 0;
+if (priceAmountElement) {
+    baseFee = parseFloat(priceAmountElement.textContent.replace('$', ''));
 }
 
+// Initial setup for display text (for both free and member selects)
+if (select) {
+    updateDisplayText();
+}
+
+// Initialize price display for free membership
+if (priceAmountElement && pricePeriodElement) {
+    // Set initial period text
+    const initialDays = 7; // Default is 7 days
+    pricePeriodElement.textContent = `/ ${initialDays} days`;
+
+    // Update when selection changes
+    select.addEventListener('change', () => {
+        updateDisplayText();
+        updatePrice();
+    });
+
+    // Add event listener for slideout menu opening
+    const paymentSlideout = document.getElementById('paymentSlideout');
+    if (paymentSlideout) {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.classList.contains('active')) {
+                    updatePaymentForm();
+                }
+            });
+        });
+
+        observer.observe(paymentSlideout, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+    }
+
+    // Initial price update
+    updatePrice();
+}
+
+// Function to handle member borrowing (for lite/plus memberships)
+function handleMemberBorrow() {
+    const periodSelect = document.getElementById('memberPeriodSelect');
+    if (!periodSelect) return;
+
+    const selectedPeriod = periodSelect.value;
+    const numberOfDays = selectedPeriod * 7;
+
+    // Show a confirmation dialog
+    if (confirm(`Confirm borrowing this book for ${numberOfDays} days?`)) {
+        // Submit the borrowing request
+        submitBorrowingRequest(selectedPeriod);
+    }
+}
+
+// Function to submit borrowing request for members
+async function submitBorrowingRequest(periodValue) {
+    try {
+        const response = await fetch('process_member_borrow.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                book_id: bookId, // Make sure bookId is defined in your PHP template
+                period: periodValue,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert('Book borrowed successfully!');
+            window.location.href = 'my_books.php';
+        } else {
+            alert(data.message || 'Failed to borrow book. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    }
+}
+
+// Display text updating function
 function updateDisplayText() {
+    if (!select) return;
+
     const selectedOption = select.options[select.selectedIndex];
     const displayText = selectedOption.dataset.display;
 
@@ -53,7 +115,10 @@ function updateDisplayText() {
     select.insertBefore(displayOption, select.firstChild);
 }
 
+// Price updating function
 function updatePrice() {
+    if (!select || !priceAmountElement || !pricePeriodElement) return;
+
     const selectedValue = parseInt(select.value);
     const numberOfDays = selectedValue * 7;
     const totalFee = (baseFee * selectedValue).toFixed(2);
@@ -66,6 +131,7 @@ function updatePrice() {
     updatePaymentForm();
 }
 
+// Payment form updating function
 function updatePaymentForm() {
     const paymentDueAmount = document.querySelector(
         '.payment-form .price-display .amount'
@@ -74,7 +140,7 @@ function updatePaymentForm() {
         '.payment-form .price-display .period'
     );
 
-    if (paymentDueAmount && paymentDuePeriod) {
+    if (paymentDueAmount && paymentDuePeriod && select) {
         const selectedValue = parseInt(select.value);
         const numberOfDays = selectedValue * 7;
         const totalFee = (baseFee * selectedValue).toFixed(2);

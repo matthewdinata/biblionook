@@ -10,6 +10,7 @@ function e($string)
 // TODO: fix logic
 require_once "lib/db.php";
 
+
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($book_id > 0) {
@@ -27,6 +28,39 @@ if ($book_id > 0) {
 } else {
     // Handle invalid book ID
     $book = null;
+}
+
+$active_books = 0;
+$can_borrow = true;
+$error_message = '';
+
+if (isset($_SESSION['user_id'])) {
+    $membership_type = $_SESSION['membership_type'] ?? 'free';
+
+    if ($membership_type !== 'free') {
+        $current_time = date('Y-m-d H:i:s');
+        $user_id = $_SESSION['user_id'];
+
+        $sql = "SELECT COUNT(*) as active_books FROM borrowing 
+                WHERE user_id = ? AND due_date > ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("is", $user_id, $current_time);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $active_books = $result->fetch_assoc()['active_books'];
+        $stmt->close();
+
+        // Check borrowing limits
+        $borrowing_limits = [
+            'lite' => 3,
+            'plus' => 10
+        ];
+
+        if ($active_books >= $borrowing_limits[$membership_type]) {
+            $can_borrow = false;
+            $error_message = "You have reached your maximum limit of {$borrowing_limits[$membership_type]} books for your {$membership_type} membership.";
+        }
+    }
 }
 
 ?>
@@ -116,32 +150,68 @@ HTML;
 
 
                     <?php if (isset($_SESSION['user_id'])): ?>
+                        <?php $membership_type = $_SESSION['membership_type'] ?? 'free'; ?>
+
                         <div class="borrow-section">
-                            <div class="borrowing-info">
-                                <div class="period">
-                                    <select class="period-select">
-                                        <option data-display="Borrowing Period: 7 days" value="1">7 days</option>
-                                        <option data-display="Borrowing Period: 14 days" value="2">14 days</option>
-                                        <option data-display="Borrowing Period: 21 days" value="3">21 days</option>
-                                        <option data-display="Borrowing Period: 28 days" value="4">28 days</option>
-                                    </select>
+                            <?php if ($membership_type === 'free'): ?>
+                                <!-- Free membership UI -->
+                                <div class="borrowing-info">
+                                    <div class="period">
+                                        <select class="period-select">
+                                            <option data-display="Borrowing Period: 7 days" value="1">7 days</option>
+                                            <option data-display="Borrowing Period: 14 days" value="2">14 days</option>
+                                            <option data-display="Borrowing Period: 21 days" value="3">21 days</option>
+                                            <option data-display="Borrowing Period: 28 days" value="4">28 days</option>
+                                        </select>
+                                    </div>
+                                    <div class="price">
+                                        <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
+                                        <span class="period"></span>
+                                    </div>
                                 </div>
-                                <div class="price">
-                                    <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
-                                    <span class="period"></span>
+                                <div class="borrowing-cta">
+                                    <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
+                                        Book</button>
+                                    <div class="membership-prompt">
+                                        <p>Want unlimited borrowing? 📚</p>
+                                        <span><a href="pricing.php" class="join-link">Upgrade your membership!</a></span>
+                                    </div>
                                 </div>
+                            <?php else: ?>
+                                <!-- Lite/Plus membership UI -->
+                                <?php if ($can_borrow): ?>
+
+                                    <div class="borrowing-cta member-cta">
+                                        <div class="member-borrow-select">
+                                            <span class='member-borrow-label'>
+                                                Borrow for:
+                                            </span>
+                                            <div class="period">
+                                                <select class="period-select" id="memberPeriodSelect">
+                                                    <option data-display="7 days" value="1">7 days</option>
+                                                    <option data-display="14 days" value="2">14 days</option>
+                                                    <option data-display="21 days" value="3">21 days</option>
+                                                    <option data-display="28 days" value="4">28 days</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button onclick="handleMemberBorrow()" class="borrow-button">Borrow Book</button>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="borrowing-error">
+                                        <p class="error-message"><?= e($error_message) ?></p>
+                                        <p class="suggestion">Please return some books before borrowing new ones.</p>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php else: ?>
+                        <!-- Login prompt for non-logged-in users -->
+                        <div class="login-prompt">
+                            <p>Want to borrow this book? 📚</p>
+                            <div class="auth-links">
+                                <a class="primary-button">Join now</a>
                             </div>
-                            <div class="borrowing-cta">
-                                <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
-                                    Book</button>
-
-                                <div class="membership-prompt">
-                                    <p>Not a member? 😊</p>
-                                    <span> <a href="join.php" class="join-link">Join now</a> for unlimited borrowing!</span>
-
-                                </div>
-                            </div>
-
                         </div>
                     <?php endif; ?>
 
@@ -254,6 +324,9 @@ HTML;
         </div>
     </div>
     <script src='js/components/render_slideout_menu.js'></script>
+    <script>
+        const bookId = <?= $book_id ?>;
+    </script>
     <script src="js/details.js"></script>
 </body>
 
