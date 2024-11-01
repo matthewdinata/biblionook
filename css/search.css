@@ -117,6 +117,23 @@
     background: none;
     cursor: pointer;
     color: var(--global-primary);
+    font-family: 'Inter', sans-serif;
+}
+
+.sort-button .sort-icon {
+    transition: transform 0.2s ease;
+}
+
+.sort-button[data-sort='asc'] .sort-icon {
+    transform: rotate(180deg);
+}
+
+.sort-button[data-sort='desc'] .sort-icon {
+    transform: rotate(0deg);
+}
+
+.sort-button[data-sort='none'] .sort-icon {
+    opacity: 0.5;
 }
 
 .books-grid {

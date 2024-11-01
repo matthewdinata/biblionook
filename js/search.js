@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const titleCheckboxes = document.querySelectorAll(
         '.filter-section:nth-child(3) input[type="checkbox"]'
     );
+    const sortButton = document.querySelector('.sort-button');
+    let currentSortOrder = 'none';
 
     let currentPage = 1;
     let totalPages = 1;
@@ -63,6 +65,41 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    function updateSortButton() {
+        sortButton.setAttribute('data-sort', currentSortOrder);
+        switch (currentSortOrder) {
+            case 'asc':
+                sortButton.innerHTML = `
+                    DATE (Oldest First)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round" class="sort-icon">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                `;
+                break;
+            case 'desc':
+                sortButton.innerHTML = `
+                    DATE (Newest First)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round" class="sort-icon">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                `;
+                break;
+            default:
+                sortButton.innerHTML = `
+                    DATE
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round" class="sort-icon">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                `;
+        }
+    }
+
     // Function to perform search
     async function performSearch() {
         const searchType = searchSelect.value;
@@ -73,7 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
             searchQuery === '' &&
             filters.genres.length === 0 &&
             filters.authorRanges.length === 0 &&
-            filters.titleRanges.length === 0
+            filters.titleRanges.length === 0 &&
+            currentSortOrder === 'none'
         ) {
             booksGrid.classList.remove('no-results-grid');
             booksGrid.innerHTML = initialFeaturedBooks;
@@ -91,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 genres: filters.genres.join(','),
                 authorRanges: filters.authorRanges.join(','),
                 titleRanges: filters.titleRanges.join(','),
+                sort: currentSortOrder,
             });
             const response = await fetch(
                 `utils/search/search_books.php?${queryParams}`
@@ -157,6 +196,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const debouncedSearch = debounce(performSearch, 300);
 
     // Event listeners
+    sortButton.addEventListener('click', () => {
+        // Cycle through sort states
+        switch (currentSortOrder) {
+            case 'none':
+                currentSortOrder = 'asc';
+                break;
+            case 'asc':
+                currentSortOrder = 'desc';
+                break;
+            case 'desc':
+                currentSortOrder = 'none';
+                break;
+        }
+        updateSortButton();
+        performSearch();
+    });
+
     searchInput.addEventListener('input', debouncedSearch);
     searchSelect.addEventListener('change', () => {
         if (searchInput.value.trim() !== '') {

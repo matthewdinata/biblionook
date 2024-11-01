@@ -20,9 +20,10 @@ $authorRanges = !empty($_GET['authorRanges']) ? explode(',', $_GET['authorRanges
 $titleRanges = !empty($_GET['titleRanges']) ? explode(',', $_GET['titleRanges']) : [];
 
 // Base query
-$baseQuery = "SELECT id, title, author, isbn, genre, thumbnail_url FROM Book";
+$baseQuery = "SELECT id, title, author, isbn, genre, thumbnail_url, date_added FROM Book";
 $countQuery = "SELECT COUNT(*) as total FROM Book";
 $whereConditions = [];
+
 $params = [];
 $types = "";
 
@@ -108,8 +109,14 @@ if (!empty($titleRanges)) {
 // Combine all conditions
 $whereClause = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";
 
+$sortOrder = isset($_GET['sort']) ? sanitizeInput($_GET['sort']) : 'none';
+$orderClause = "";
+if ($sortOrder !== 'none') {
+    $orderClause = " ORDER BY date_added " . ($sortOrder === 'asc' ? 'ASC' : 'DESC');
+}
+
 // Add pagination
-$query = $baseQuery . $whereClause . " LIMIT ? OFFSET ?";
+$query = $baseQuery . $whereClause . $orderClause . " LIMIT ? OFFSET ?";
 $params[] = $itemsPerPage;
 $params[] = $offset;
 $types .= "ii";
