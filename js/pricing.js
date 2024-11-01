@@ -1,22 +1,3 @@
-function upgradePlan(planType) {
-    // First check if user is logged in
-    fetch("./utils/auth/check_auth.php")
-        .then((response) => response.json())
-        .then((data) => {
-            if (!data.authenticated) {
-                window.location.href = "auth.php";
-                return;
-            }
-
-            // If authenticated, proceed with plan upgrade
-            window.location.href = `payment.php?plan=${planType}`;
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("An error occurred. Please try again later.");
-        });
-}
-
 function openPaymentSlideout(planKey) {
     // Get the plan data
     const plan = plansData[planKey];
@@ -31,18 +12,7 @@ function openPaymentSlideout(planKey) {
                 </div>
                 <h2>${plan.name}</h2>
             </div>
-            <div class="plan-features">
-                ${plan.features
-                    .map(
-                        (feature) => `
-                    <div class="feature">
-                        <img src="assets/icons/check.png" alt="check">
-                        <span>${feature}</span>
-                    </div>
-                `
-                    )
-                    .join("")}
-            </div>
+            <input type="hidden" name="selected-plan" value="${planKey}" />
         </div>
     `;
 
@@ -67,12 +37,57 @@ function openPaymentSlideout(planKey) {
     slideoutMenu.open("paymentSlideout");
 }
 
-// Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
+function processPayment() {
+    const selectedPlan = document.querySelector(
+        "#paymentSlideout input[name=selected-plan]"
+    ).value;
+
+    // Create a form data object to submit the selected plan to the PHP script
+    const formData = new FormData();
+    formData.append("selected-plan", selectedPlan);
+
+    fetch("utils/pricing/process_upgrade_plan.php", {
+        method: "POST",
+        body: formData,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                console.log("Payment successful!");
+            } else {
+                // Handle errors
+                const errorMessages = data.errors.join("<br>");
+                document.querySelector(".error-message").innerHTML =
+                    errorMessages;
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
         });
-    });
-});
+}
+
+function switchPlan(planKey) {
+    if (!confirm(`Are you sure you want to switch to ${planKey} plan?`)) {
+        return;
+    }
+    const formData = new FormData();
+    formData.append("selected-plan", planKey);
+
+    fetch("utils/pricing/process_upgrade_plan.php", {
+        method: "POST",
+        body: formData,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                window.location.reload();
+            } else {
+                const errorMessages = data.errors.join("<br>");
+                document.querySelector(".error-message").innerHTML =
+                    errorMessages;
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}

@@ -243,10 +243,13 @@ class PaymentFormValidator {
             const submitButton = this.form.querySelector(
                 '.slideout-submit-button'
             );
-            const originalText = submitButton.textContent;
             submitButton.disabled = true;
             submitButton.textContent = 'Processing...';
 
+            if (typeof processPayment === "function") {
+                // Call the global function to process payment
+                processPayment();
+            }
             // Simulate payment processing
             setTimeout(() => {
                 this.showSuccessState();

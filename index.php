@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Function to safely escape output
 function e($string)
