@@ -20,6 +20,7 @@ $plans = [
         'name' => 'Lite plan',
         'price' => 9.9,
         'features' => [
+            'Everything on Free plan',
             'Borrow up to 3 books at a time',
             'Basic Support'
         ],
@@ -33,11 +34,13 @@ $plans = [
             'Borrow up to 10 books at a time',
             'Advanced Search Functionality',
             'Early access to new releases',
-            'Premium Support'
+            '24/7 Premium Support'
         ],
         'is_premium' => true
     ]
 ];
+
+$membership_type = $_SESSION['membership_type'] ?? 'free';
 
 // Function to render plan features
 function renderFeatures($features, $isPremium = false)
@@ -59,8 +62,17 @@ function renderFeatures($features, $isPremium = false)
 // Function to render button based on plan type
 function renderButton($planKey)
 {
-    if ($planKey === 'free') {
+    global $membership_type;
+    if ($planKey === $membership_type) {
         return '<button class="current-plan">Current Plan</button>';
+    }
+
+    if ($membership_type == 'plus') {
+        return "<a class=\"switch-plan-button\">Switch to {$planKey} plan</a>";
+    }
+
+    if ($membership_type == 'lite' && $planKey == 'free') {
+        return "<a class=\"switch-plan-button\">Switch to free plan</a>";
     }
 
     return <<<HTML

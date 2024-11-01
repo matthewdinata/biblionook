@@ -114,7 +114,7 @@
     border-radius: 0.5rem;
     background: var(--global-primary-hover-background);
     color: #55524a;
-    cursor: pointer;
+    cursor: text;
     font-weight: 600;
     font-size: 0.8rem;
     transition: background 0.3s ease;
@@ -122,6 +122,16 @@
 
 .plan-button:hover {
     background: var(--global-primary-background);
+}
+
+.switch-plan-button {
+    display: block;
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 1.2rem;
 }
 
 .current-plan {
