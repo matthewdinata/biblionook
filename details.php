@@ -56,14 +56,23 @@ if ($book_id > 0) {
 
     // Payment form content
     $paymentContent = <<<HTML
-            <div class="payment-form">
-                <p class="text-center mb-4">
-                    Your chosen book: <strong>$book[title]</strong><br>
-                    Just one more page to turn before you can dive into your book of choice!
-                </p>
-
+    <div class="payment-form">
+        <p class="text-center mb-4">
+            Your chosen book: <strong>{$book['title']}</strong><br>
+            Just one more page to turn before you can dive into your book of choice!
+        </p>
+        
+        <div class="form-section">
+            <div class="purchase-details mb-6">
+                <h3>Payment due</h3>
+                <div class="price-display">
+                    <span class="amount">$<?= $book[fee] ?></span>
+                    <span class="period">/7 days</span>
+                </div>
             </div>
-        HTML;
+        </div>
+    </div>
+HTML;
 
     // Render the slideout menu
     renderSlideoutMenu('paymentSlideout', 'Complete your Payment', $paymentContent);

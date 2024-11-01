@@ -14,6 +14,23 @@ select.addEventListener('change', () => {
     updatePrice();
 });
 
+// Add event listener for slideout menu opening
+const paymentSlideout = document.getElementById('paymentSlideout');
+if (paymentSlideout) {
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.target.classList.contains('active')) {
+                updatePaymentForm();
+            }
+        });
+    });
+
+    observer.observe(paymentSlideout, {
+        attributes: true,
+        attributeFilter: ['class'],
+    });
+}
+
 function updateDisplayText() {
     const selectedOption = select.options[select.selectedIndex];
     const displayText = selectedOption.dataset.display;
@@ -41,7 +58,28 @@ function updatePrice() {
     const numberOfDays = selectedValue * 7;
     const totalFee = (baseFee * selectedValue).toFixed(2);
 
-    // Update the price display
+    // Update the main price display
     priceAmountElement.textContent = `$${totalFee}`;
     pricePeriodElement.textContent = `/ ${numberOfDays} days`;
+
+    // Update payment form if it's visible
+    updatePaymentForm();
+}
+
+function updatePaymentForm() {
+    const paymentDueAmount = document.querySelector(
+        '.payment-form .price-display .amount'
+    );
+    const paymentDuePeriod = document.querySelector(
+        '.payment-form .price-display .period'
+    );
+
+    if (paymentDueAmount && paymentDuePeriod) {
+        const selectedValue = parseInt(select.value);
+        const numberOfDays = selectedValue * 7;
+        const totalFee = (baseFee * selectedValue).toFixed(2);
+
+        paymentDueAmount.textContent = `$${totalFee}`;
+        paymentDuePeriod.textContent = `for ${numberOfDays} days`;
+    }
 }
