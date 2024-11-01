@@ -1,8 +1,6 @@
 <?php
 function renderNavbar($currentPage)
 {
-    session_start();
-    $id = session_id();
     $logo_src = './assets/logo.svg';
     $signin = './assets/icons/sign-in.svg';
     $user = './assets/icons/user.svg';

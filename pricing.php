@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Function to safely escape output
 function e($string)
 {
@@ -20,6 +21,7 @@ $plans = [
         'name' => 'Lite plan',
         'price' => 9.9,
         'features' => [
+            'Everything on Free plan',
             'Borrow up to 3 books at a time',
             'Basic Support'
         ],
@@ -32,12 +34,13 @@ $plans = [
             'Everything on Lite plan',
             'Borrow up to 10 books at a time',
             'Advanced Search Functionality',
-            'Early access to new releases',
-            'Premium Support'
+            '24/7 Premium Support'
         ],
         'is_premium' => true
     ]
 ];
+
+$membership_type = $_SESSION['membership_type'] ?? '';
 
 // Function to render plan features
 function renderFeatures($features, $isPremium = false)
@@ -59,33 +62,34 @@ function renderFeatures($features, $isPremium = false)
 // Function to render button based on plan type
 function renderButton($planKey)
 {
-    if ($planKey === 'free') {
+    global $membership_type;
+
+    // If the user is not logged in, don't render any buttons
+    if ($membership_type == '')
+        return '';
+
+    // If the plan is the current membership type, show a "Current Plan" button
+    if ($planKey === $membership_type) {
         return '<button class="current-plan">Current Plan</button>';
     }
 
+    // If the user is on the Plus plan, show a "Switch to Lite/Free plan" button
+    if ($membership_type == 'plus') {
+        return "<a class=\"switch-plan-button\" onclick=\"switchPlan('{$planKey}')\">Switch to {$planKey} plan</a>";
+    }
+
+    // If the user is on the Lite plan and the plan is the free plan, show a "Switch to free plan" button
+    if ($membership_type == 'lite' && $planKey == 'free') {
+        return "<a class=\"switch-plan-button\" onclick=\"switchPlan('{$planKey}')\">Switch to free plan</a>";
+    }
+
+    // Otherwise, show an "Upgrade to Plan" button
     return <<<HTML
         <button class="plan-button" onclick="openPaymentSlideout('{$planKey}')">
             Upgrade to {$planKey} plan
             <img src="assets/icons/arrow-right.png" alt="arrow-right">
         </button>
     HTML;
-}
-
-// Function to generate payment content based on selected plan
-function generatePaymentContent($plan)
-{
-    $html = <<<HTML
-        <div class="plan-header">
-            <div class="price">
-                <span class="amount">\${$plan['price']}</span>
-                <span class="period">/mon</span>
-            </div>
-            <h2>{$plan['name']}</h2>
-        </div>
-    HTML;
-
-    $html .= renderFeatures($plan['features'], false);
-    return $html;
 }
 
 // Function to render a plan card
@@ -159,7 +163,6 @@ function renderPlanCard($planKey, $plan)
             </div>
         </div>
     </div>
-
     <script src="js/pricing.js"></script>
     <script src='js/components/render_slideout_menu.js'></script>
 </body>

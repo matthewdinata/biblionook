@@ -124,6 +124,16 @@
     background: var(--global-primary-background);
 }
 
+.switch-plan-button {
+    display: block;
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 1.2rem;
+}
+
 .current-plan {
     position: absolute;
     top: 0;
