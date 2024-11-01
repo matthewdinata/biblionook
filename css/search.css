@@ -47,7 +47,7 @@
     border: none;
     border-radius: 12px;
     background-color: var(--global-secondary-background);
-    cursor: pointer;
+    cursor: default;
     width: 5rem;
 
     background-image: url('../assets/icons/search-inverted.svg');
@@ -121,10 +121,21 @@
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
     grid-template-rows: auto auto auto;
+}
+
+.books-grid.no-results-grid {
+    display: block;
+    text-align: center;
+    padding: 2rem;
+}
+
+.no-results {
+    font-size: 1.1rem;
+    color: #666;
 }
 
 .book-card {
@@ -157,14 +168,14 @@
 }
 
 .book-title {
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 500;
     margin: 0.3rem 1rem 0 1rem;
     font-family: 'Inter', sans-serif;
 }
 
 .book-author {
-    font-size: 0.875rem;
+    font-size: 0.7rem;
     color: var(--global-muted-color);
     margin: 0 1rem 1rem 1rem;
     font-family: 'Inter', sans-serif;

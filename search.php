@@ -55,10 +55,9 @@ if ($result->num_rows > 0) {
                 <div class="search-bar">
                     <div class="input-group">
                         <select class="search-select">
-                            <option value="author">Author</option>
                             <option value="title">Title</option>
-                            <option value="genre">Genre</option>
-                            <option value="genre">ISBN</option>
+                            <option value="author">Author</option>
+                            <option value="isbn">ISBN</option>
                         </select>
                         <input type="text" class="search-input" placeholder="Search...">
                     </div>
@@ -155,11 +154,12 @@ if ($result->num_rows > 0) {
                     </div>
 
                     <div class="books-grid">
-                        <!-- Book cards -->
+                        <!-- Featured Book cards -->
                         <?php foreach ($recommended_books as $book): ?>
-                            <a class="book-card" href='details.php?id=<?= e($book['id']) ?>'>
-                                <div class="book-cover"><img src="<?= e($book['thumbnail_url']) ?>"
-                                         alt="<?= e($book['title']) ?>" /></div>
+                            <a class="book-card featured" href='details.php?id=<?= e($book['id']) ?>'>
+                                <div class="book-cover">
+                                    <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                                </div>
                                 <h3 class="book-title"><?= e($book['title']) ?></h3>
                                 <p class="book-author"><?= e($book['author']) ?></p>
                             </a>
@@ -167,14 +167,15 @@ if ($result->num_rows > 0) {
                     </div>
 
                     <div class="pagination">
-                        <button class="pagination-button">&lt;</button>
-                        <span class="pagination-text">1 of 8</span>
-                        <button class="pagination-button">&gt;</button>
+                        <button class="pagination-button" disabled>&lt;</button>
+                        <span class="pagination-text">1 of 1</span>
+                        <button class="pagination-button" disabled>&gt;</button>
                     </div>
                 </section>
             </div>
         </div>
     </div>
+    <script src="js/search.js"></script>
 </body>
 
 </html>

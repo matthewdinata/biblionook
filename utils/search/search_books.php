@@ -1,0 +1,92 @@
+<?php
+header('Content-Type: application/json');
+require_once "../../lib/db.php";
+
+function sanitizeInput($input)
+{
+    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+}
+
+// Get search parameters
+$searchType = isset($_GET['type']) ? sanitizeInput($_GET['type']) : 'title';
+$searchQuery = isset($_GET['query']) ? sanitizeInput($_GET['query']) : '';
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$itemsPerPage = 6;
+$offset = ($page - 1) * $itemsPerPage;
+
+// Base query
+$baseQuery = "SELECT id, title, author, isbn, genre, thumbnail_url FROM Book";
+$countQuery = "SELECT COUNT(*) as total FROM Book";
+$whereClause = "";
+$params = [];
+$types = "";
+
+// Add search conditions based on search type
+if ($searchQuery !== '') {
+    switch ($searchType) {
+        case 'author':
+            $whereClause = " WHERE author LIKE ?";
+            $params[] = "%{$searchQuery}%";
+            $types .= "s";
+            break;
+        case 'title':
+            $whereClause = " WHERE title LIKE ?";
+            $params[] = "%{$searchQuery}%";
+            $types .= "s";
+            break;
+        case 'isbn':
+            $whereClause = " WHERE isbn LIKE ?";
+            $params[] = "%{$searchQuery}%";
+            $types .= "s";
+            break;
+    }
+}
+
+// Add pagination
+$query = $baseQuery . $whereClause . " LIMIT ? OFFSET ?";
+$params[] = $itemsPerPage;
+$params[] = $offset;
+$types .= "ii";
+
+// Prepare and execute the main query
+$stmt = $db->prepare($query);
+if (!empty($params)) {
+    $stmt->bind_param($types, ...$params);
+}
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Get total count for pagination
+$countStmt = $db->prepare($countQuery . $whereClause);
+if (!empty($params)) {
+    // Remove the last two parameters (LIMIT and OFFSET)
+    array_splice($params, -2);
+    $countStmt->bind_param(substr($types, 0, -2), ...$params);
+}
+$countStmt->execute();
+$totalCount = $countStmt->get_result()->fetch_assoc()['total'];
+
+// Format results
+$books = [];
+while ($row = $result->fetch_assoc()) {
+    $books[] = [
+        'id' => $row['id'],
+        'title' => $row['title'],
+        'author' => $row['author'],
+        'isbn' => $row['isbn'],
+        'genre' => $row['genre'],
+        'thumbnail_url' => $row['thumbnail_url']
+    ];
+}
+
+// Return response
+echo json_encode([
+    'books' => $books,
+    'total' => $totalCount,
+    'totalPages' => ceil($totalCount / $itemsPerPage),
+    'currentPage' => $page
+]);
+
+$stmt->close();
+$countStmt->close();
+$db->close();
