@@ -12,7 +12,7 @@ require_once "lib/db.php";
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($book_id > 0) {
-    $sql = "SELECT title, thumbnail_url, author, summary, isbn, publication_date FROM Book WHERE id = ?";
+    $sql = "SELECT title, thumbnail_url, author, summary, isbn, publication_date, fee FROM Book WHERE id = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $book_id);
     $stmt->execute();
@@ -58,19 +58,10 @@ if ($book_id > 0) {
     $paymentContent = <<<HTML
             <div class="payment-form">
                 <p class="text-center mb-4">
-                    Your chosen book: <strong>Fancy Piano</strong> at <strong>\$2.9</strong><br>
+                    Your chosen book: <strong>$book[title]</strong><br>
                     Just one more page to turn before you can dive into your book of choice!
                 </p>
 
-                <div class="form-section">
-                    <div class="purchase-details mb-6">
-                        <h3>Payment due</h3>
-                        <div class="price-display">
-                            <span class="amount">\$2.9</span>
-                            <span class="period">/14 days</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         HTML;
 
@@ -85,7 +76,7 @@ if ($book_id > 0) {
             <div class="book-details">
                 <div class="book-cover">
                     <img src="<?= e($book['thumbnail_url'] ?? 'assets/placeholder-cover.png') ?>"
-                        alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
+                         alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
                     <p class="isbn">ISBN: <?= e($book['isbn'] ?? '978-3-16-148410-0') ?></p>
                 </div>
 
@@ -95,7 +86,7 @@ if ($book_id > 0) {
                         <p class="book-meta">
                             by <span class="author"><?= e($book['author'] ?? 'Author') ?></span> |
                             Published: <span
-                                class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
+                                  class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
                         <div class="rating">
                             <?php
@@ -126,7 +117,7 @@ if ($book_id > 0) {
                                 </select>
                             </div>
                             <div class="price">
-                                <span class="amount">$<?= number_format($book['price'] ?? 2.0, 2) ?></span>
+                                <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
                                 <span class="period">/ <?= e($book['borrow_period'] ?? '7') ?> days</span>
                             </div>
                         </div>
