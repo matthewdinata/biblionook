@@ -210,7 +210,7 @@ HTML;
                         <div class="login-prompt">
                             <p>Want to borrow this book? 📚</p>
                             <div class="auth-links">
-                                <a class="primary-button">Join now</a>
+                                <a href="auth.php" class="primary-button">Join now</a>
                             </div>
                         </div>
                     <?php endif; ?>
