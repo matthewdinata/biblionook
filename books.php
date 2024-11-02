@@ -14,6 +14,13 @@ function daysLeft($due_date)
     return $interval->format('%d days left');
 }
 
+function isReturned($due_date): bool
+{
+    $due = new DateTime($due_date);
+    $now = new DateTime();
+    return $now->diff($due)->days == 0;
+}
+
 require_once "lib/db.php";
 
 $sql = "SELECT 
@@ -44,6 +51,11 @@ if ($result->num_rows > 0) {
         $borrowed_books[] = $row;
     }
 }
+
+// Calculate currently reading books
+$current_reading_books = array_filter($borrowed_books, function ($book) {
+    return !isReturned($book['due_date']);
+});
 
 $profileImage = './assets/icons/user_profile.png';
 $user_id = $_SESSION['user_id'];
@@ -101,6 +113,10 @@ if ($result->num_rows > 0) {
                 <p><?= $user_email ?></p>
                 <div class="data">
                     <div class="data-item">
+                        <div class="data-number"><?= count($current_reading_books) ?></div>
+                        <div class="data-text">Current Read</div>
+                    </div>
+                    <div class="data-item">
                         <div class="data-number"><?= count($borrowed_books) ?></div>
                         <div class="data-text">Borrowed</div>
                     </div>
@@ -144,8 +160,12 @@ if ($result->num_rows > 0) {
                                                 class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                         </td>
                                         <td class="due-date">
-                                            <?= (new DateTime($book['due_date']))->format('d M') ?>
-                                            <span class="days-left">(<?= daysLeft($book['due_date']) ?>)</span>
+                                            <?php if (isReturned($book['due_date'])): ?>
+                                                <span class="returned">Returned</span>
+                                            <?php else: ?>
+                                                <?= (new DateTime($book['due_date']))->format('d M') ?>
+                                                <span class="days-left">(<?= daysLeft($book['due_date']) ?>)</span>
+                                            <?php endif; ?>
                                         </td>
                                         <td class="action">
                                             <?php if ($book['is_reviewed']): ?>
@@ -158,13 +178,17 @@ if ($result->num_rows > 0) {
                                                     <img src="assets/icons/review.svg" alt="Review Icon" width="20" height="20">
                                                 </a>
                                             <?php endif; ?>
-                                            <a class="action-button" data-tooltip="Read"
-                                                href="./read.php?id=<?= e($book['id']) ?>">
-                                                <img src="assets/icons/read.svg" alt="Read Icon" width="20" height="20">
-                                            </a>
-                                            <a class="action-button" data-tooltip="Return">
-                                                <img src="assets/icons/return.svg" alt="Return Icon" width="20" height="20">
-                                            </a>
+                                            <?php if (!isReturned($book['due_date'])): ?>
+                                                <a class="action-button" data-tooltip="Read"
+                                                    href="./read.php?id=<?= e($book['id']) ?>">
+                                                    <img src="assets/icons/read.svg" alt="Read Icon" width="20" height="20">
+                                                </a>
+                                                <a class="action-button" data-tooltip="Return"
+                                                    onclick="returnBook(<?= e($book['id']) ?>, '<?= e($book['title']) ?>')">
+                                                    <img src="assets/icons/return.svg" alt="Return Icon" width="20" height="20">
+                                                </a>
+                                            <?php else: ?>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -176,6 +200,7 @@ if ($result->num_rows > 0) {
         </div>
     </div>
     <script src='js/components/render_review.js'></script>
+    <script src='js/books.js'></script>
 </body>
 
 </html>

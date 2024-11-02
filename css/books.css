@@ -157,6 +157,11 @@
     font-style: italic;
 }
 
+.due-date .returned {
+    color: var(--global-primary);
+    font-style: italic;
+}
+
 .action {
     white-space: nowrap;
 }
@@ -171,7 +176,7 @@
     color: var(--global-primary-hover);
 }
 
-.action .reviewed {
+.due-date .reviewed {
     cursor: not-allowed;
 }
 
