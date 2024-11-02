@@ -150,10 +150,29 @@
     font-size: 12px;
 }
 
-.review {
-    font-weight: 500;
+.days-left {
+    font-size: 0.6rem;
+    font-weight: 400;
     color: var(--global-primary);
     font-style: italic;
+}
+
+.action {
+    white-space: nowrap;
+}
+
+.action .action-button {
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.action .action-button:hover {
+    color: var(--global-primary-hover);
+}
+
+.action .reviewed {
+    cursor: not-allowed;
 }
 
 .mystery {
@@ -206,15 +225,20 @@
     color: #420c12;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .genre,
-    .author {
+    .author,
+    .due-date {
         display: none;
+    }
+
+    .action td {
+        text-align: right;
     }
 }
 
 [data-theme='dark'] {
-    .genre-tag {
+    .genre-tag, .action-button {
         filter: invert(1);
     }
 }
