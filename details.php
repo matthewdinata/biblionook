@@ -4,7 +4,8 @@ session_start();
 // Function to safely escape output
 function e($string)
 {
-    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+    $decoded = html_entity_decode($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    return htmlspecialchars($decoded, ENT_QUOTES, 'UTF-8');
 }
 
 // TODO: fix logic
@@ -86,6 +87,36 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 }
+
+$reviews_per_page = 3;
+$current_page_no = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+// Get total number of reviews
+$sql = "SELECT COUNT(*) as total FROM Review WHERE book_id = ?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $book_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$total_reviews = $result->fetch_assoc()['total'];
+$stmt->close();
+
+$total_pages = ceil($total_reviews / $reviews_per_page);
+$current_page_no = max(1, min($total_pages, $current_page_no));
+$offset = ($current_page_no - 1) * $reviews_per_page;
+
+// Get reviews for current page
+$sql = "SELECT r.*, u.name 
+        FROM Review r 
+        LEFT JOIN User u ON r.user_id = u.id 
+        WHERE r.book_id = ? 
+        ORDER BY r.review_date DESC 
+        LIMIT ? OFFSET ?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("iii", $book_id, $reviews_per_page, $offset);
+$stmt->execute();
+$result = $stmt->get_result();
+$reviews = $result->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
 
 ?>
 
@@ -254,60 +285,8 @@ HTML;
 
                     <section class="user-reviews">
                         <h2>USER REVIEWS</h2>
-                        <?php
-                        $reviews = [
-                            [
-                                'title' => 'Amazing Book!',
-                                'rating' => 5,
-                                'content' => 'I absolutely loved this book. The story was captivating and the characters were well-developed.',
-                                'name' => 'John Doe',
-                                'review_date' => '2023-10-01'
-                            ],
-                            [
-                                'title' => 'Good Read',
-                                'rating' => 4,
-                                'content' => 'A very good read, although it had some slow parts. Overall, I enjoyed it.',
-                                'name' => 'Jane Smith',
-                                'review_date' => '2023-09-15'
-                            ],
-                            [
-                                'title' => 'Not my cup of tea',
-                                'rating' => 2,
-                                'content' => 'I found the book to be quite boring and couldn\'t finish it.',
-                                'name' => 'Alice Johnson',
-                                'review_date' => '2023-08-20'
-                            ],
-                            [
-                                'title' => 'Fantastic!',
-                                'rating' => 5,
-                                'content' => 'One of the best books I have read this year. Highly recommend!',
-                                'name' => 'Bob Brown',
-                                'review_date' => '2023-07-10'
-                            ],
-                            [
-                                'title' => 'Mediocre',
-                                'rating' => 3,
-                                'content' => 'The book was okay, but I expected more from the plot.',
-                                'name' => 'Charlie Davis',
-                                'review_date' => '2023-06-05'
-                            ]
-                        ];
-                        ?>
-
-                        <?php
-                        // Pagination logic
-                        $reviews_per_page = 3;
-                        $total_reviews = count($reviews);
-                        $total_pages = ceil($total_reviews / $reviews_per_page);
-                        $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-                        $current_page = max(1, min($total_pages, $current_page));
-                        $start_index = ($current_page - 1) * $reviews_per_page;
-                        $end_index = min($start_index + $reviews_per_page, $total_reviews);
-                        ?>
-
                         <?php if (!empty($reviews)): ?>
-                            <?php for ($i = $start_index; $i < $end_index; $i++): ?>
-                                <?php $review = $reviews[$i]; ?>
+                            <?php foreach ($reviews as $review): ?>
                                 <article class="review">
                                     <div class="review-header">
                                         <h3 class="review-title"><?= e($review['title']) ?></h3>
@@ -324,7 +303,6 @@ HTML;
                                                 }
                                             }
                                             ?>
-
                                         </div>
                                     </div>
                                     <p class="review-content"><?= e($review['content']) ?></p>
@@ -332,22 +310,28 @@ HTML;
                                         <?= e(date('Y', strtotime($review['review_date']))) ?>
                                     </p>
                                 </article>
-                            <?php endfor; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="no-reviews">No reviews yet. Be the first to review this book!</p>
                         <?php endif; ?>
 
-                        <div class="pagination">
-                            <?php if ($current_page > 1): ?>
-                                <a href="?id=<?= $book_id ?>&page=<?= $current_page - 1 ?>">&lt;</a>
-                            <?php else: ?>
-                                <span>&lt;</span>
-                            <?php endif; ?>
-                            <span><?= $current_page ?> of <?= $total_pages ?></span>
-                            <?php if ($current_page < $total_pages): ?>
-                                <a href="?id=<?= $book_id ?>&page=<?= $current_page + 1 ?>">&gt;</a>
-                            <?php else: ?>
-                                <span>&gt;</span>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($total_pages > 1): ?>
+                            <div class="pagination">
+                                <?php if ($current_page_no > 1): ?>
+                                    <a href="?id=<?= $book_id ?>&page=<?= $current_page_no - 1 ?>">&lt;</a>
+                                <?php else: ?>
+                                    <span>&lt;</span>
+                                <?php endif; ?>
+
+                                <span><?= $current_page_no ?> of <?= $total_pages ?></span>
+
+                                <?php if ($current_page_no < $total_pages): ?>
+                                    <a href="?id=<?= $book_id ?>&page=<?= $current_page_no + 1 ?>">&gt;</a>
+                                <?php else: ?>
+                                    <span>&gt;</span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                     </section>
                 </div>
             </div>
