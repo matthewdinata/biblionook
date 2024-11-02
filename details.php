@@ -12,6 +12,20 @@ require_once "lib/db.php";
 
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
+$rating = 0;
+if ($book_id > 0) {
+    $sql = "SELECT AVG(rating) as average_rating FROM Review WHERE book_id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $book_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $rating = $result->fetch_assoc()['average_rating'];
+    $stmt->close();
+
+    // If there are no reviews, default to 0
+    $rating = $rating ?? 0;
+}
+
 if ($book_id > 0) {
     $sql = "SELECT id, title, thumbnail_url, author, summary, isbn, publication_date, fee FROM Book WHERE id = ?";
     $stmt = $db->prepare($sql);
@@ -142,9 +156,9 @@ HTML;
                             Published: <span
                                   class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
+
                         <div class="rating">
                             <?php
-                            $rating = 4.5;
                             for ($i = 1; $i <= 5; $i++) {
                                 if ($i <= floor($rating)) {
                                     echo '<img src="assets/icons/star-filled.svg" alt="Filled Star" class="star">';
