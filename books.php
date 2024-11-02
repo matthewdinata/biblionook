@@ -6,6 +6,21 @@ function e($string)
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
+function daysLeft($due_date)
+{
+    $due = new DateTime($due_date);
+    $now = new DateTime();
+    $interval = $now->diff($due);
+    return $interval->format('%d days left');
+}
+
+function isReturned($due_date): bool
+{
+    $due = new DateTime($due_date);
+    $now = new DateTime();
+    return $now->diff($due)->days == 0;
+}
+
 require_once "lib/db.php";
 
 $sql = "SELECT 
@@ -36,6 +51,11 @@ if ($result->num_rows > 0) {
         $borrowed_books[] = $row;
     }
 }
+
+// Calculate currently reading books
+$current_reading_books = array_filter($borrowed_books, function ($book) {
+    return !isReturned($book['due_date']);
+});
 
 $profileImage = './assets/icons/user_profile.png';
 $user_id = $_SESSION['user_id'];
@@ -72,7 +92,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/books.css" />
 </head>
 
 <body>
@@ -92,6 +112,10 @@ if ($result->num_rows > 0) {
                 <h1><?= $user_name ?></h1>
                 <p><?= $user_email ?></p>
                 <div class="data">
+                    <div class="data-item">
+                        <div class="data-number"><?= count($current_reading_books) ?></div>
+                        <div class="data-text">Current Read</div>
+                    </div>
                     <div class="data-item">
                         <div class="data-number"><?= count($borrowed_books) ?></div>
                         <div class="data-text">Borrowed</div>
@@ -118,6 +142,7 @@ if ($result->num_rows > 0) {
                                     <th>Title</th>
                                     <th class="author">Author</th>
                                     <th class="genre">Genre</th>
+                                    <th class="due-date">Due Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -134,14 +159,35 @@ if ($result->num_rows > 0) {
                                             <span
                                                 class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                         </td>
-                                        <td class="review">
-                                            <?php if ($book['is_reviewed']): ?>
-                                                Reviewed
+                                        <td class="due-date">
+                                            <?php if (isReturned($book['due_date'])): ?>
+                                                <span class="returned">Returned</span>
                                             <?php else: ?>
-                                                <a class="action-button"
-                                                    onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
-                                                    Review Book
+                                                <?= (new DateTime($book['due_date']))->format('d M') ?>
+                                                <span class="days-left">(<?= daysLeft($book['due_date']) ?>)</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="action">
+                                            <?php if ($book['is_reviewed']): ?>
+                                                <a class="action-button reviewed" data-tooltip="Reviewed">
+                                                    <img src="assets/icons/reviewed.svg" alt="Reviewed Icon" width="20" height="20">
                                                 </a>
+                                            <?php else: ?>
+                                                <a class="action-button" data-tooltip="Review"
+                                                    onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
+                                                    <img src="assets/icons/review.svg" alt="Review Icon" width="20" height="20">
+                                                </a>
+                                            <?php endif; ?>
+                                            <?php if (!isReturned($book['due_date'])): ?>
+                                                <a class="action-button" data-tooltip="Read"
+                                                    href="./read.php?id=<?= e($book['id']) ?>">
+                                                    <img src="assets/icons/read.svg" alt="Read Icon" width="20" height="20">
+                                                </a>
+                                                <a class="action-button" data-tooltip="Return"
+                                                    onclick="returnBook(<?= e($book['id']) ?>, '<?= e($book['title']) ?>')">
+                                                    <img src="assets/icons/return.svg" alt="Return Icon" width="20" height="20">
+                                                </a>
+                                            <?php else: ?>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -154,6 +200,7 @@ if ($result->num_rows > 0) {
         </div>
     </div>
     <script src='js/components/render_review.js'></script>
+    <script src='js/books.js'></script>
 </body>
 
 </html>

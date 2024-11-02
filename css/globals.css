@@ -3138,7 +3138,7 @@ progress::-moz-progress-bar {
     color: var(--global-tooltip-color);
     font-style: normal;
     font-weight: var(--global-font-weight);
-    font-size: 0.875rem;
+    font-size: 0.7rem;
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
