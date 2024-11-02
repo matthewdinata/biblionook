@@ -343,6 +343,11 @@
     font-family: 'Inter', sans-serif;
 }
 
+.no-reviews {
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+}
+
 .review-header {
     display: flex;
     justify-content: space-between;
