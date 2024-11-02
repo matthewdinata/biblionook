@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
                         <input type="text" class="search-input" placeholder="Search...">
                     </div>
 
-                    <button class="search-button" />
+                    <div class="search-button" />
                 </div>
             </div>
 

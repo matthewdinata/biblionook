@@ -17,6 +17,7 @@
     gap: 0.5rem;
     flex: 1;
     height: 2.75rem;
+    margin-bottom: 2rem;
 }
 
 .search-bar .input-group {
@@ -45,22 +46,15 @@
 
 .search-button {
     border: none;
-    border-radius: 12px;
-    background-color: var(--global-secondary-background);
     cursor: default;
-    width: 5rem;
-
-    background-image: url('../assets/icons/search-inverted.svg');
+    width: 2rem;
+    background-image: url('../assets/icons/search.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 24px;
 
     /* Add minimum height to ensure button size */
     min-height: 2.5rem;
-
-    &:hover {
-        background-color: var(--global-secondary-hover-background);
-    }
 }
 
 .content-grid {
@@ -112,12 +106,13 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0;
     border: none;
     background: none;
     cursor: pointer;
     color: var(--global-primary);
     font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
 }
 
 .sort-button .sort-icon {

@@ -4,17 +4,31 @@ session_start();
 // Function to safely escape output
 function e($string)
 {
-    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+    $decoded = html_entity_decode($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    return htmlspecialchars($decoded, ENT_QUOTES, 'UTF-8');
 }
 
 // TODO: fix logic
 require_once "lib/db.php";
 
-
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
+$rating = 0;
 if ($book_id > 0) {
-    $sql = "SELECT title, thumbnail_url, author, summary, isbn, publication_date, fee FROM Book WHERE id = ?";
+    $sql = "SELECT AVG(rating) as average_rating FROM Review WHERE book_id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $book_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $rating = $result->fetch_assoc()['average_rating'];
+    $stmt->close();
+
+    // If there are no reviews, default to 0
+    $rating = $rating ?? 0;
+}
+
+if ($book_id > 0) {
+    $sql = "SELECT id, title, thumbnail_url, author, summary, isbn, publication_date, fee FROM Book WHERE id = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $book_id);
     $stmt->execute();
@@ -33,13 +47,24 @@ if ($book_id > 0) {
 $active_books = 0;
 $can_borrow = true;
 $error_message = '';
+$is_currently_borrowed = false;
 
 if (isset($_SESSION['user_id'])) {
     $membership_type = $_SESSION['membership_type'] ?? 'free';
+    $current_time = date('Y-m-d H:i:s');
+    $user_id = $_SESSION['user_id'];
 
-    if ($membership_type !== 'free') {
-        $current_time = date('Y-m-d H:i:s');
-        $user_id = $_SESSION['user_id'];
+    // Check if this specific book is currently borrowed by the user
+    $sql = "SELECT COUNT(*) as is_borrowed FROM borrowing 
+            WHERE user_id = ? AND book_id = ? AND due_date > ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("iis", $user_id, $book_id, $current_time);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $is_currently_borrowed = $result->fetch_assoc()['is_borrowed'] > 0;
+    $stmt->close();
+
+    if ($membership_type !== 'free' && !$is_currently_borrowed) {
 
         $sql = "SELECT COUNT(*) as active_books FROM borrowing 
                 WHERE user_id = ? AND due_date > ?";
@@ -62,6 +87,36 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 }
+
+$reviews_per_page = 3;
+$current_page_no = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+// Get total number of reviews
+$sql = "SELECT COUNT(*) as total FROM Review WHERE book_id = ?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $book_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$total_reviews = $result->fetch_assoc()['total'];
+$stmt->close();
+
+$total_pages = ceil($total_reviews / $reviews_per_page);
+$current_page_no = max(1, min($total_pages, $current_page_no));
+$offset = ($current_page_no - 1) * $reviews_per_page;
+
+// Get reviews for current page
+$sql = "SELECT r.*, u.name 
+        FROM Review r 
+        LEFT JOIN User u ON r.user_id = u.id 
+        WHERE r.book_id = ? 
+        ORDER BY r.review_date DESC 
+        LIMIT ? OFFSET ?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("iii", $book_id, $reviews_per_page, $offset);
+$stmt->execute();
+$result = $stmt->get_result();
+$reviews = $result->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
 
 ?>
 
@@ -132,9 +187,9 @@ HTML;
                             Published: <span
                                   class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
+
                         <div class="rating">
                             <?php
-                            $rating = 4.5;
                             for ($i = 1; $i <= 5; $i++) {
                                 if ($i <= floor($rating)) {
                                     echo '<img src="assets/icons/star-filled.svg" alt="Filled Star" class="star">';
@@ -153,55 +208,62 @@ HTML;
                         <?php $membership_type = $_SESSION['membership_type'] ?? 'free'; ?>
 
                         <div class="borrow-section">
-                            <?php if ($membership_type === 'free'): ?>
-                                <!-- Free membership UI -->
-                                <div class="borrowing-info">
-                                    <div class="period">
-                                        <select class="period-select">
-                                            <option data-display="Borrowing Period: 7 days" value="1">7 days</option>
-                                            <option data-display="Borrowing Period: 14 days" value="2">14 days</option>
-                                            <option data-display="Borrowing Period: 21 days" value="3">21 days</option>
-                                            <option data-display="Borrowing Period: 28 days" value="4">28 days</option>
-                                        </select>
-                                    </div>
-                                    <div class="price">
-                                        <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
-                                        <span class="period"></span>
-                                    </div>
-                                </div>
-                                <div class="borrowing-cta">
-                                    <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
-                                        Book</button>
-                                    <div class="membership-prompt">
-                                        <p>Want unlimited borrowing? 📚</p>
-                                        <span><a href="pricing.php" class="join-link">Upgrade your membership!</a></span>
-                                    </div>
+                            <?php if ($is_currently_borrowed): ?>
+                                <!-- Show Read Book button if currently borrowed -->
+                                <div class="read-cta">
+                                    <p class="currently-borrowed">This book is in your borrowed list!</p>
+                                    <a href="./read.php?id=<?= e($book['id']) ?>" class="read-button">Read Book</a>
                                 </div>
                             <?php else: ?>
-                                <!-- Lite/Plus membership UI -->
-                                <?php if ($can_borrow): ?>
-
-                                    <div class="borrowing-cta member-cta">
-                                        <div class="member-borrow-select">
-                                            <span class='member-borrow-label'>
-                                                Borrow for:
-                                            </span>
-                                            <div class="period">
-                                                <select class="period-select" id="memberPeriodSelect">
-                                                    <option data-display="7 days" value="1">7 days</option>
-                                                    <option data-display="14 days" value="2">14 days</option>
-                                                    <option data-display="21 days" value="3">21 days</option>
-                                                    <option data-display="28 days" value="4">28 days</option>
-                                                </select>
-                                            </div>
+                                <?php if ($membership_type === 'free'): ?>
+                                    <!-- Free membership UI -->
+                                    <div class="borrowing-info">
+                                        <div class="period">
+                                            <select class="period-select">
+                                                <option data-display="Borrowing Period: 7 days" value="1">7 days</option>
+                                                <option data-display="Borrowing Period: 14 days" value="2">14 days</option>
+                                                <option data-display="Borrowing Period: 21 days" value="3">21 days</option>
+                                                <option data-display="Borrowing Period: 28 days" value="4">28 days</option>
+                                            </select>
                                         </div>
-                                        <button onclick="handleMemberBorrow()" class="borrow-button">Borrow Book</button>
+                                        <div class="price">
+                                            <span class="amount">$<?= number_format($book['fee'], 2) ?></span>
+                                            <span class="period"></span>
+                                        </div>
+                                    </div>
+                                    <div class="borrowing-cta">
+                                        <button onclick="slideoutMenu.open('paymentSlideout')" class="borrow-button">Borrow
+                                            Book</button>
+                                        <div class="membership-prompt">
+                                            <p>Want unlimited borrowing? 📚</p>
+                                            <span><a href="pricing.php" class="join-link">Upgrade your membership!</a></span>
+                                        </div>
                                     </div>
                                 <?php else: ?>
-                                    <div class="borrowing-error">
-                                        <p class="error-message"><?= e($error_message) ?></p>
-                                        <p class="suggestion">Please return some books before borrowing new ones.</p>
-                                    </div>
+                                    <!-- Lite/Plus membership UI -->
+                                    <?php if ($can_borrow): ?>
+                                        <div class="borrowing-cta member-cta">
+                                            <div class="member-borrow-select">
+                                                <span class='member-borrow-label'>
+                                                    Borrow for:
+                                                </span>
+                                                <div class="period">
+                                                    <select class="period-select" id="memberPeriodSelect">
+                                                        <option data-display="7 days" value="1">7 days</option>
+                                                        <option data-display="14 days" value="2">14 days</option>
+                                                        <option data-display="21 days" value="3">21 days</option>
+                                                        <option data-display="28 days" value="4">28 days</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button onclick="handleMemberBorrow()" class="borrow-button">Borrow Book</button>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="borrowing-error">
+                                            <p class="error-message"><?= e($error_message) ?></p>
+                                            <p class="suggestion">Please return some books before borrowing new ones.</p>
+                                        </div>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </div>
@@ -210,11 +272,10 @@ HTML;
                         <div class="login-prompt">
                             <p>Want to borrow this book? 📚</p>
                             <div class="auth-links">
-                                <a class="primary-button">Join now</a>
+                                <a href="auth.php" class="primary-button">Join now</a>
                             </div>
                         </div>
                     <?php endif; ?>
-
 
 
                     <section class="book-summary">
@@ -224,60 +285,8 @@ HTML;
 
                     <section class="user-reviews">
                         <h2>USER REVIEWS</h2>
-                        <?php
-                        $reviews = [
-                            [
-                                'title' => 'Amazing Book!',
-                                'rating' => 5,
-                                'content' => 'I absolutely loved this book. The story was captivating and the characters were well-developed.',
-                                'name' => 'John Doe',
-                                'review_date' => '2023-10-01'
-                            ],
-                            [
-                                'title' => 'Good Read',
-                                'rating' => 4,
-                                'content' => 'A very good read, although it had some slow parts. Overall, I enjoyed it.',
-                                'name' => 'Jane Smith',
-                                'review_date' => '2023-09-15'
-                            ],
-                            [
-                                'title' => 'Not my cup of tea',
-                                'rating' => 2,
-                                'content' => 'I found the book to be quite boring and couldn\'t finish it.',
-                                'name' => 'Alice Johnson',
-                                'review_date' => '2023-08-20'
-                            ],
-                            [
-                                'title' => 'Fantastic!',
-                                'rating' => 5,
-                                'content' => 'One of the best books I have read this year. Highly recommend!',
-                                'name' => 'Bob Brown',
-                                'review_date' => '2023-07-10'
-                            ],
-                            [
-                                'title' => 'Mediocre',
-                                'rating' => 3,
-                                'content' => 'The book was okay, but I expected more from the plot.',
-                                'name' => 'Charlie Davis',
-                                'review_date' => '2023-06-05'
-                            ]
-                        ];
-                        ?>
-
-                        <?php
-                        // Pagination logic
-                        $reviews_per_page = 3;
-                        $total_reviews = count($reviews);
-                        $total_pages = ceil($total_reviews / $reviews_per_page);
-                        $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-                        $current_page = max(1, min($total_pages, $current_page));
-                        $start_index = ($current_page - 1) * $reviews_per_page;
-                        $end_index = min($start_index + $reviews_per_page, $total_reviews);
-                        ?>
-
                         <?php if (!empty($reviews)): ?>
-                            <?php for ($i = $start_index; $i < $end_index; $i++): ?>
-                                <?php $review = $reviews[$i]; ?>
+                            <?php foreach ($reviews as $review): ?>
                                 <article class="review">
                                     <div class="review-header">
                                         <h3 class="review-title"><?= e($review['title']) ?></h3>
@@ -294,7 +303,6 @@ HTML;
                                                 }
                                             }
                                             ?>
-
                                         </div>
                                     </div>
                                     <p class="review-content"><?= e($review['content']) ?></p>
@@ -302,22 +310,28 @@ HTML;
                                         <?= e(date('Y', strtotime($review['review_date']))) ?>
                                     </p>
                                 </article>
-                            <?php endfor; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="no-reviews">No reviews yet. Be the first to review this book!</p>
                         <?php endif; ?>
 
-                        <div class="pagination">
-                            <?php if ($current_page > 1): ?>
-                                <a href="?id=<?= $book_id ?>&page=<?= $current_page - 1 ?>">&lt;</a>
-                            <?php else: ?>
-                                <span>&lt;</span>
-                            <?php endif; ?>
-                            <span><?= $current_page ?> of <?= $total_pages ?></span>
-                            <?php if ($current_page < $total_pages): ?>
-                                <a href="?id=<?= $book_id ?>&page=<?= $current_page + 1 ?>">&gt;</a>
-                            <?php else: ?>
-                                <span>&gt;</span>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($total_pages > 1): ?>
+                            <div class="pagination">
+                                <?php if ($current_page_no > 1): ?>
+                                    <a href="?id=<?= $book_id ?>&page=<?= $current_page_no - 1 ?>">&lt;</a>
+                                <?php else: ?>
+                                    <span>&lt;</span>
+                                <?php endif; ?>
+
+                                <span><?= $current_page_no ?> of <?= $total_pages ?></span>
+
+                                <?php if ($current_page_no < $total_pages): ?>
+                                    <a href="?id=<?= $book_id ?>&page=<?= $current_page_no + 1 ?>">&gt;</a>
+                                <?php else: ?>
+                                    <span>&gt;</span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                     </section>
                 </div>
             </div>
