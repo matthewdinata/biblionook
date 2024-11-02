@@ -6,10 +6,19 @@ function renderNavbar($currentPage)
     $user = './assets/icons/user.svg';
     $menu_items = [
         'Home' => ['url' => 'index.php', 'img' => './assets/icons/home.svg'],
-        'Search' => ['url' => 'search.php', 'img' => './assets/icons/search.svg'],
-        'Your Books' => ['url' => 'books.php', 'img' => './assets/icons/books.svg'],
         'Pricing' => ['url' => 'pricing.php', 'img' => './assets/icons/pricing.svg'],
     ];
+
+    // Check if user is logged in
+    $isLoggedIn = isset($_SESSION["user_id"]);
+    if ($isLoggedIn) {
+        $menu_items = array_merge(
+            ['Home' => $menu_items['Home']],
+            (isset($_SESSION["membership_type"]) && $_SESSION["membership_type"] === 'plus') ? ['Search' => ['url' => 'search.php', 'img' => './assets/icons/search.svg']] : [],
+            ['Your Books' => ['url' => 'books.php', 'img' => './assets/icons/books.svg']],
+            ['Pricing' => $menu_items['Pricing']]
+        );
+    }
 
     // Add menu toggle button
     echo '<button id="menuToggle" class="menu-toggle">
@@ -47,7 +56,7 @@ function renderNavbar($currentPage)
     }
     echo '</ul>';
 
-    if (isset($_SESSION["user_email"]) && isset($_SESSION["user_name"])) {
+    if ($isLoggedIn && isset($_SESSION["user_email"]) && isset($_SESSION["user_name"])) {
         $name = $_SESSION["user_name"];
         $name_parts = explode(' ', $name);
         $first_two_words = implode(' ', array_slice($name_parts, 0, 2));
