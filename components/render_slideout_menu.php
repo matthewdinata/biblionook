@@ -27,18 +27,13 @@ function renderSlideoutMenu($id, $title, $content)
                         <div class="slideout-form-group">
                             <label for="slideout-cardNumber">Card Number</label>
                             <input type="text" id="slideout-cardNumber" placeholder="1234-5678-1234-5678" maxlength="19"
-                                required>
+                                   required>
                         </div>
 
                         <div class="slideout-form-row">
                             <div class="slideout-form-group">
-                                <label for="slideout-month">Month</label>
-                                <input type="text" id="slideout-month" placeholder="MM" maxlength="2" required>
-                            </div>
-
-                            <div class="slideout-form-group">
-                                <label for="slideout-year">Year</label>
-                                <input type="text" id="slideout-year" placeholder="YYYY" maxlength="4" required>
+                                <label for="slideout-expiry">Expiry Date</label>
+                                <input type="text" id="slideout-expiry" placeholder="MM/YYYY" maxlength="7" required>
                             </div>
 
                             <div class="slideout-form-group">

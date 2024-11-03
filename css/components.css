@@ -215,7 +215,7 @@ nav .logout {
 
 .slideout-form-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-bottom: 1rem;
 }
@@ -478,10 +478,12 @@ nav .logout {
     fill: var(--text-color);
 }
 
-.moon, .dark-mode .sun {
+.moon,
+.dark-mode .sun {
     display: none;
 }
 
-.sun, .dark-mode .moon {
+.sun,
+.dark-mode .moon {
     display: block;
 }
