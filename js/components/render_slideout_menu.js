@@ -246,7 +246,7 @@ class PaymentFormValidator {
             submitButton.disabled = true;
             submitButton.textContent = 'Processing...';
 
-            if (typeof processPayment === "function") {
+            if (typeof processPayment === 'function') {
                 // Call the global function to process payment
                 processPayment();
             }

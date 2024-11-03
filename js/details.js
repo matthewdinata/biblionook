@@ -115,6 +115,71 @@ function updateDisplayText() {
     select.insertBefore(displayOption, select.firstChild);
 }
 
+async function processPayment() {
+    try {
+        const periodSelect = document.querySelector('.period-select');
+        const selectedPeriod = periodSelect.value;
+        const paymentForm = document.querySelector('.payment-form');
+
+        // Get payment form data
+        const formData = new FormData();
+        formData.append('book_id', bookId);
+        formData.append('period', selectedPeriod);
+
+        // Process the payment and borrowing request
+        const response = await fetch(
+            'utils/details/process_borrow_with_payment.php',
+            {
+                method: 'POST',
+                body: formData,
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Show success message
+            alert(
+                'Payment successful! Book borrowed until: ' +
+                    new Date(data.due_date).toLocaleDateString()
+            );
+
+            // Redirect to books page after successful payment
+            setTimeout(() => {
+                window.location.href = 'books.php';
+            }, 2000);
+
+            return true;
+        } else {
+            // Show error message
+            alert(data.message || 'Payment failed. Please try again.');
+
+            // Re-enable submit button
+            const submitButton = paymentForm.querySelector(
+                '.slideout-submit-button'
+            );
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Complete Payment';
+            }
+
+            return false;
+        }
+    } catch (error) {
+        console.error('Payment processing error:', error);
+        alert('An error occurred during payment processing. Please try again.');
+
+        // Re-enable submit button
+        const submitButton = document.querySelector('.slideout-submit-button');
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Complete Payment';
+        }
+
+        return false;
+    }
+}
+
 // Price updating function
 function updatePrice() {
     if (!select || !priceAmountElement || !pricePeriodElement) return;
