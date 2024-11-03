@@ -201,8 +201,8 @@ class ReviewFormValidator {
                     error = "Review title is required";
                 } else if (field.value.trim().length < 3) {
                     error = "Title must be at least 3 characters long";
-                } else if (field.value.trim().length > 100) {
-                    error = "Title must be less than 100 characters";
+                } else if (field.value.trim().length > 20) {
+                    error = "Title must be less than 20 characters";
                 }
                 break;
 

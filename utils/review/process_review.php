@@ -44,8 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors[] = "Review title is required";
         } elseif (strlen($title) < 3) {
             $errors[] = "Title must be at least 3 characters long";
-        } elseif (strlen($title) > 100) {
-            $errors[] = "Title must be less than 100 characters";
+        } elseif (strlen($title) > 20) {
+            $errors[] = "Title must be less than 20 characters";
         }
 
         // Validate review content
