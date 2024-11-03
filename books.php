@@ -18,7 +18,8 @@ function isReturned($due_date): bool
 {
     $due = new DateTime($due_date);
     $now = new DateTime();
-    return $now->diff($due)->days == 0;
+    $interval = $now->diff($due);
+    return $interval->format('%R') === '-';
 }
 
 require_once "lib/db.php";
@@ -151,16 +152,16 @@ if ($result->num_rows > 0) {
                             </thead>
                             <tbody>
                                 <?php foreach ($borrowed_books as $book): ?>
-                                    <tr>
-                                        <td>
+                                    <tr class="row">
+                                        <td onclick="window.location='details.php?id=<?= e($book['id']) ?>'" class="title">
                                             <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                                 class="book-cover">
+                                                class="book-cover">
                                             <?= e($book['title']) ?>
                                         </td>
                                         <td class="author"><?= e($book['author']) ?></td>
                                         <td class="genre">
                                             <span
-                                                  class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                                class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                         </td>
                                         <td class="due-date">
                                             <?php if (isReturned($book['due_date'])): ?>
@@ -181,17 +182,17 @@ if ($result->num_rows > 0) {
                                                 </a>
                                             <?php else: ?>
                                                 <a class="action-button" data-tooltip="Review"
-                                                   onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
+                                                    onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
                                                     <img src="assets/icons/review.svg" alt="Review Icon" width="20" height="20">
                                                 </a>
                                             <?php endif; ?>
                                             <?php if (!isReturned($book['due_date'])): ?>
                                                 <a class="action-button" data-tooltip="Read"
-                                                   href="./read.php?id=<?= e($book['id']) ?>">
+                                                    href="./read.php?id=<?= e($book['id']) ?>">
                                                     <img src="assets/icons/read.svg" alt="Read Icon" width="20" height="20">
                                                 </a>
                                                 <a class="action-button" data-tooltip="Return"
-                                                   onclick="returnBook(<?= e($book['id']) ?>, '<?= e($book['title']) ?>')">
+                                                    onclick="returnBook(<?= e($book['id']) ?>, '<?= e($book['title']) ?>')">
                                                     <img src="assets/icons/return.svg" alt="Return Icon" width="20" height="20">
                                                 </a>
                                             <?php else: ?>

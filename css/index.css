@@ -218,7 +218,7 @@
 }
 
 .book-table a:hover {
-    color: var(--global-secondary);
+    color: var(--global-primary-hover);
 }
 
 .book-table td:first-child {

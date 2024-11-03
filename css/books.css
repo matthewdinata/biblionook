@@ -86,7 +86,6 @@
 }
 
 .book-table {
-    background-color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -116,6 +115,23 @@
     border-bottom: 1px solid #dee2e6;
     background-color: var(--global-contrast-inverse);
 }
+
+.book-table td:hover {
+    background-color: var(--global-primary-background);
+}
+
+td.title {
+    cursor: pointer;
+}
+
+.book-table tr:hover td {
+    background-color: #f0f0f0;
+}
+
+[data-theme='dark'] .book-table tr:hover td {
+    background-color: #333;
+}
+
 
 .book-table .action-button {
     background: none;
