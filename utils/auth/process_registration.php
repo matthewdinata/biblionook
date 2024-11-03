@@ -60,7 +60,7 @@ if (empty($errors)) {
 
 // If there were errors, redirect back with error messages
 if (!empty($errors)) {
-    $_SESSION['login_errors'] = $errors;
+    $_SESSION['auth_errors'] = $errors;
     header("Location: ../../auth.php");
     exit();
 }
