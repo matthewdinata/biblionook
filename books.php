@@ -166,7 +166,11 @@ if ($result->num_rows > 0) {
                                             <?php if (isReturned($book['due_date'])): ?>
                                                 <span class="returned">Returned</span>
                                             <?php else: ?>
-                                                <?= (new DateTime($book['due_date']))->format('d M') ?>
+                                                <?php
+                                                $due_date = new DateTime($book['due_date'], new DateTimeZone('UTC'));
+                                                $due_date->setTimezone(new DateTimeZone('Asia/Singapore')); // UTC + 8
+                                                ?>
+                                                <?= $due_date->format('d M') ?>
                                                 <span class="days-left">(<?= daysLeft($book['due_date']) ?>)</span>
                                             <?php endif; ?>
                                         </td>
