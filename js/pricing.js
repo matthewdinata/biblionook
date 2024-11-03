@@ -8,7 +8,6 @@ function openPaymentSlideout(planKey) {
             <div class="plan-header">
                 <div class="price">
                     <span class="amount">$${plan.price}</span>
-                    <span class="period">/mon</span>
                 </div>
                 <h2>${plan.name}</h2>
             </div>

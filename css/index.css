@@ -3,7 +3,6 @@
     background-color: var(--global-contrast-inverse);
     text-align: center;
     position: relative;
-    font-family: 'Inter', sans-serif;
 }
 
 .search-bar input {
@@ -201,7 +200,6 @@
 .book-table td {
     border-bottom: 1px solid var(--global-primary-background);
     background-color: var(--global-contrast-inverse);
-    font-family: 'Inter', sans-serif;
 }
 
 [data-theme='dark'] {
@@ -294,7 +292,13 @@
     color: #420c12;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
+    .author {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1000px) {
     .genre,
     .author {
         display: none;

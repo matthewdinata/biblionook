@@ -89,6 +89,7 @@
     gap: 0.5rem;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
     font-weight: 500;
 }
 
@@ -112,6 +113,7 @@
     cursor: pointer;
     color: var(--global-primary);
     font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
     font-size: 0.875rem;
 }
 
@@ -184,6 +186,7 @@
     font-weight: 500;
     margin: 0.3rem 1rem 0 1rem;
     font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 .book-author {
@@ -191,6 +194,7 @@
     color: var(--global-muted-color);
     margin: 0 1rem 1rem 1rem;
     font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
 }
 
 [data-theme='dark'] {

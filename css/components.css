@@ -23,6 +23,7 @@ nav .sign-in {
 nav .logo {
     font-size: 1.4rem;
     font-weight: 700;
+    font-style: italic;
     margin-bottom: 1rem;
     color: var(--global-primary-hover);
 }
@@ -33,7 +34,8 @@ nav ul li {
     padding: 0.6rem;
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-weight: 600;
+    font-style: italic;
 }
 
 nav ul a:hover li {
@@ -102,6 +104,8 @@ nav a:hover {
 nav .profile .email {
     font-size: 0.6rem;
     font-weight: 300;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
 }
 
 nav .logout {

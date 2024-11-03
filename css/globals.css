@@ -1,10 +1,10 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Solway:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --global-font-family-emoji: 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --global-font-family-sans-serif: 'Solway', sans-serif;
+    --global-font-family-sans-serif: 'Lora', sans-serif;
     --global-font-family-monospace: ui-monospace, SFMono-Regular, 'SF Mono',
         Menlo, Consolas, 'Liberation Mono', monospace,
         var(--global-font-family-emoji);
@@ -38,12 +38,7 @@
     --global-nav-breadcrumb-divider: '>';
     --global-icon-checkbox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
     --global-icon-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(255, 255, 255)' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
-    --global-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --global-icon-date: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
-    --global-icon-time: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpolyline points='12 6 12 12 16 14'%3E%3C/polyline%3E%3C/svg%3E");
-    --global-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-    --global-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-    --global-icon-loading: url("data:image/svg+xml,%3Csvg fill='none' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' %3E%3Cstyle%3E g %7B animation: rotate 2s linear infinite; transform-origin: center center; %7D circle %7B stroke-dasharray: 75,100; stroke-dashoffset: -5; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; %7D @keyframes rotate %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg); %7D %7D @keyframes dash %7B 0%25 %7B stroke-dasharray: 1,100; stroke-dashoffset: 0; %7D 50%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -17.5; %7D 100%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -62; %7D %7D %3C/style%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='rgb(136, 145, 164)' stroke-width='4' /%3E%3C/g%3E%3C/svg%3E");
+    letter-spacing: 1px;  
 }
 @media (min-width: 576px) {
     :root {
@@ -90,6 +85,7 @@ h4,
 h5,
 h6 {
     --global-font-weight: 700;
+    font-style: italic;
 }
 
 h1 {
@@ -381,160 +377,9 @@ details summary[role='button']:not(.outline)::after {
     --global-form-element-focus-color: var(--global-primary-focus);
 }
 
-@media only screen and (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --global-background-color: #2b2b27;
-        --global-color: #c2c7d0;
-        --global-text-selection-color: rgba(163, 158, 143, 0.1875);
-        --global-muted-color: #7b8495;
-        --global-muted-border-color: #202632;
-        --global-primary: #afa99a;
-        --global-primary-background: #ccc6b4;
-        --global-primary-border: var(--global-primary-background);
-        --global-primary-underline: rgba(163, 158, 143, 0.5);
-        --global-primary-hover: #beb8a7;
-        --global-primary-hover-background: #dad4c2;
-        --global-primary-hover-border: var(--global-primary-hover-background);
-        --global-primary-hover-underline: var(--global-primary-hover);
-        --global-primary-focus: rgba(163, 158, 143, 0.375);
-        --global-primary-inverse: #000;
-        --global-secondary: #282622;
-        --global-secondary-background: #474640;
-        --global-secondary-border: var(--global-secondary-background);
-        --global-secondary-underline: #1d1b19;
-        --global-secondary-hover: #615e56;
-        --global-secondary-hover-background: #32302c;
-        --global-secondary-hover-border: var(
-            --global-secondary-hover-background
-        );
-        --global-secondary-hover-underline: var(--global-secondary-hover);
-        --global-secondary-focus: #a39e90;
-        --global-secondary-inverse: #fff;
-        --global-contrast: #dfe3eb;
-        --global-contrast-background: #eff1f4;
-        --global-contrast-border: var(--global-contrast-background);
-        --global-contrast-underline: rgba(223, 227, 235, 0.5);
-        --global-contrast-hover: #fff;
-        --global-contrast-hover-background: #fff;
-        --global-contrast-hover-border: var(--global-contrast-hover-background);
-        --global-contrast-hover-underline: var(--global-contrast-hover);
-        --global-contrast-focus: rgba(207, 213, 226, 0.25);
-        --global-contrast-inverse: #23211e;
-        --global-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(7, 9, 12, 0.01698),
-            0.0335rem 0.067rem 0.402rem rgba(7, 9, 12, 0.024),
-            0.0625rem 0.125rem 0.75rem rgba(7, 9, 12, 0.03),
-            0.1125rem 0.225rem 1.35rem rgba(7, 9, 12, 0.036),
-            0.2085rem 0.417rem 2.502rem rgba(7, 9, 12, 0.04302),
-            0.5rem 1rem 6rem rgba(7, 9, 12, 0.06),
-            0 0 0 0.0625rem rgba(7, 9, 12, 0.015);
-        --global-h1-color: #f0f1f3;
-        --global-h2-color: #e0e3e7;
-        --global-h3-color: #c2c7d0;
-        --global-h4-color: #b3b9c5;
-        --global-h5-color: #a4acba;
-        --global-h6-color: #8891a4;
-        --global-mark-background-color: #014063;
-        --global-mark-color: #fff;
-        --global-ins-color: #62af9a;
-        --global-del-color: #ce7e7b;
-        --global-blockquote-border-color: var(--global-muted-border-color);
-        --global-blockquote-footer-color: var(--global-muted-color);
-        --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        --global-table-border-color: var(--global-muted-border-color);
-        --global-table-row-stripped-background-color: rgba(
-            111,
-            120,
-            135,
-            0.0375
-        );
-        --global-code-background-color: #1a1f28;
-        --global-code-color: #8891a4;
-        --global-code-kbd-background-color: var(--global-color);
-        --global-code-kbd-color: var(--global-background-color);
-        --global-form-element-background-color: #2d2d29;
-        --global-form-element-selected-background-color: #2b2a28;
-        --global-form-element-border-color: #4a4537;
-        --global-form-element-color: #e0e3e7;
-        --global-form-element-placeholder-color: #8891a4;
-        --global-form-element-active-background-color: #2b2a28;
-        --global-form-element-active-border-color: var(--global-primary-border);
-        --global-form-element-focus-color: var(--global-primary-border);
-        --global-form-element-disabled-opacity: 0.5;
-        --global-form-element-invalid-border-color: #964a50;
-        --global-form-element-invalid-active-border-color: #b7403b;
-        --global-form-element-invalid-focus-color: var(
-            --global-form-element-invalid-active-border-color
-        );
-        --global-form-element-valid-border-color: #2a7b6f;
-        --global-form-element-valid-active-border-color: #16896a;
-        --global-form-element-valid-focus-color: var(
-            --global-form-element-valid-active-border-color
-        );
-        --global-switch-background-color: #333c4e;
-        --global-switch-checked-background-color: var(
-            --global-primary-background
-        );
-        --global-switch-color: #fff;
-        --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-        --global-range-border-color: #202632;
-        --global-range-active-border-color: #2a3140;
-        --global-range-thumb-border-color: var(--global-background-color);
-        --global-range-thumb-color: var(--global-secondary-background);
-        --global-range-thumb-active-color: var(--global-primary-background);
-        --global-accordion-border-color: var(--global-muted-border-color);
-        --global-accordion-active-summary-color: var(--global-primary-hover);
-        --global-accordion-close-summary-color: var(--global-color);
-        --global-accordion-open-summary-color: var(--global-muted-color);
-        --global-card-background-color: #232121;
-        --global-card-border-color: var(--global-card-background-color);
-        --global-card-box-shadow: var(--global-box-shadow);
-        --global-card-sectioning-background-color: #1a1f28;
-        --global-dropdown-background-color: #181c25;
-        --global-dropdown-border-color: #202632;
-        --global-dropdown-box-shadow: var(--global-box-shadow);
-        --global-dropdown-color: var(--global-color);
-        --global-dropdown-hover-background-color: #202632;
-        --global-loading-spinner-opacity: 0.5;
-        --global-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
-        --global-progress-background-color: #202632;
-        --global-progress-color: var(--global-primary-background);
-        --global-tooltip-background-color: var(--global-contrast-background);
-        --global-tooltip-color: var(--global-contrast-inverse);
-        --global-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(42, 123, 111)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-        --global-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(150, 74, 80)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
-        color-scheme: dark;
-    }
-    :root:not([data-theme])
-        input:is(
-            [type='submit'],
-            [type='button'],
-            [type='reset'],
-            [type='checkbox'],
-            [type='radio'],
-            [type='file']
-        ) {
-        --global-form-element-focus-color: var(--global-primary-focus);
-    }
-    :root:not([data-theme])
-        details
-        summary[role='button'].contrast:not(.outline)::after {
-        filter: brightness(0);
-    }
-    :root:not([data-theme])
-        [aria-busy='true']:not(input, select, textarea).contrast:is(
-            button,
-            [type='submit'],
-            [type='button'],
-            [type='reset'],
-            [role='button']
-        ):not(.outline)::before {
-        filter: brightness(0);
-    }
-}
 [data-theme='dark'] {
     --global-background-color: #2b2b27;
-    --global-color: #c2c7d0;
+    --global-color: #e0ddd8;
     --global-text-selection-color: rgba(163, 158, 143, 0.1875);
     --global-muted-color: #7b8495;
     --global-muted-border-color: #202632;
