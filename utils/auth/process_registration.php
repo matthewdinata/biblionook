@@ -36,7 +36,7 @@ if (empty($errors)) {
         echo json_encode(array($password_hash));
 
         // Prepare SQL statement
-        $stmt = $db->prepare("INSERT INTO User (email, password_hash, name, created_at, membership_type) VALUES (?, ?, ?, NOW(), 'free')");
+        $stmt = $db->prepare("INSERT INTO User (email, password_hash, name, created_at, membership_type) VALUES (?, ?, ?, UTC_TIMESTAMP(), 'free')");
         $stmt->bind_param("sss", $email, $password_hash, $name);
 
         if ($stmt->execute()) {

@@ -107,6 +107,12 @@ class PaymentFormValidator {
                 this.validateField(e.target)
             );
             input.addEventListener('blur', (e) => this.validateField(e.target));
+
+            if (input.id === 'slideout-expiry') {
+                input.addEventListener('input', (e) =>
+                    this.formatExpiryDate(e.target)
+                );
+            }
         });
 
         // Add form submit handler
@@ -143,6 +149,55 @@ class PaymentFormValidator {
                 window.location.reload();
             }, 300); // Match the slideout close animation duration
         });
+    }
+
+    formatExpiryDate(input) {
+        // Remove any non-digit characters
+        let value = input.value.replace(/\D/g, '');
+
+        // Add the slash after MM if there are more than 2 digits
+        if (value.length > 2) {
+            value = value.slice(0, 2) + '/' + value.slice(2);
+        }
+
+        // Update the input value
+        input.value = value;
+    }
+
+    validateExpiryDate(value) {
+        // Check basic format
+        if (!/^\d{2}\/\d{4}$/.test(value)) {
+            return 'Please enter date as MM/YYYY';
+        }
+
+        const [month, year] = value.split('/');
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-based
+
+        // Convert to numbers
+        const monthNum = parseInt(month, 10);
+        const yearNum = parseInt(year, 10);
+
+        // Check if card is expired
+        if (
+            (yearNum === currentYear && monthNum < currentMonth) ||
+            yearNum < currentYear
+        ) {
+            return 'Card has expired';
+        }
+
+        // Validate month
+        if (monthNum < 1 || monthNum > 12) {
+            return 'Invalid month';
+        }
+
+        // Validate year
+        if (yearNum < currentYear || yearNum > currentYear + 10) {
+            return 'Invalid year';
+        }
+
+        return ''; // No error
     }
 
     validateField(field) {
@@ -187,27 +242,11 @@ class PaymentFormValidator {
                 }
                 break;
 
-            case 'slideout-month':
-                const monthValue = field.value.trim();
-                const monthNum = parseInt(monthValue);
-
-                if (!monthValue) {
-                    error = 'Month is required';
-                } else if (
-                    !monthValue.match(/^(0[1-9]|1[0-2])$/) &&
-                    !monthValue.match(/^[1-9]$/)
-                ) {
-                    error = 'Invalid month';
-                }
-                break;
-
-            case 'slideout-year':
-                const year = parseInt(field.value);
-                const currentYear = new Date().getFullYear();
+            case 'slideout-expiry':
                 if (!field.value.trim()) {
-                    error = 'Year is required';
-                } else if (year < currentYear || year > currentYear + 10) {
-                    error = `Invalid year`;
+                    error = 'Expiry date is required';
+                } else {
+                    error = this.validateExpiryDate(field.value);
                 }
                 break;
 
@@ -246,7 +285,7 @@ class PaymentFormValidator {
             submitButton.disabled = true;
             submitButton.textContent = 'Processing...';
 
-            if (typeof processPayment === "function") {
+            if (typeof processPayment === 'function') {
                 // Call the global function to process payment
                 processPayment();
             }

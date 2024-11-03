@@ -13,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
+date_default_timezone_set('UTC');
+
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'message' => 'User not authenticated']);
     exit();
@@ -42,7 +44,7 @@ try {
         $limit = ($membership_type === 'lite') ? 3 : 10;
 
         // Count active borrows
-        $stmt = $db->prepare("SELECT COUNT(*) as active_books FROM borrowing WHERE user_id = ? AND due_date > NOW()");
+        $stmt = $db->prepare("SELECT COUNT(*) as active_books FROM borrowing WHERE user_id = ? AND due_date > UTC_TIMESTAMP()");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();

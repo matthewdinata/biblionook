@@ -23,6 +23,8 @@ function isReturned($due_date): bool
 
 require_once "lib/db.php";
 
+date_default_timezone_set('UTC');
+
 $sql = "SELECT 
             bk.id as id,
             u.name as borrower_name,
