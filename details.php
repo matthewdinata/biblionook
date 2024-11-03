@@ -11,6 +11,8 @@ function e($string)
 // TODO: fix logic
 require_once "lib/db.php";
 
+date_default_timezone_set('UTC');
+
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 $rating = 0;

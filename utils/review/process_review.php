@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 title, 
                                 content, 
                                 review_date
-                            ) VALUES (?, ?, ?, ?, ?, NOW())
+                            ) VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP())
                         ");
 
                         $stmt->bind_param(

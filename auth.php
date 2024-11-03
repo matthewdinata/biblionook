@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+date_default_timezone_set('UTC');
+
 $activeTab = $_SESSION['active_tab'] ?? 'create-account'; // Default to create-account if not set
 $formData = $_SESSION['form_data'] ?? [];
 ?>

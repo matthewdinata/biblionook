@@ -13,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
+date_default_timezone_set('UTC');
+
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'message' => 'User not authenticated']);
     exit();
@@ -31,8 +33,8 @@ try {
     // Start transaction
     $db->begin_transaction();
 
-    // Update the due date to NOW()
-    $stmt = $db->prepare("UPDATE borrowing SET due_date = NOW() WHERE user_id = ? AND book_id = ?");
+    // Update the due date to UTC_TIMESTAMP()
+    $stmt = $db->prepare("UPDATE borrowing SET due_date = UTC_TIMESTAMP() WHERE user_id = ? AND book_id = ?");
     $stmt->bind_param("ii", $user_id, $book_id);
 
     if ($stmt->execute()) {
