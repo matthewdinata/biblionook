@@ -21,40 +21,85 @@ BiblioNook is a digital library platform that provides a seamless reading experi
 ## Project Structure
 
 ```
-biblionook/
-├── components/           # Reusable PHP components
-├── css/                 # Stylesheets
+biblionook
+├── README.md
+├── assets
+│   ├── icons
+│   │   ├── arrow-right.png
+│   │   ├── books.svg
+│   │   ├── check-white.png
+│   │   ├── check.png
+│   │   ├── home.svg
+│   │   ├── pricing.svg
+│   │   ├── read.svg
+│   │   ├── return.svg
+│   │   ├── review.svg
+│   │   ├── reviewed.svg
+│   │   ├── search-inverted.svg
+│   │   ├── search.svg
+│   │   ├── sign-in.svg
+│   │   ├── star-empty.svg
+│   │   ├── star-filled.svg
+│   │   ├── star-half-filled.svg
+│   │   ├── user.svg
+│   │   └── user_profile.png
+│   └── logo.svg
+├── auth.php
+├── books.php
+├── components
+│   ├── render_navbar.php
+│   ├── render_review.php
+│   ├── render_slideout_menu.php
+│   └── render_theme_toggle.php
+├── css
 │   ├── auth.css
+│   ├── books.css
 │   ├── components.css
 │   ├── details.css
 │   ├── globals.css
 │   ├── index.css
 │   ├── main.css
 │   ├── pricing.css
-│   ├── profile.css
 │   ├── read.css
 │   └── search.css
-├── js/                  # JavaScript files
-│   ├── components/
+├── details.php
+├── index.php
+├── js
+│   ├── auth.js
+│   ├── books.js
+│   ├── components
 │   │   ├── render_review.js
 │   │   └── render_slideout_menu.js
-│   ├── auth.js
 │   ├── details.js
 │   ├── index.js
-│   └── pricing.js
-├── lib/                 # Core libraries
-│   └── db.php          # Database connection
-├── sql/                 # SQL scripts
-│   ├── create_v2.sql
-│   └── create.sql
-└── utils/              # Utility functions
-    ├── auth.php
-    ├── books.php
-    ├── details.php
-    ├── index.php
-    ├── pricing.php
-    ├── read.php
-    └── search.php
+│   ├── pricing.js
+│   └── search.js
+├── lib
+│   └── db.php
+├── pricing.php
+├── read.php
+├── search.php
+├── sql
+│   ├── create.sql
+│   └── create_v2.sql
+└── utils
+    ├── auth
+    │   ├── logout.php
+    │   ├── process_login.php
+    │   └── process_registration.php
+    ├── books
+    │   └── process_return_book.php
+    ├── details
+    │   ├── process_borrow.php
+    │   └── process_borrow_with_payment.php
+    ├── index
+    │   └── get_suggestion.php
+    ├── pricing
+    │   └── process_upgrade_plan.php
+    ├── review
+    │   └── process_review.php
+    └── search
+        └── search_books.php
 ```
 
 ## Installation
