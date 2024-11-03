@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
 
 <head>
     <title>BiblioNook - Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" href="assets/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/components.css" />
