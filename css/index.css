@@ -1,8 +1,8 @@
 .search-bar {
-    margin-bottom: 20px;
     background-color: var(--global-contrast-inverse);
     text-align: center;
     position: relative;
+    margin-left: -10px;
 }
 
 .search-bar input {
@@ -78,6 +78,54 @@
     }
     .search-bar {
         background: none;
+    }
+}
+
+.book-banner {
+    padding: 8rem 4rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-text {
+    width: 50%;
+    text-wrap: pretty;
+}
+
+.banner-text h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.lottie-book {
+    position: absolute;
+    top: -15rem;
+    right: -13rem;
+    width: 55rem;
+    height: 55rem;
+}
+
+@media screen and (max-width: 1600px) {
+    .lottie-book {
+        position: absolute;
+        top: -5rem;
+        right: -9rem;
+        width: 40rem;
+        height: 40rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .lottie-book {
+        display: none;
+    }
+
+    .banner-text {
+        width: 100%;
     }
 }
 
@@ -170,143 +218,191 @@
     margin: 50px;
 }
 
-.book-table {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 0.8rem;
+.new-arrivals a {
+    text-decoration: none;
 }
 
-.book-table table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-bottom: 0;
+.book-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
-.book-table th,
-.book-table td {
-    padding: 15px;
-    text-align: left;
-}
-
-.book-table th {
+.book-card-horizontal {
+    display: flex;
     background-color: var(--global-contrast-inverse);
-    font-weight: 600;
-    border-bottom: 1px solid var(--global-primary-background);
-}
-
-.book-table td {
-    border-bottom: 1px solid var(--global-primary-background);
-    background-color: var(--global-contrast-inverse);
-}
-
-[data-theme='dark'] {
-    .book-table th,
-    .book-table td {
-        border-bottom: 1px solid var(--global-secondary-background);
-    }
-}
-
-.book-table a {
-    color: var(--global-primary);
-    text-decoration: underline;
-    font-weight: 600;
-}
-
-.book-table a:hover {
-    color: var(--global-primary-hover);
-}
-
-.book-table td:first-child {
-    font-weight: 600;
-}
-
-.book-table tr:last-child td {
-    border-bottom: none;
-}
-
-.book-cover {
-    width: 40px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-right: 0.3rem;
-}
-
-.genre-tag {
-    display: inline-block;
-    padding: 2px 8px;
     border-radius: 12px;
-    font-size: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
 }
 
-.mystery {
+.book-card-horizontal:hover {
+    transform: translateY(-5px);
+}
+
+.book-image {
+    width: 140px;
+    min-width: 140px;
+    padding: 1rem;
+}
+
+.book-image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.book-info {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.book-info h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--global-contrast);
+}
+
+.book-info .author {
+    color: var(--global-secondary-text);
+    font-size: 0.7rem;
+    margin: 0;
+}
+
+.genre-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.rating {
+    display: flex;
+    gap: 0.25rem;
+    margin: 0.5rem 0;
+}
+
+.star {
+    width: 0.7rem;
+}
+
+[data-theme='dark'] .star {
+    filter: invert(0.85);
+}
+
+.view-details {
+    display: inline-block;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    width: fit-content;
+    margin-top: auto;
+}
+
+.view-details:hover {
+    background-color: var(--global-primary-hover);
+    text-decoration: none;
+    color: white;
+}
+
+.genre-badge.mystery {
     background-color: #fff3cd;
     color: #856404;
 }
 
-.fiction {
+.genre-badge.fiction {
     background-color: #d4edda;
     color: #155724;
 }
 
-.biographic {
+.genre-badge.biographic {
     background-color: #e2e3ff;
     color: #3d3d8f;
 }
 
-.romance {
+.genre-badge.romance {
     background-color: #f8d7da;
     color: #721c24;
 }
 
-.classic {
+.genre-badge.classic {
     background-color: #cce5ff;
     color: #004085;
 }
 
-.action {
+.genre-badge.action {
     background-color: #d6d8d9;
     color: #383d41;
 }
 
-.fantasy {
+.genre-badge.fantasy {
     background-color: #d1ecf1;
     color: #0c5460;
 }
 
-.thriller {
+.genre-badge.thriller {
     background-color: #f8d7da;
     color: #721c24;
 }
 
-.dystopian {
+.genre-badge.dystopian {
     background-color: #f8e7d7;
     color: #723d1c;
 }
 
-.horror {
+.genre-badge.horror {
     background-color: #edd9c7;
     color: #420c12;
 }
 
-@media screen and (max-width: 1200px) {
-    .author {
-        display: none;
+/* Dark mode adjustments for badges */
+[data-theme='dark'] .genre-badge {
+    filter: brightness(0.85);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .book-card-horizontal {
+    background-color: var(--global-secondary-background);
+}
+
+[data-theme='dark'] .book-card-horizontal.mystery,
+[data-theme='dark'] .book-card-horizontal.fiction,
+[data-theme='dark'] .book-card-horizontal.biographic,
+[data-theme='dark'] .book-card-horizontal.romance,
+[data-theme='dark'] .book-card-horizontal.classic,
+[data-theme='dark'] .book-card-horizontal.action,
+[data-theme='dark'] .book-card-horizontal.fantasy,
+[data-theme='dark'] .book-card-horizontal.thriller,
+[data-theme='dark'] .book-card-horizontal.dystopian,
+[data-theme='dark'] .book-card-horizontal.horror {
+    background-color: var(--global-secondary-background);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .book-cards {
+        grid-template-columns: 1fr;
     }
 }
 
-@media screen and (max-width: 1000px) {
-    .genre,
-    .author {
-        display: none;
+@media screen and (max-width: 480px) {
+    .book-image {
+        width: 100px;
+        min-width: 100px;
     }
-}
-
-[data-theme='dark'] {
-    .genre-tag {
-        filter: invert(1);
+    
+    .book-image img {
+        height: 150px;
+    }
+    
+    .book-info {
+        padding: 1rem 0.75rem;
     }
 }

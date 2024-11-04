@@ -19,12 +19,29 @@ if ($result->num_rows > 0) {
     }
 }
 
-$sql = "SELECT * FROM Book ORDER BY date_added LIMIT 8";
+$sql = "SELECT * FROM Book ORDER BY date_added LIMIT 6";
 $result = $db->query($sql);
 
 $new_arrivals = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $book_id = $row['id'];
+        $reviews_per_page = 5;
+        $offset = 0;
+        $sql_reviews = "SELECT r.*, u.name 
+                        FROM Review r 
+                        LEFT JOIN User u ON r.user_id = u.id 
+                        WHERE r.book_id = ? 
+                        ORDER BY r.review_date DESC 
+                        LIMIT ? OFFSET ?";
+        $stmt = $db->prepare($sql_reviews);
+        $stmt->bind_param("iii", $book_id, $reviews_per_page, $offset);
+        $stmt->execute();
+        $result_reviews = $stmt->get_result();
+        $reviews = $result_reviews->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        $row['reviews'] = $reviews;
         $new_arrivals[] = $row;
     }
 }
@@ -59,6 +76,24 @@ if ($result->num_rows > 0) {
             </form>
         </div>
 
+        <section class="book-banner">
+            <div class="banner-text">
+                <?php if (isset($_SESSION["user_name"])): ?>
+                    <?php $name_parts = explode(' ', $_SESSION["user_name"]); ?>
+                    <h1>Happy Reading, <?= e($name_parts[0]) ?></h1>
+                <?php else: ?>
+                    <h1>Happy Reading, <br /> BiblioNookers</h1>
+                <?php endif; ?>
+                <p>
+                    Explore our vast collection of books and find your next favorite read.
+                    Start your reading journey with BiblioNook today.
+                </p>
+            </div>
+            <dotlottie-player src="https://lottie.host/70c03e01-0a85-4d76-b52a-c97f761a934d/H8bOp7gG3q.json"
+                class="lottie-book" background="transparent" speed="0.3" loop autoplay>
+            </dotlottie-player>
+        </section>
+
         <section class="recommended-section">
             <h3>Recommended For You</h3>
             <div class="book-grid">
@@ -66,6 +101,7 @@ if ($result->num_rows > 0) {
                     <a href='details.php?id=<?= e($book['id']) ?>'>
                         <div class="book-card">
                             <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                            <h4><?= e($book['title']) ?></h4>
                         </div>
                     </a>
                 <?php endforeach; ?>
@@ -103,37 +139,44 @@ if ($result->num_rows > 0) {
 
         <section class="new-arrivals">
             <h3>New Arrivals</h3>
-            <div class="book-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th class="author">Author</th>
-                            <th class="genre">Genre</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($new_arrivals as $book): ?>
-                            <tr>
-                                <td>
-                                    <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                         class="book-cover">
-                                    <?= e($book['title']) ?>
-                                </td>
-                                <td class="author"><?= e($book['author']) ?></td>
-                                <td class="genre"><span
-                                          class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
-                                </td>
-                                <td>
-                                    <a href='details.php?id=<?= e($book['id']) ?>' class="action-button">View Details</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+            <div class="book-cards">
+                <?php foreach ($new_arrivals as $book): ?>
+                    <a href='details.php?id=<?= e($book['id']) ?>'>
+                        <div class="book-card-horizontal <?= e(strtolower($book['genre'])) ?>">
+                            <div class="book-image">
+                                <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>" />
+                            </div>
+                            <div class="book-info">
+                                <h4><?= e($book['title']) ?></h4>
+                                <p class="author">by <?= e($book['author']) ?></p>
+                                <div class="genre-badge <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></div>
+                                <div class="rating">
+                                    <?php
+                                    $rating = 0;
+                                    $review_count = count($book['reviews']);
+                                    if ($review_count > 0) {
+                                        $total_rating = array_sum(array_column($book['reviews'], 'rating'));
+                                        $rating = $total_rating / $review_count;
+                                    }
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if ($i <= floor($rating)) {
+                                            echo '<img src="assets/icons/star-filled.svg" alt="Filled Star" class="star">';
+                                        } elseif ($i - $rating <= 0.5) {
+                                            echo '<img src="assets/icons/star-half-filled.svg" alt="Half Filled Star" class="star">';
+                                        } else {
+                                            echo '<img src="assets/icons/star-empty.svg" alt="Empty Star" class="star">';
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </section>
     </div>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <script src="js/index.js"></script>
     <script>
         // Load theme from localStorage
@@ -142,12 +185,10 @@ if ($result->num_rows > 0) {
             document.body.classList.add('dark-mode');
             document.documentElement.setAttribute('data-theme', 'dark');
         }
-
         function toggleTheme() {
             const body = document.body;
             const isDark = body.classList.toggle('dark-mode');
             const theme = isDark ? 'dark' : 'light';
-
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
         }

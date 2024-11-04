@@ -23,9 +23,7 @@
     margin: 0 auto 3rem;
     line-height: 1.6;
     font-size: 0.8rem;
-    font-family: "Inter", sans-serif;
-    letter-spacing: 0.5px;
-    letter-spacing: 0px;
+    font-style: italic;
     text-wrap: pretty;
 }
 
