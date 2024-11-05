@@ -1,3 +1,52 @@
+.background-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 65%;
+    height: 760px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-accent svg {
+    width: 100%;
+    height: 760px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .background-accent .main-accent {
+    fill: #474640;
+    fill-opacity: 0.3;
+}
+
+[data-theme='dark'] .background-accent .edge-shadow {
+    fill: #4f4d46;
+    fill-opacity: 0.25;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .background-accent {
+        top: 0;
+        width: 70%;
+        height: 860px;
+    }
+
+    .background-accent svg {
+        height: 860px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .background-accent {
+        top: -200px;
+    }
+}
+
 .search-bar {
     text-align: center;
     position: relative;
@@ -396,11 +445,11 @@
         width: 100px;
         min-width: 100px;
     }
-    
+
     .book-image img {
         height: 150px;
     }
-    
+
     .book-info {
         padding: 1rem 0.75rem;
     }
