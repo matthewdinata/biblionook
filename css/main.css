@@ -1,5 +1,6 @@
-/* Updated main.css */
 .main-content {
+    position: relative;
+    overflow: hidden;
     margin-left: 15rem;
     transition: margin-left 0.3s ease-in-out;
 }
