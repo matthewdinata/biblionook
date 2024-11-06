@@ -44,7 +44,7 @@
     --global-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
     --global-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
     --global-icon-loading: url("data:image/svg+xml,%3Csvg fill='none' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' %3E%3Cstyle%3E g %7B animation: rotate 2s linear infinite; transform-origin: center center; %7D circle %7B stroke-dasharray: 75,100; stroke-dashoffset: -5; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; %7D @keyframes rotate %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg); %7D %7D @keyframes dash %7B 0%25 %7B stroke-dasharray: 1,100; stroke-dashoffset: 0; %7D 50%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -17.5; %7D 100%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -62; %7D %7D %3C/style%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='rgb(136, 145, 164)' stroke-width='4' /%3E%3C/g%3E%3C/svg%3E");
-    letter-spacing: 1px;  
+    letter-spacing: 1px;
 }
 @media (min-width: 576px) {
     :root {
@@ -251,7 +251,7 @@ details summary[role='button']:not(.outline)::after {
     --global-text-selection-color: rgba(149, 144, 130, 0.25);
     --global-muted-color: #646b79;
     --global-muted-border-color: #e7eaf0;
-    --global-tab-active-background: #ccc6b480;
+    --global-tab-active-background: #ea980a20;
     --global-tab-hover-background: #eeeeee8d;
     --global-primary: #6e6a60;
     --global-primary-background: #ccc6b4;
@@ -407,9 +407,7 @@ details summary[role='button']:not(.outline)::after {
     --global-secondary-underline: #1d1b19;
     --global-secondary-hover: #615e56;
     --global-secondary-hover-background: #32302c;
-    --global-secondary-hover-border: var(
-        --global-secondary-hover-background
-    );
+    --global-secondary-hover-border: var(--global-secondary-hover-background);
     --global-secondary-hover-underline: var(--global-secondary-hover);
     --global-secondary-focus: #a39e90;
     --global-secondary-inverse: #fff;
@@ -445,12 +443,7 @@ details summary[role='button']:not(.outline)::after {
     --global-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     --global-table-border-color: var(--global-muted-border-color);
-    --global-table-row-stripped-background-color: rgba(
-        111,
-        120,
-        135,
-        0.0375
-    );
+    --global-table-row-stripped-background-color: rgba(111, 120, 135, 0.0375);
     --global-code-background-color: #1a1f28;
     --global-code-color: #8891a4;
     --global-code-kbd-background-color: var(--global-color);
@@ -475,9 +468,7 @@ details summary[role='button']:not(.outline)::after {
         --global-form-element-valid-active-border-color
     );
     --global-switch-background-color: #333c4e;
-    --global-switch-checked-background-color: var(
-        --global-primary-background
-    );
+    --global-switch-checked-background-color: var(--global-primary-background);
     --global-switch-color: #fff;
     --global-switch-thumb-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
     --global-range-border-color: #202632;
