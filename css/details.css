@@ -1,6 +1,30 @@
 .main-container {
     width: 100%;
     padding: 50px;
+    background: linear-gradient(
+        135deg,
+        #f3f1e8 0%,
+        #e6d5ac 20%,
+        #f8e3c4 35%,
+        #d4e6d0 50%,
+        #c2d8e6 65%,
+        #e6d5ac 80%,
+        #f3f1e8 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .book-details {
@@ -452,8 +476,6 @@
         padding: 10px 30px;
     }
 }
-
-
 
 [data-theme='dark'] {
     .rating {

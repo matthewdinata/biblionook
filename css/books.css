@@ -7,6 +7,43 @@
     min-height: 100vh;
     width: 100%;
     padding: 2rem 0;
+    max-width: 100%;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        #f3f1e8 0%,
+        #e8e1cc 15%,
+        #e1d7d2 30%,
+        #f8e3c4 45%,
+        #e8e6ea 60%,
+        #dad5d8 75%,
+        #f3f1e8 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    mask: radial-gradient(circle at center, black 30%, transparent 80%);
+    -webkit-mask: radial-gradient(circle at center, black 30%, transparent 80%);
+    z-index: -1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .profile-box img {
@@ -18,6 +55,10 @@
 }
 
 [data-theme='dark'] {
+    .container::before {
+        display: none; /* Removes gradient in dark mode */
+    }
+
     .profile-box img {
         filter: brightness(1.5);
     }
