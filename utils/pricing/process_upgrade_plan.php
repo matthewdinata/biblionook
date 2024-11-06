@@ -18,6 +18,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             // Get user ID from session
             $user_id = $_SESSION['user_id'];
+            $to = "f32ee@localhost";
+            $subject = "BiblioNook: Plan Change Confirmation";
+
+            $headers = 'From: f32ee@localhost' . "\r\n" .
+                'Reply-To: f32ee@localhost' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+            $headers .= "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+
+            $message = "Welcome to BiblioNook! \n";
+            $message .= "Your plan has been upgraded to $new_plan\n";
+            $message .= "Enjoy Reading! \n";
+            $message = rtrim($message, "\n");
+
+            mail($to, $subject, $message, $headers);
 
             // Prepare SQL statement to prevent SQL injection
             $stmt = $db->prepare("UPDATE User SET membership_type = ? WHERE id = ?");
