@@ -8,7 +8,6 @@ function e($string)
     return htmlspecialchars($decoded, ENT_QUOTES, 'UTF-8');
 }
 
-// TODO: fix logic
 require_once "lib/db.php";
 
 date_default_timezone_set('UTC');
@@ -167,10 +166,8 @@ $stmt->close();
     </div>
 HTML;
 
-    // Render the slideout menu
     renderSlideoutMenu('paymentSlideout', 'Complete your Payment', $paymentContent);
     ?>
-
 
     <div class="main-content">
         <div class="main-container">
@@ -178,7 +175,7 @@ HTML;
             <div class="book-details">
                 <div class="book-cover">
                     <img src="<?= e($book['thumbnail_url'] ?? 'assets/placeholder-cover.png') ?>"
-                         alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
+                        alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
                     <p class="isbn">ISBN: <?= e($book['isbn'] ?? '978-3-16-148410-0') ?></p>
                 </div>
 
@@ -188,7 +185,7 @@ HTML;
                         <p class="book-meta">
                             by <span class="author"><?= e($book['author'] ?? 'Author') ?></span> |
                             Published: <span
-                                  class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
+                                class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
 
                         <div class="rating">

@@ -6,7 +6,7 @@ function e($string)
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
-// Define plan configurations
+// Plan features
 $plans = [
     'free' => [
         'name' => 'Free plan',
@@ -94,7 +94,6 @@ function renderButton($planKey)
         return '';
     }
 
-    // Otherwise, show an "Upgrade to Plan" button
     return <<<HTML
         <button class="plan-button" onclick="openPaymentSlideout('{$planKey}')">
             Upgrade to {$planKey} plan
@@ -103,7 +102,6 @@ function renderButton($planKey)
     HTML;
 }
 
-// Function to render a plan card
 function renderPlanCard($planKey, $plan)
 {
     $premiumClass = $plan['is_premium'] ? 'premium' : '';

@@ -11,7 +11,6 @@ require_once "lib/db.php";
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 $book_content = [
-    // Page 1
     [
         'chapter' => 'Chapter One',
         'subtitle' => 'The Old House',
@@ -21,7 +20,6 @@ $book_content = [
             'The mansion loomed before her, its weathered facade telling stories of neglect and abandonment. Paint peeled from the window frames like old scabs, and thick ivy had claimed the eastern wall entirely, its tendrils probing between stones as if searching for secrets hidden within. The once-pristine garden had transformed into a wild maze of untamed beauty, nature reclaiming what had once been meticulously maintained by her grandmother\'s careful hands.',
         ]
     ],
-    // Page 2
     [
         'content' => [
             'As she approached the front steps, memories flooded back with each footfall on the gravel path. Summer afternoons spent reading in the garden gazebo, the scent of her grandmother\'s fresh-baked cookies wafting through open windows, the sound of classical music drifting from the library where the old Victrola still stood in its corner.',
@@ -31,7 +29,6 @@ $book_content = [
             'Sarah\'s footsteps echoed on the hardwood floors, each step stirring up memories like the dust beneath her feet. The grandfather clock in the corner stood silent, its hands frozen at 3:47, marking some long-forgotten moment in time. Family portraits lined the walls, their subjects watching her progress with painted eyes that seemed to follow her movement.'
         ]
     ],
-    // Page 3
     [
         'content' => [
             'Making her way to the library, Sarah\'s hand trembled slightly as she reached for the brass doorknob. This room had always been her sanctuary during childhood visits, its floor-to-ceiling shelves housing countless adventures and mysteries. The door opened with a protest of unused hinges, and she gasped softly at the sight before her.',
@@ -41,7 +38,6 @@ $book_content = [
             'The massive oak desk dominated the center of the room, its surface cleared except for a single envelope placed precisely in the middle. The paper wasn\'t dusty like everything else; it looked as if it had been placed there recently. Her name was written across the front in her grandmother\'s distinctive handwriting, the elegant script as familiar as her own reflection. She noticed something peculiar about the desk that she\'d never seen before - tiny symbols carved into its legs, barely visible unless you knew where to look, forming what appeared to be an intricate pattern that seemed to flow from one leg to the next.'
         ]
     ],
-    // Page 4
     [
         'content' => [
             'With trembling fingers, Sarah picked up the envelope. It was sealed with dark red wax, impressed with a symbol she didn\'t recognize – a rose intertwined with what appeared to be a key. The paper was thick and expensive-feeling, unlike the simple stationery her grandmother typically used. Something about it made her pulse quicken, as if she were about to uncover the first clue to a mystery she didn\'t yet understand.',
@@ -51,7 +47,6 @@ $book_content = [
             'A sudden draft caused the flames in the old fireplace to dance, casting moving shadows across the walls that seemed to take on strange, almost deliberate shapes - forms that reminded her of the symbols she\'d just noticed on the desk.'
         ]
     ],
-    // Page 5
     [
         'content' => [
             'Taking a deep breath, Sarah broke the seal. The wax cracked cleanly, revealing a letter written in the same elegant hand as the envelope. But as she began to read, she realized this was unlike any letter she\'d received from her grandmother before. The words seemed to shimmer in the dying light, each sentence more puzzling than the last.',
@@ -61,7 +56,6 @@ $book_content = [
             'The moonlight seemed to concentrate on a particular shelf, drawing her attention to a series of books whose titles appeared to be written in a language she\'d never seen before, yet somehow felt she could almost understand.'
         ]
     ],
-    // Page 6
     [
         'chapter' => 'Chapter Two',
         'subtitle' => 'The Hidden Room',
@@ -73,7 +67,6 @@ $book_content = [
             'The air that escaped from within carried the scent of old parchment mixed with something else - an otherworldly fragrance that reminded her of the perfume her grandmother used to wear, but with undertones of exotic spices and flowers that couldn\'t possibly grow in this part of the world.'
         ]
     ],
-    // Page 7
     [
         'content' => [
             'The hidden room was small and dimly lit, with only a single window allowing a sliver of light to filter in. The walls were lined with shelves, filled with books and strange artifacts. In the center of the room stood a pedestal, upon which rested an old, leather-bound book.',
@@ -150,7 +143,7 @@ if (!$book) {
 
                 <div class="book-info">
                     <img src="<?php echo e($book['thumbnail_url']); ?>" alt="<?php echo e($book['title']); ?> cover"
-                         class="book-thumbnail">
+                        class="book-thumbnail">
                 </div>
             <?php endif; ?>
 

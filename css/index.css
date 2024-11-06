@@ -189,6 +189,10 @@
     align-items: end;
 }
 
+.book-grid a {
+    height: 100%;
+}
+
 .book-card {
     cursor: pointer;
     height: 100%;

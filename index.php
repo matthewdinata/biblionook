@@ -72,9 +72,9 @@ if ($result->num_rows > 0) {
         <div class="background-accent">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" preserveAspectRatio="xMinYMin slice">
                 <path d="M0,0 L1000,0 Q1000,0 1000,80 L1000,720 Q1000,800 920,800 L80,800 Q0,800 0,720 L0,0 Z"
-                      fill="#E5DDD5" fill-opacity="0.7" class="main-accent" />
+                    fill="#E5DDD5" fill-opacity="0.7" class="main-accent" />
                 <path d="M400,0 L1000,0 L1000,800 L400,800 L400,0" fill="#c7c0a5" fill-opacity="0.25"
-                      class="edge-shadow" />
+                    class="edge-shadow" />
             </svg>
         </div>
         <div class="search-bar">
@@ -98,7 +98,7 @@ if ($result->num_rows > 0) {
                 </p>
             </div>
             <dotlottie-player src="https://lottie.host/70c03e01-0a85-4d76-b52a-c97f761a934d/H8bOp7gG3q.json"
-                              class="lottie-book" background="transparent" speed="0.3" loop autoplay>
+                class="lottie-book" background="transparent" speed="0.3" loop autoplay>
             </dotlottie-player>
         </section>
 
@@ -185,21 +185,6 @@ if ($result->num_rows > 0) {
     </div>
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <script src="js/index.js"></script>
-    <script>
-        // Load theme from localStorage
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-        function toggleTheme() {
-            const body = document.body;
-            const isDark = body.classList.toggle('dark-mode');
-            const theme = isDark ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        }
-    </script>
 </body>
 
 </html>

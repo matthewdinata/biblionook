@@ -13,9 +13,8 @@ function sanitize_input($data)
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get and sanitize form data
     $email = sanitize_input($_POST['email']);
-    $password = $_POST['password']; // Don't sanitize password as it might contain special characters
+    $password = $_POST['password'];
 
     // Validate input
     if (empty($email)) {
@@ -37,15 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($result->num_rows === 1) {
                 $user = $result->fetch_assoc();
 
-                // Verify password
                 if (password_verify($password, $user['password_hash'])) {
-                    // Password is correct, create session
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['user_name'] = $user['name'];
                     $_SESSION['user_email'] = $user['email'];
                     $_SESSION['membership_type'] = $user['membership_type'];
 
-                    // Redirect to home page
                     header("Location: ../../index.php");
                     exit();
                 } else {

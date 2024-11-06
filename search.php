@@ -7,7 +7,6 @@ function e($string)
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
-// TODO: fix logic
 require_once "lib/db.php";
 
 $sql = "SELECT id, title, thumbnail_url, author FROM Book WHERE is_featured = 1 LIMIT 5";
@@ -19,8 +18,6 @@ if ($result->num_rows > 0) {
         $recommended_books[] = $row;
     }
 }
-
-
 ?>
 
 
@@ -147,8 +144,8 @@ if ($result->num_rows > 0) {
                         <button class="sort-button" data-sort="none">
                             DATE
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="sort-icon">
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="sort-icon">
                                 <path d="M6 9l6 6 6-6" />
                             </svg>
                         </button>

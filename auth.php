@@ -3,7 +3,7 @@ session_start();
 
 date_default_timezone_set('UTC');
 
-$activeTab = $_SESSION['active_tab'] ?? 'create-account'; // Default to create-account if not set
+$activeTab = $_SESSION['active_tab'] ?? 'create-account';
 $formData = $_SESSION['form_data'] ?? [];
 ?>
 
@@ -51,15 +51,15 @@ $formData = $_SESSION['form_data'] ?? [];
             <div class="tab-container">
                 <div class="tab-buttons">
                     <button class="tab-btn <?php echo $activeTab === 'create-account' ? 'active' : ''; ?>"
-                            data-tab="create-account">Create Account</button>
+                        data-tab="create-account">Create Account</button>
                     <button class="tab-btn <?php echo $activeTab === 'signin' ? 'active' : ''; ?>"
-                            data-tab="signin">Sign In</button>
+                        data-tab="signin">Sign In</button>
                 </div>
 
                 <!-- Create Account Form -->
                 <form id="create-account-form"
-                      class="tab-content <?php echo $activeTab === 'create-account' ? 'active' : ''; ?>"
-                      action="./utils/auth/process_registration.php" method="POST">
+                    class="tab-content <?php echo $activeTab === 'create-account' ? 'active' : ''; ?>"
+                    action="./utils/auth/process_registration.php" method="POST">
                     <div class="form-group">
                         <label for="reg-name">Name</label>
                         <input type="text" id="reg-name" name="name" placeholder="Brian Clark" required>
@@ -78,7 +78,7 @@ $formData = $_SESSION['form_data'] ?? [];
                     <div class="form-group">
                         <label for="reg-confirm-password">Confirm Password</label>
                         <input type="password" id="reg-confirm-password" name="confirm_password" placeholder="********"
-                               required>
+                            required>
                         <span id="confirmPasswordError" class="error"></span>
                     </div>
                     <button type="submit" class="submit-btn">Create Account →</button>
@@ -86,11 +86,11 @@ $formData = $_SESSION['form_data'] ?? [];
 
                 <!-- Sign In Form -->
                 <form id="signin-form" class="tab-content <?php echo $activeTab === 'signin' ? 'active' : ''; ?>"
-                      action="./utils/auth/process_login.php" method="POST">
+                    action="./utils/auth/process_login.php" method="POST">
                     <div class="form-group">
                         <label for="login-email">Email</label>
                         <input type="email" id="login-email" name="email" placeholder="example@youremail.com"
-                               value="<?php echo htmlspecialchars($formData['email'] ?? ''); ?>" required>
+                            value="<?php echo htmlspecialchars($formData['email'] ?? ''); ?>" required>
                         <span id="login-emailError" class="error"></span>
                     </div>
                     <div class="form-group">
