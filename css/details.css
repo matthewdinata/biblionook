@@ -443,6 +443,18 @@
     }
 }
 
+@media (max-width: 600px) {
+    .main-container {
+        padding: 0;
+    }
+
+    .book-details {
+        padding: 10px 30px;
+    }
+}
+
+
+
 [data-theme='dark'] {
     .rating {
         filter: invert(1);

@@ -156,7 +156,9 @@ if ($result->num_rows > 0) {
                                         <td onclick="window.location='details.php?id=<?= e($book['id']) ?>'" class="title">
                                             <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
                                                 class="book-cover">
-                                            <?= e($book['title']) ?>
+                                            <span>
+                                                <?= e($book['title']) ?>
+                                            </span>
                                         </td>
                                         <td class="author"><?= e($book['author']) ?></td>
                                         <td class="genre">

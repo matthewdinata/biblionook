@@ -63,9 +63,9 @@
     text-align: left;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
     .borrowed-books {
-        padding: 0 2.5rem;
+        padding: 0 3rem;
     }
 }
 
@@ -129,6 +129,8 @@
 
 td.title {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .book-table tr:hover td {
@@ -273,6 +275,10 @@ td.title {
 
     .action td {
         text-align: right;
+    }
+
+    .action .action-button {
+        margin-right: 0.2rem;
     }
 }
 

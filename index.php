@@ -9,7 +9,7 @@ function e($string)
 
 require_once "lib/db.php";
 
-$sql = "SELECT * FROM Book WHERE is_featured = 1 LIMIT 5";
+$sql = "SELECT * FROM Book WHERE is_featured = 1 LIMIT 8";
 $result = $db->query($sql);
 
 $recommended_books = [];
