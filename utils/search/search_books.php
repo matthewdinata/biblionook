@@ -11,7 +11,7 @@ function sanitizeInput($input)
 $searchType = isset($_GET['type']) ? sanitizeInput($_GET['type']) : 'title';
 $searchQuery = isset($_GET['query']) ? sanitizeInput($_GET['query']) : '';
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$itemsPerPage = 6;
+$itemsPerPage = 10;
 $offset = ($page - 1) * $itemsPerPage;
 
 // Get filter parameters
