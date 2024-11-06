@@ -63,6 +63,12 @@
     text-align: left;
 }
 
+@media screen and (max-width: 480px) {
+    .borrowed-books {
+        padding: 0 2.5rem;
+    }
+}
+
 .empty-state {
     text-align: center;
     padding: 40px;
@@ -132,7 +138,6 @@ td.title {
 [data-theme='dark'] .book-table tr:hover td {
     background-color: #333;
 }
-
 
 .book-table .action-button {
     background: none;
@@ -259,7 +264,6 @@ td.title {
     }
 }
 
-
 @media screen and (max-width: 1000px) {
     .genre,
     .author,
@@ -273,7 +277,8 @@ td.title {
 }
 
 [data-theme='dark'] {
-    .genre-tag, .action-button {
+    .genre-tag,
+    .action-button {
         filter: invert(1);
     }
 }
