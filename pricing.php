@@ -73,19 +73,6 @@ function renderButton($planKey)
         return '<button class="current-plan">Current Plan</button>';
     }
 
-    // TODO: Below is only used for development purposes
-    // START
-    // If the user is on the Plus plan, show a "Switch to Lite/Free plan" button
-    if ($membership_type == 'plus') {
-        return "<a class=\"switch-plan-button\" onclick=\"switchPlan('{$planKey}')\">Switch to {$planKey} plan</a>";
-    }
-
-    // If the user is on the Lite plan and the plan is the free plan, show a "Switch to free plan" button
-    if ($membership_type == 'lite' && $planKey == 'free') {
-        return "<a class=\"switch-plan-button\" onclick=\"switchPlan('{$planKey}')\">Switch to free plan</a>";
-    }
-    // END
-
     if ($membership_type === 'plus') {
         return '';
     }

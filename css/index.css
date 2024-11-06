@@ -151,10 +151,10 @@
 
 .lottie-book {
     position: absolute;
-    top: -15rem;
-    right: -13rem;
-    width: 55rem;
-    height: 55rem;
+    top: -13rem;
+    right: -12rem;
+    width: 50rem;
+    height: 50rem;
 }
 
 @media screen and (max-width: 1600px) {

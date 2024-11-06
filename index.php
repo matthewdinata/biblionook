@@ -70,11 +70,11 @@ if ($result->num_rows > 0) {
     ?>
     <div class="main-content">
         <div class="background-accent">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" preserveAspectRatio="xMinYMin slice">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 100 1000 800" preserveAspectRatio="xMinYMin slice">
                 <path d="M0,0 L2000,0 Q2000,0 2000,80 L2000,720 Q2000,800 920,800 L80,800 Q0,800 0,720 L0,0 Z"
-                      fill="#FEB13E" fill-opacity="0.15" class="main-accent" />
+                    fill="#FEB13E" fill-opacity="0.15" class="main-accent" />
                 <path d="M400,0 L2000,0 L2000,800 L400,800 L400,0" fill="#ea900a" fill-opacity="0.1"
-                      class="edge-shadow" />
+                    class="edge-shadow" />
             </svg>
         </div>
         <div class="search-bar">
@@ -98,7 +98,7 @@ if ($result->num_rows > 0) {
                 </p>
             </div>
             <dotlottie-player src="https://lottie.host/70c03e01-0a85-4d76-b52a-c97f761a934d/H8bOp7gG3q.json"
-                              class="lottie-book" background="transparent" speed="0.3" loop autoplay>
+                class="lottie-book" background="transparent" speed="0.3" loop autoplay>
             </dotlottie-player>
         </section>
 
