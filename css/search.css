@@ -1,6 +1,7 @@
 .main-container {
     width: 100%;
     padding: 50px;
+    min-height: 100vh;
 }
 
 .main-container::before {
