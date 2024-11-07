@@ -106,7 +106,7 @@ biblionook
 ## Installation
 
 1. Clone the repository
-2. Import `sql/create_v2.sql` into your MySQL database
+2. Import `sql/create_v3.sql` into your MySQL database
 3. Configure database connection in `lib/db.php`
 4. Serve using a PHP-enabled web server
 
