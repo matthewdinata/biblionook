@@ -81,7 +81,8 @@ biblionook
 ├── search.php
 ├── sql
 │   ├── create.sql
-│   └── create_v2.sql
+│   ├── create_v2.sql
+│   └── create_v3.sql
 └── utils
     ├── auth
     │   ├── logout.php
@@ -116,7 +117,6 @@ The application uses the following main tables:
 - Books: Contains book information and metadata
 - Borrowings: Tracks book borrowing records
 - Reviews: Stores user reviews and ratings
-- Payments: Records membership and borrowing payments
 
 ## Testing
 
