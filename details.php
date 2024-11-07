@@ -29,7 +29,7 @@ if ($book_id > 0) {
 }
 
 if ($book_id > 0) {
-    $sql = "SELECT id, title, thumbnail_url, author, summary, isbn, publication_date, fee FROM Book WHERE id = ?";
+    $sql = "SELECT id, title, thumbnail_url, author, summary, isbn, publication_date, fee, total_copies FROM Book WHERE id = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $book_id);
     $stmt->execute();
@@ -49,6 +49,7 @@ $active_books = 0;
 $can_borrow = true;
 $error_message = '';
 $is_currently_borrowed = false;
+$is_available = true;
 
 if (isset($_SESSION['user_id'])) {
     $membership_type = $_SESSION['membership_type'] ?? 'free';
@@ -64,6 +65,23 @@ if (isset($_SESSION['user_id'])) {
     $result = $stmt->get_result();
     $is_currently_borrowed = $result->fetch_assoc()['is_borrowed'] > 0;
     $stmt->close();
+
+    // Check total current borrowings for this book
+    $sql = "SELECT COUNT(*) as current_borrowings FROM borrowing 
+            WHERE book_id = ? AND due_date > ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("is", $book_id, $current_time);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $current_borrowings = $result->fetch_assoc()['current_borrowings'];
+    $stmt->close();
+
+    // Check if book is available based on total copies
+    if ($current_borrowings >= $book['total_copies']) {
+        $is_available = false;
+        $error_message = "Sorry, all copies of this book are currently borrowed.";
+        $can_borrow = false;
+    }
 
     if ($membership_type !== 'free' && !$is_currently_borrowed) {
 
@@ -175,7 +193,7 @@ HTML;
             <div class="book-details">
                 <div class="book-cover">
                     <img src="<?= e($book['thumbnail_url'] ?? 'assets/placeholder-cover.png') ?>"
-                        alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
+                         alt="<?= e($book['title'] ?? 'Book cover') ?>" class="cover-image">
                     <p class="isbn">ISBN: <?= e($book['isbn'] ?? '978-3-16-148410-0') ?></p>
                 </div>
 
@@ -185,7 +203,7 @@ HTML;
                         <p class="book-meta">
                             by <span class="author"><?= e($book['author'] ?? 'Author') ?></span> |
                             Published: <span
-                                class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
+                                  class="publish-date"><?= e(date('M Y', strtotime($book['publication_date'] ?? '2009-01-01'))) ?></span>
                         </p>
 
                         <div class="rating">
@@ -213,6 +231,12 @@ HTML;
                                 <div class="read-cta">
                                     <p class="currently-borrowed">This book is in your borrowed list!</p>
                                     <a href="./read.php?id=<?= e($book['id']) ?>" class="read-button">Read Book</a>
+                                </div>
+                            <?php elseif (!$is_available): ?>
+                                <!-- Show unavailable message -->
+                                <div class="borrowing-error">
+                                    <p class="error-message"><?= e($error_message) ?></p>
+                                    <p class="suggestion">Please check back later when a copy becomes available.</p>
                                 </div>
                             <?php else: ?>
                                 <?php if ($membership_type === 'free'): ?>
