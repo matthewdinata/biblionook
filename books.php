@@ -136,7 +136,7 @@ if ($result->num_rows > 0) {
                     <div class="empty-state">
                         <h4>No Books Borrowed Yet</h4>
                         <p>Explore our collection and start your reading journey today!</p>
-                        <a href="./search.php" class="primary-button">Browse Books</a>
+                        <a href="./index.php" class="primary-button">Browse Books</a>
                     </div>
                 <?php else: ?>
                     <div class="book-table">
@@ -155,7 +155,7 @@ if ($result->num_rows > 0) {
                                     <tr class="row">
                                         <td onclick="window.location='details.php?id=<?= e($book['id']) ?>'" class="title">
                                             <img src="<?= e($book['thumbnail_url']) ?>" alt="<?= e($book['title']) ?>"
-                                                 class="book-cover">
+                                                class="book-cover">
                                             <span>
                                                 <?= e($book['title']) ?>
                                             </span>
@@ -163,7 +163,7 @@ if ($result->num_rows > 0) {
                                         <td class="author"><?= e($book['author']) ?></td>
                                         <td class="genre">
                                             <span
-                                                  class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
+                                                class="genre-tag <?= e(strtolower($book['genre'])) ?>"><?= e($book['genre']) ?></span>
                                         </td>
                                         <td class="due-date">
                                             <?php if (isReturned($book['due_date'])): ?>
@@ -184,17 +184,17 @@ if ($result->num_rows > 0) {
                                                 </a>
                                             <?php else: ?>
                                                 <a class="action-button" data-tooltip="Review"
-                                                   onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
+                                                    onclick="openReview(<?= htmlspecialchars(json_encode($book), ENT_QUOTES, 'UTF-8') ?>)">
                                                     <img src="assets/icons/review.svg" alt="Review Icon" width="20" height="20">
                                                 </a>
                                             <?php endif; ?>
                                             <?php if (!isReturned($book['due_date'])): ?>
                                                 <a class="action-button" data-tooltip="Read"
-                                                   href="./read.php?id=<?= e($book['id']) ?>">
+                                                    href="./read.php?id=<?= e($book['id']) ?>">
                                                     <img src="assets/icons/read.svg" alt="Read Icon" width="20" height="20">
                                                 </a>
                                                 <a class="action-button" data-tooltip="Return"
-                                                   onclick="returnBook(<?= e($book['id']) ?>, '<?= e($book['title']) ?>')">
+                                                    onclick="returnBook(<?= e($book['id']) ?>, '<?= e($book['title']) ?>')">
                                                     <img src="assets/icons/return.svg" alt="Return Icon" width="20" height="20">
                                                 </a>
                                             <?php else: ?>
